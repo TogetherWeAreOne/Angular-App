@@ -9,6 +9,8 @@ import { FooterComponent } from './footer/footer.component';
 import { HomeComponent } from './home/home.component';
 import { EventComponent } from './event/event.component';
 import { SignInComponent } from './sign-in/sign-in.component';
+import { CardComponent } from './event/card/card.component';
+import { AddEventFormComponent } from './event/add-event-form/add-event-form.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +19,9 @@ import { SignInComponent } from './sign-in/sign-in.component';
     FooterComponent,
     HomeComponent,
     EventComponent,
-    SignInComponent
+    SignInComponent,
+    CardComponent,
+    AddEventFormComponent
   ],
   imports: [
     BrowserModule,
