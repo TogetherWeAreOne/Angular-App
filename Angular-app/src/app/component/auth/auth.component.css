@@ -1,0 +1,49 @@
+.main_block{
+  width: 100%;
+  display: flex;
+  vertical-align: middle;
+  background-color: cadetblue;
+  height: 70vh;
+  padding: 50px;
+}
+
+.central-block{
+  display: block;
+  border-radius: 10px;
+  border: 2px solid black;
+  width: 40%;
+  padding: 10px;
+  margin: auto;
+
+  background-color: #00e7ff;
+}
+
+.central-block h2{
+  text-align: center;
+}
+
+.central-block button{
+  display: block;
+  font-size: 1.5em;
+  margin: auto;
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+
+form div{
+  margin-top: 20px;
+}
+
+form .form-goup {
+  width: 60%;
+  margin-left: 20%;
+}
+
+form .form-goup label {
+  font-size: 1.5em;
+}
+
+.label_input{
+  display: block;
+}
+

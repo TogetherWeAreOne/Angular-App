@@ -1,0 +1,49 @@
+.main_div{
+  display: block;
+  height: 100px;
+  background-color: grey;
+}
+
+.logo{
+  display: inline-block;
+  padding: 10px;
+  height: 100%;
+  background-color: aliceblue;
+}
+
+#logo{
+  height: 100%;
+}
+
+.navbar-buttons{
+  float: right;
+  display: block;
+  height: 100%;
+  background-color: blue;
+}
+
+.navbar-button{
+  height: 100%;
+  float: right;
+  display: flex;
+  margin-right:  20px;
+  align-items: center;
+}
+
+.navbar-buttons button{
+  display: block;
+  float: right;
+  margin: auto;
+  border-radius: 10px;
+  height: 40px;
+}
+
+.dropdown-user{
+  display: none;
+  position: relative;
+
+  height: 0px;
+
+  background-color: red;
+}
+
