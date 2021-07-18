@@ -1,22 +1,22 @@
 <div class="main_block">
 
   <div class="central-block">
-      <h2> CONNEXION </h2>
+    <h2> CONNEXION </h2>
 
-      <form [formGroup]="loginForm"  >
-        <div class="form-goup">
-            <label class="label_input">
-              Email :
-            </label>
-            <input type="text" id="email" class="form-control" formControlName="email" >
-        </div>
+    <form [formGroup]="loginForm">
+      <div class="form-goup">
+        <label class="label_input">
+          Email :
+        </label>
+        <input class="form-control" formControlName="email" id="email" type="text">
+      </div>
 
-        <div class="form-goup">
-          <label class="label_input">Mot de passe : </label>
-          <input type="password" id="password" class="form-control" formControlName="password"  >
-        </div>
+      <div class="form-goup">
+        <label class="label_input">Mot de passe : </label>
+        <input class="form-control" formControlName="password" id="password" type="password">
+      </div>
 
-        <button class="btn btn-danger" (click)="onSubmit()" [disabled]="!loginForm.valid" >Se connecter</button>
-      </form>
+      <button (click)="onSubmit()" [disabled]="!loginForm.valid" class="btn btn-danger">Se connecter</button>
+    </form>
   </div>
 </div>

@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+import {Component, OnInit} from '@angular/core';
+import {FormBuilder, Validators} from "@angular/forms";
 import {AuthService} from "../../services/auth.service";
 
 @Component({
@@ -14,19 +14,17 @@ export class AuthComponent implements OnInit {
     password: ["", [Validators.required]]
   })
 
-  constructor(private authService : AuthService, private fb : FormBuilder) {
+  constructor(private authService: AuthService, private fb: FormBuilder) {
   }
 
   ngOnInit(): void {
   }
 
-  onSubmit(): void{
+  onSubmit(): void {
     console.log(this.loginForm.value);
     const authformValue = this.loginForm.value;
-    this.authService.login(authformValue.email,authformValue.password);
+    this.authService.login(authformValue.email, authformValue.password);
   }
-
-
 
 
 }

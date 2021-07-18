@@ -3,85 +3,84 @@
   <div class="central-block">
     <h2> CONNEXION </h2>
 
-    <form [formGroup]="registerForm"  >
+    <form [formGroup]="registerForm">
       <div class="form-goup">
         <label class="label_input">
           Email :
         </label>
-        <input type="text" id="email" class="form-control" formControlName="email" >
+        <input class="form-control" formControlName="email" id="email" type="text">
       </div>
 
       <div class="form-goup">
         <label class="label_input">
           Pseudo :
         </label>
-        <input type="text" id="email" class="form-control" formControlName="email" >
+        <input class="form-control" formControlName="email" id="email" type="text">
       </div>
 
       <div class="form-goup">
         <label class="label_input">Mot de passe : </label>
-        <input type="password" id="password" class="form-control" formControlName="password"  >
+        <input class="form-control" formControlName="password" id="password" type="password">
       </div>
 
       <div class="form-goup">
         <label class="label_input">
           Nom :
         </label>
-        <input type="text" id="email" class="form-control" formControlName="email" >
+        <input class="form-control" formControlName="email" id="email" type="text">
       </div>
 
       <div class="form-goup">
         <label class="label_input">
           Prénom :
         </label>
-        <input type="text" id="email" class="form-control" formControlName="email" >
+        <input class="form-control" formControlName="email" id="email" type="text">
       </div>
 
       <div class="form-goup">
         <label class="label_input">
           Role :
         </label>
-        <input type="text" id="email" class="form-control" formControlName="email" >
+        <input class="form-control" formControlName="email" id="email" type="text">
       </div>
 
       <div class="form-goup">
         <label class="label_input">
           Date de naissance :
         </label>
-        <input type="text" id="email" class="form-control" formControlName="email" >
+        <input class="form-control" formControlName="email" id="email" type="text">
       </div>
 
       <div class="form-goup">
         <label class="label_input">
           Adresse :
         </label>
-        <input type="text" id="address" class="form-control" formControlName="address" >
+        <input class="form-control" formControlName="address" id="address" type="text">
       </div>
 
       <div class="form-goup">
         <label class="label_input">
           Code Postal :
         </label>
-        <input type="text" id="zip" class="form-control" formControlName="zip" >
+        <input class="form-control" formControlName="zip" id="zip" type="text">
       </div>
 
       <div class="form-goup">
         <label class="label_input">
           Pays :
         </label>
-        <input type="text" id="country" class="form-control" formControlName="country" >
+        <input class="form-control" formControlName="country" id="country" type="text">
       </div>
 
       <div class="form-goup">
         <label class="label_input">
           Téléphone :
         </label>
-        <input type="text" id="phone" class="form-control" formControlName="phone" >
+        <input class="form-control" formControlName="phone" id="phone" type="text">
       </div>
 
 
-
-      <button class="btn btn-danger" (click)="onSubmit()" [disabled]="!registerForm.valid" >Se connecter</button>
+      <button (click)="onSubmit()" [disabled]="!registerForm.valid" class="btn btn-danger">Se connecter</button>
     </form>
   </div>
 </div>

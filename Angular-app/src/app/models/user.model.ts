@@ -1,17 +1,17 @@
-export class User{
-  email : string;
-  password? : string;
-  firstname? : string;
-  lastname? : string;
-  pseudo? : string;
-  image? : string;
-  role? : string;
-  birthdate? : string;
-  address? : string;
-  zip? : string;
-  country? : string;
-  phone? : string;
-  certified? : boolean;
+export class User {
+  email: string;
+  password?: string;
+  firstname?: string;
+  lastname?: string;
+  pseudo?: string;
+  image?: string;
+  role?: string;
+  birthdate?: string;
+  address?: string;
+  zip?: string;
+  country?: string;
+  phone?: string;
+  certified?: boolean;
 
 
   constructor(email: string, password: string, firstname: string, lastname: string, pseudo: string, image: string, role: string, birthdate: string, address: string, zip: string, country: string, phone: string, certified: boolean) {
