@@ -23,9 +23,13 @@ export class AuthComponent implements OnInit {
   onSubmit(): void{
     console.log(this.loginForm.value);
     const authformValue = this.loginForm.value;
-    this.authService.login(authformValue.email,authformValue.password);
+    this.authService.login(authformValue.email,authformValue.password)
+      .subscribe( );
   }
 
+  logout(): void{
+    this.authService.logout().subscribe()
+  }
 
 
 

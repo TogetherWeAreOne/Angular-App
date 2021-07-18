@@ -2,17 +2,17 @@ import {User} from "./user.model";
 
 export class Event{
   title : string;
-  description : string;
-  maxParticipant : number;
-  minParticipant : number;
-  image : string;
-  address: string;
-  zip : string;
-  country : string;
-  startDate : string;
-  endDate : string;
-  eventType : string;
-  creator : User;
+  description? : string;
+  maxParticipant? : number;
+  minParticipant? : number;
+  image? : string;
+  address? : string;
+  zip? : string;
+  country? : string;
+  startDate? : string;
+  endDate? : string;
+  eventType? : string;
+  creator? : User;
 
 
   constructor(title: string, description: string, maxParticipant: number, minParticipant: number, image: string, address: string, zip: string, country: string, startDate: string, endDate: string, eventType: string, creator: User) {

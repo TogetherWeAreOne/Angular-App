@@ -1,0 +1,60 @@
+.main_block{
+  background-color: #00e7ff;
+  position: absolute;
+  width: 40%;
+  height: 72%;
+  top : 14%;
+  left : 30%;
+  z-index: 1;
+  border: 1px solid black;
+  border-radius: 10px;
+  padding: 20px;
+}
+
+
+.main_block form button {
+  display: block;
+  margin: auto;
+  font-size: 1.5em;
+  margin-top: 30px;
+  margin-bottom: 10px;
+}
+
+#overlay{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: black;
+  opacity: 50%;
+}
+
+#title{
+  text-align: center;
+  font-size: 1.5em;
+  margin-bottom: 15px;
+}
+
+.main-side-form{
+  margin: auto;
+  display: block;
+  width: 49%;
+  height: 100%;
+  margin-bottom: 30px;
+}
+
+.right-side-form{
+  float: right;
+  width: 50%;
+  height: 100%;
+  margin-bottom: 30px;
+}
+
+form .form-goup label {
+  font-size: 1.5em;
+}
+
+form .form-goup{
+  margin-bottom: 20px;
+}
