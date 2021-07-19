@@ -3,7 +3,7 @@
 
   <div>
 
-    <form>
+    <form [formGroup]="productForm">
 
       <div class="main-side-form">
         <div class="form-goup">
@@ -31,7 +31,7 @@
           <label class="label_input">
             Categorie produit :
           </label>
-          <input type="text" id="categoryProduct" class="form-control" formControlName="categoryProduct" >
+          <input type="text" id="categoryProduct" class="form-control" formControlName="category" >
         </div>
 
         <div class="form-goup">
@@ -45,19 +45,23 @@
           <label class="label_input">
             Négociable :
           </label>
-          <input type="number" id="negotiable" class="form-control" formControlName="negotiable" >
+          <select formControlName="negotiable">
+            <option value="true">Oui</option>
+            <option value="false">Non</option>
+          </select>
+
         </div>
 
         <div class="form-goup">
           <label class="label_input">
             Image :
           </label>
-          <input type="text" id="minParticipant" class="form-control" formControlName="minParticipant" >
+          <input type="text" id="image" class="form-control"  >
         </div>
 
       </div>
 
-      <button class="btn btn-danger" > Créer le produit </button>
+      <button class="btn btn-danger" (click)="onSubmit()"> Créer le produit </button>
 
     </form>
 

@@ -15,14 +15,16 @@ import { CreateAuctionSaleComponent } from './component/create-auction-sale/crea
 import {HomeComponent} from './component/home/home.component';
 import {CommonModule} from "@angular/common";
 import { MarketplaceComponent } from './component/marketplace/marketplace.component';
-
-
+import { MyProductComponent } from './component/my-product/my-product.component';
 
 
 const appRoutes: Routes = [
 
   { path : "auth", component: AuthComponent},
-  { path : "test", component: CreateEventComponent}
+  { path : "test", component: CreateEventComponent},
+  { path : "home", component: HomeComponent},
+  { path : "createproduct", component: CreatProductComponent},
+  { path : "myProduct", component: MyProductComponent}
 
 ]
 
@@ -34,9 +36,10 @@ const appRoutes: Routes = [
     RegisterComponent,
     CreateEventComponent,
     CreatProductComponent,
-    CreateAuctionSaleComponent
+    CreateAuctionSaleComponent,
     HomeComponent,
-    MarketplaceComponent
+    MarketplaceComponent,
+    MyProductComponent
   ],
   imports: [
     BrowserModule,

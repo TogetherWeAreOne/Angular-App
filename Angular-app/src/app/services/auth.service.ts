@@ -26,10 +26,20 @@ export class AuthService {
       password
     })
       .pipe(map(user => {
-        this.cookieService.set('user', user.email, 3, "", environment.domain, false, 'Strict');
-        console.log("......." + user);
+        console.log(user);
+        this.cookieService.set('user', user.id as string, 3, "", environment.domain, false, 'Strict');
+        console.log(".......");
         return user;
       }));
+  }
+
+  public getConnectedUserId(): string{
+    return this.cookieService.get('user');
+  }
+
+  public isConnected(): boolean{
+    const id = this.getConnectedUserId();
+    return id !== null && id !== undefined && id !== ""
   }
 
   public logout(): Observable<unknown> {
@@ -54,11 +64,12 @@ export class AuthService {
       phone
     })
       .pipe(map(user => {
-        this.cookieService.set('user', user.email,3,"",environment.domain,false,'Strict');
+        this.cookieService.set('user', user.id as string,3,"",environment.domain,false,'Strict');
         console.log("......." + user);
         return user;
       }));
   }
+
 
 
 }

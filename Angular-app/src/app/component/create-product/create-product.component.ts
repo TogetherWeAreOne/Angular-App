@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder, Validators} from "@angular/forms";
 import {AuthService} from "../../services/auth.service";
+import {ProductService} from "../../services/product.service";
+import {ProductCategoryService} from "../../services/productCategory.service";
+import {Product} from "../../models/product.model";
 
 @Component({
   selector: 'app-creat-product',
@@ -18,7 +21,9 @@ export class CreatProductComponent implements OnInit {
     negotiable: ["", [Validators.required]],
   })
 
-  constructor(private authService : AuthService, private fb : FormBuilder) {
+  constructor(private authService : AuthService,
+              private fb : FormBuilder,
+              private productService: ProductService) {
   }
 
   ngOnInit(): void {
@@ -30,7 +35,12 @@ export class CreatProductComponent implements OnInit {
 
   onSubmit(): void{
     console.log(this.productForm.value);
-    const registerFormValue = this.productForm.value;
+    let product = (this.productForm.value as Product);
+    product.selled = false;
+    product.sended = false;
+    console.log("(((((((((((((((((((((((((((");
+    console.log(product);
+    this.productService.createProduct(product).subscribe();
 
   }
 

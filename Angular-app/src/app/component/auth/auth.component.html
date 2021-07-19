@@ -14,11 +14,17 @@
       <div class="form-goup">
         <label class="label_input">Mot de passe : </label>
         <input class="form-control" formControlName="password" id="password" type="password">
+        <div class="error " *ngIf="this.connectionError"> L'email ou le mot de passe est incorrect ! </div>
       </div>
+
+
+
         <button class="btn btn-danger" (click)="onSubmit()" [disabled]="!loginForm.valid" >Se connecter</button>
       </form>
+
+
     <button (click)="logout()">deco </button>
-    <a routerLink="test">create event </a>
+    <a routerLink="myProduct">create event </a>
 
   </div>
 </div>

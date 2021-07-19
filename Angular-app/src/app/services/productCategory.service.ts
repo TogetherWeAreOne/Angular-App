@@ -1,26 +1,25 @@
 import {Injectable} from "@angular/core";
 import {BehaviorSubject, Observable} from "rxjs";
-import {Event} from "../models/event.model";
+import {Product} from "../models/product.model";
 import {CookieService} from "ngx-cookie-service";
 import {HttpClient} from "@angular/common/http";
 import {environment} from "../../environments/environment";
 import {map} from "rxjs/operators";
-import {Product} from "../models/product.model";
+import {ProductCategory} from "../models/productCategory.model";
 
 @Injectable( { providedIn : 'root'})
-export class ProductService {
+export class ProductCategoryService {
 
-  public product: Observable<Product[]>;
-  private productSubject: BehaviorSubject<Product[]>;
+  public productCategory: Observable<ProductCategory>;
+  private productCategorySubject: BehaviorSubject<ProductCategory>;
 
   constructor(private cookieService: CookieService, private http: HttpClient) {
-    this.productSubject = new BehaviorSubject<Product[]>([{name: "none"}]);
-    this.product = this.productSubject.asObservable();
+    this.productCategorySubject = new BehaviorSubject<ProductCategory>({name: "none"});
+    this.productCategory = this.productCategorySubject.asObservable();
   }
 
   public createProduct(product: Product): Observable<Product> {
-    console.log("......................");
-    console.log(product);
+    console.log("icicicicicicici");
     return this.http.post<Product>(`${environment.apiBaseUrl}/product/create`, product)
       .pipe(map(event => {
         console.log("......." + event);
@@ -28,8 +27,8 @@ export class ProductService {
       }));
   }
 
-  public getMyProduct(): Observable<Product[]> {
-    return this.http.get<Product[]>(`${environment.apiBaseUrl}/product/getAllMyProduct`);
+  public getProductCategoryByName(name: string): Observable<ProductCategory> {
+    return this.http.get<ProductCategory>( `${environment.apiBaseUrl}/productCategory/${name}/getByName`);
   }
 
 }
