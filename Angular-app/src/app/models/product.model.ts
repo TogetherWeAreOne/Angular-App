@@ -1,7 +1,7 @@
 import {User} from "./user.model";
 import {ProductCategory} from "./productCategory.model";
 
-export class Product{
+export class Product {
   name: string;
   description?: string;
   price?: number;
@@ -12,6 +12,7 @@ export class Product{
   selled?: boolean;
   creator? : User;
   category? : ProductCategory;
+
 
 
   constructor(name: string, description: string, price: number, quantity: number, negotiable: string, state: string, sended: boolean, selled: boolean, creator: User, category: ProductCategory) {

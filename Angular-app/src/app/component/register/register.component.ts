@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {FormBuilder, Validators} from "@angular/forms";
 import {AuthService} from "../../services/auth.service";
 import {User} from "../../models/user.model";
@@ -25,7 +25,7 @@ export class RegisterComponent implements OnInit {
     phone: ["", [Validators.required]]
   })
 
-  constructor(private authService : AuthService, private fb : FormBuilder) {
+  constructor(private authService: AuthService, private fb: FormBuilder) {
   }
 
   ngOnInit(): void {
@@ -49,5 +49,6 @@ export class RegisterComponent implements OnInit {
       registerFormValue.zip,
       registerFormValue.country,
       registerFormValue.phone).subscribe();
+
   }
 }

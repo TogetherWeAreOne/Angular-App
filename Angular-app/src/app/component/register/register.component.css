@@ -1,4 +1,4 @@
-.main_block{
+.main_block {
   width: 100%;
   display: flex;
   vertical-align: middle;
@@ -7,7 +7,7 @@
   padding: 50px;
 }
 
-.central-block{
+.central-block {
   display: block;
   border-radius: 10px;
   border: 2px solid black;
@@ -18,17 +18,18 @@
   background-color: #00e7ff;
 }
 
-.central-block h2{
+.central-block h2 {
   text-align: center;
 }
 
-.central-block button{
+.central-block button {
   display: block;
   font-size: 1.5em;
   margin: auto;
   margin-top: 30px;
   margin-bottom: 10px;
 }
+
 
 form{
   height: 50%;
@@ -47,7 +48,7 @@ form .form-goup label {
   font-size: 1.5em;
 }
 
-.label_input{
+.label_input {
   display: block;
 }
 

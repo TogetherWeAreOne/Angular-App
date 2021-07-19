@@ -12,13 +12,18 @@ import { GlobalHttpInterceptor} from "./interceptor/global-http-interceptor.serv
 import { CreateEventComponent } from './component/create-event/create-event.component';
 import { CreatProductComponent } from './component/create-product/create-product.component';
 import { CreateAuctionSaleComponent } from './component/create-auction-sale/create-auction-sale.component';
+import {HomeComponent} from './component/home/home.component';
+import {CommonModule} from "@angular/common";
+import { MarketplaceComponent } from './component/marketplace/marketplace.component';
 
 
 
 
 const appRoutes: Routes = [
+
   { path : "auth", component: AuthComponent},
   { path : "test", component: CreateEventComponent}
+
 ]
 
 @NgModule({
@@ -30,13 +35,16 @@ const appRoutes: Routes = [
     CreateEventComponent,
     CreatProductComponent,
     CreateAuctionSaleComponent
+    HomeComponent,
+    MarketplaceComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,
     RouterModule.forRoot(appRoutes),
-    HttpClientModule
+    HttpClientModule,
+    CommonModule
   ],
   providers: [CookieService,
     {
@@ -46,4 +54,5 @@ const appRoutes: Routes = [
     }],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}

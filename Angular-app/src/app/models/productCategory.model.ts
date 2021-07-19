@@ -1,4 +1,4 @@
-export class ProductCategory{
+export class ProductCategory {
   name: string;
 
   constructor(name: string) {
