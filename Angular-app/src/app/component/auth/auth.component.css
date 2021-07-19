@@ -47,3 +47,9 @@ form .form-goup label {
   display: block;
 }
 
+.error{
+  border-radius: 10px;
+  background-color: rgba(255, 89, 89, 0.75);
+  padding: 10px;
+  font-size: 1.5em;
+}

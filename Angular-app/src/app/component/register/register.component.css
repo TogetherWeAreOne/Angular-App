@@ -11,7 +11,7 @@
   display: block;
   border-radius: 10px;
   border: 2px solid black;
-  width: 40%;
+  width: 60%;
   padding: 10px;
   margin: auto;
 
@@ -26,11 +26,16 @@
   display: block;
   font-size: 1.5em;
   margin: auto;
-  margin-top: 20px;
+  margin-top: 30px;
   margin-bottom: 10px;
 }
 
-form div {
+
+form{
+  height: 50%;
+}
+
+form div{
   margin-top: 20px;
 }
 
@@ -45,4 +50,18 @@ form .form-goup label {
 
 .label_input {
   display: block;
+}
+
+.left-side-form{
+  float: left;
+  width: 49%;
+  height: 100%;
+  margin-bottom: 30px;
+}
+
+.right-side-form{
+  float: right;
+  width: 50%;
+  height: 100%;
+  margin-bottom: 30px;
 }
