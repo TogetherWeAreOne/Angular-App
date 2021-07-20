@@ -31,11 +31,11 @@
 }
 
 
-form{
+form {
   height: 50%;
 }
 
-form div{
+form div {
   margin-top: 20px;
 }
 
@@ -52,14 +52,14 @@ form .form-goup label {
   display: block;
 }
 
-.left-side-form{
+.left-side-form {
   float: left;
   width: 49%;
   height: 100%;
   margin-bottom: 30px;
 }
 
-.right-side-form{
+.right-side-form {
   float: right;
   width: 50%;
   height: 100%;

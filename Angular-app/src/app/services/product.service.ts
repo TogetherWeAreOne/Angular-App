@@ -1,13 +1,12 @@
 import {Injectable} from "@angular/core";
 import {BehaviorSubject, Observable} from "rxjs";
-import {Event} from "../models/event.model";
 import {CookieService} from "ngx-cookie-service";
 import {HttpClient} from "@angular/common/http";
 import {environment} from "../../environments/environment";
 import {map} from "rxjs/operators";
 import {Product} from "../models/product.model";
 
-@Injectable( { providedIn : 'root'})
+@Injectable({providedIn: 'root'})
 export class ProductService {
 
   public product: Observable<Product[]>;

@@ -1,10 +1,10 @@
-.main_block{
+.main_block {
   background-color: #00e7ff;
   position: absolute;
   width: 50%;
   height: 60%;
-  top : 20%;
-  left : 25%;
+  top: 20%;
+  left: 25%;
   z-index: 1;
   border: 1px solid black;
   border-radius: 10px;
@@ -20,7 +20,7 @@
   margin-bottom: 10px;
 }
 
-#overlay{
+#overlay {
   position: absolute;
   top: 0;
   left: 0;
@@ -30,20 +30,20 @@
   opacity: 50%;
 }
 
-#title{
+#title {
   text-align: center;
   font-size: 1.5em;
   margin-bottom: 15px;
 }
 
-.left-side-form{
+.left-side-form {
   float: left;
   width: 49%;
   height: 100%;
   margin-bottom: 30px;
 }
 
-.right-side-form{
+.right-side-form {
   float: right;
   width: 50%;
   height: 100%;
@@ -54,6 +54,6 @@ form .form-goup label {
   font-size: 1.5em;
 }
 
-form .form-goup{
+form .form-goup {
   margin-bottom: 20px;
 }

@@ -1,6 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {FormBuilder, Validators} from "@angular/forms";
-import {AuthService} from "../../services/auth.service";
 import {EventService} from "../../services/event.service";
 import {Event} from "../../models/event.model";
 
@@ -27,13 +26,13 @@ export class CreateEventComponent implements OnInit {
     country: ["", [Validators.required]],
   })
 
-  constructor(private eventService : EventService, private fb : FormBuilder) {
+  constructor(private eventService: EventService, private fb: FormBuilder) {
   }
 
   ngOnInit(): void {
   }
 
-  onSubmit(): void{
+  onSubmit(): void {
     console.log(this.eventForm.value);
     const eventFormValue = this.eventForm.value;
     this.eventService.createEvent(
@@ -43,7 +42,7 @@ export class CreateEventComponent implements OnInit {
   }
 
   loadEvent() {
-    this.eventService.getAllEvent().subscribe( events => {
+    this.eventService.getAllEvent().subscribe(events => {
       this.events = events
     })
     console.log(this.events);

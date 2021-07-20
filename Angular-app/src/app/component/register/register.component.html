@@ -4,7 +4,7 @@
     <h2> INSCRIPTION </h2>
 
 
-    <form [formGroup]="registerForm"  >
+    <form [formGroup]="registerForm">
 
       <div class="left-side-form">
 
@@ -12,14 +12,14 @@
           <label class="label_input">
             Email :
           </label>
-          <input type="text" id="email" class="form-control" formControlName="email" >
+          <input class="form-control" formControlName="email" id="email" type="text">
         </div>
 
         <div class="form-goup">
           <label class="label_input">
             Mot de passe :
           </label>
-          <input type="text" id="password" class="form-control" formControlName="password" >
+          <input class="form-control" formControlName="password" id="password" type="text">
 
           <div *ngIf="password?.invalid">
             <p class="text-wrap m-0 text-danger">Le mot de passe doit contenir:<br>- Entre 8 et 30 caractères<br>- Une
@@ -32,28 +32,28 @@
           <label class="label_input">
             Confirmation mot de passse :
           </label>
-          <input type="text" id="confPassword" class="form-control" formControlName="confPassword" >
+          <input class="form-control" formControlName="confPassword" id="confPassword" type="text">
         </div>
 
         <div class="form-goup">
           <label class="label_input">
             Nom :
           </label>
-          <input type="text" id="lastname" class="form-control" formControlName="lastname" >
+          <input class="form-control" formControlName="lastname" id="lastname" type="text">
         </div>
 
         <div class="form-goup">
           <label class="label_input">
             Prénom :
           </label>
-          <input type="text" id="firstname" class="form-control" formControlName="firstname" >
+          <input class="form-control" formControlName="firstname" id="firstname" type="text">
         </div>
 
         <div class="form-goup">
           <label class="label_input">
             Pseudo :
           </label>
-          <input type="text" id="pseudo" class="form-control" formControlName="pseudo" >
+          <input class="form-control" formControlName="pseudo" id="pseudo" type="text">
         </div>
 
       </div>
@@ -75,14 +75,14 @@
           <label class="label_input">
             Date de naissance :
           </label>
-          <input type="date" id="birthdate" class="form-control" formControlName="birthdate" >
+          <input class="form-control" formControlName="birthdate" id="birthdate" type="date">
         </div>
 
         <div class="form-goup">
           <label class="label_input">
             Adresse :
           </label>
-          <input type="text" id="address" class="form-control" formControlName="address" >
+          <input class="form-control" formControlName="address" id="address" type="text">
         </div>
 
 
@@ -90,26 +90,26 @@
           <label class="label_input">
             Code postal :
           </label>
-          <input type="text" id="zip" class="form-control" formControlName="zip" >
+          <input class="form-control" formControlName="zip" id="zip" type="text">
         </div>
 
         <div class="form-goup">
           <label class="label_input">
             Pays :
           </label>
-          <input type="text" id="country" class="form-control" formControlName="country" >
+          <input class="form-control" formControlName="country" id="country" type="text">
         </div>
 
         <div class="form-goup">
           <label class="label_input">
             Téléphone :
           </label>
-          <input type="text" id="phone" class="form-control" formControlName="phone"  >
+          <input class="form-control" formControlName="phone" id="phone" type="text">
         </div>
 
       </div>
 
-      <button class="btn btn-danger" (click)="onSubmit()" [disabled]="!registerForm.valid" >S'inscrire</button>
+      <button (click)="onSubmit()" [disabled]="!registerForm.valid" class="btn btn-danger">S'inscrire</button>
 
     </form>
   </div>

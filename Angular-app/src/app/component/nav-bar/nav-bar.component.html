@@ -6,13 +6,13 @@
 
 
   <div class="col-md-9 navbar-buttons">
-    <div class="navbar-button" *ngIf="!authService.isConnected()">
+    <div *ngIf="!authService.isConnected()" class="navbar-button">
       <button>
         Connexion
       </button>
     </div>
 
-    <div class="navbar-button" *ngIf="authService.isConnected()">
+    <div *ngIf="authService.isConnected()" class="navbar-button">
       <div>
         <button style="z-index: 5">
           user + logo
@@ -29,7 +29,7 @@
 
     </div>
 
-    <div class="navbar-button " *ngIf="authService.isConnected()" >
+    <div *ngIf="authService.isConnected()" class="navbar-button ">
       <button>
         message
       </button>

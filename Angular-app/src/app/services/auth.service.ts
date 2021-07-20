@@ -5,7 +5,6 @@ import {HttpClient} from "@angular/common/http";
 import {CookieService} from "ngx-cookie-service";
 import {environment} from "../../environments/environment";
 import {map} from "rxjs/operators";
-import {stringify} from "@angular/compiler/src/util";
 
 @Injectable({providedIn: 'root'})
 export class AuthService {
@@ -33,11 +32,11 @@ export class AuthService {
       }));
   }
 
-  public getConnectedUserId(): string{
+  public getConnectedUserId(): string {
     return this.cookieService.get('user');
   }
 
-  public isConnected(): boolean{
+  public isConnected(): boolean {
     const id = this.getConnectedUserId();
     return id !== null && id !== undefined && id !== ""
   }
@@ -48,7 +47,7 @@ export class AuthService {
     return this.http.delete(`${environment.apiBaseUrl}/auth/logout`);
   }
 
-  public register(email: string, password: string, firstname: string, lastname: string, pseudo: string, image: string, role: string, birthdate: string, address: string, zip: string, country: string, phone: string): Observable<User>{
+  public register(email: string, password: string, firstname: string, lastname: string, pseudo: string, image: string, role: string, birthdate: string, address: string, zip: string, country: string, phone: string): Observable<User> {
     return this.http.post<User>(`${environment.apiBaseUrl}/auth/signin`, {
       email,
       password,
@@ -64,12 +63,11 @@ export class AuthService {
       phone
     })
       .pipe(map(user => {
-        this.cookieService.set('user', user.id as string,3,"",environment.domain,false,'Strict');
+        this.cookieService.set('user', user.id as string, 3, "", environment.domain, false, 'Strict');
         console.log("......." + user);
         return user;
       }));
   }
-
 
 
 }

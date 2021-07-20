@@ -1,5 +1,5 @@
 <div class="main_block">
-  <div id="title"> <h2> Création d'event </h2> </div>
+  <div id="title"><h2> Création d'event </h2></div>
 
   <div>
 
@@ -10,28 +10,28 @@
           <label class="label_input">
             Titre :
           </label>
-          <input type="text" id="title_" class="form-control" formControlName="title" >
+          <input class="form-control" formControlName="title" id="title_" type="text">
         </div>
 
         <div class="form-goup">
           <label class="label_input">
             Description :
           </label>
-          <input type="text" id="description" class="form-control" formControlName="description" >
+          <input class="form-control" formControlName="description" id="description" type="text">
         </div>
 
         <div class="form-goup">
           <label class="label_input">
             Date de début :
           </label>
-          <input type="date" id="startDate" class="form-control" formControlName="startDate" >
+          <input class="form-control" formControlName="startDate" id="startDate" type="date">
         </div>
 
         <div class="form-goup">
           <label class="label_input">
             Date de fin :
           </label>
-          <input type="date" id="endDate" class="form-control" formControlName="endDate" >
+          <input class="form-control" formControlName="endDate" id="endDate" type="date">
         </div>
 
         <div class="form-goup">
@@ -48,7 +48,7 @@
           <label class="label_input">
             Nombre de participant (max) :
           </label>
-          <input type="number" id="maxParticipant" class="form-control" formControlName="maxParticipant" >
+          <input class="form-control" formControlName="maxParticipant" id="maxParticipant" type="number">
         </div>
 
       </div>
@@ -59,49 +59,47 @@
           <label class="label_input">
             Nombre de participant (min) :
           </label>
-          <input type="number" id="minParticipant" class="form-control" formControlName="minParticipant" >
+          <input class="form-control" formControlName="minParticipant" id="minParticipant" type="number">
         </div>
 
         <div class="form-goup">
           <label class="label_input">
             Image :
           </label>
-          <input type="text" id="image" class="form-control" formControlName="image" >
+          <input class="form-control" formControlName="image" id="image" type="text">
         </div>
 
         <div class="form-goup">
           <label class="label_input">
             Lieu (adresse) :
           </label>
-          <input type="text" id="address" class="form-control" formControlName="address" >
+          <input class="form-control" formControlName="address" id="address" type="text">
         </div>
 
         <div class="form-goup">
           <label class="label_input">
             Code Postal :
           </label>
-          <input type="text" id="zip" class="form-control" formControlName="zip" >
+          <input class="form-control" formControlName="zip" id="zip" type="text">
         </div>
 
         <div class="form-goup">
           <label class="label_input">
             Pays :
           </label>
-          <input type="text" id="country" class="form-control" formControlName="country" >
+          <input class="form-control" formControlName="country" id="country" type="text">
         </div>
 
       </div>
 
-      <button class="btn btn-danger" (click)="onSubmit()"  >Créer l'event</button>
+      <button (click)="onSubmit()" class="btn btn-danger">Créer l'event</button>
 
     </form>
 
-    <button (click)="loadEvent()"> load </button>
+    <button (click)="loadEvent()"> load</button>
   </div>
 
 </div>
-
-
 
 
 <div id="overlay"></div>

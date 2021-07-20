@@ -1,7 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, Validators} from "@angular/forms";
 import {AuthService} from "../../services/auth.service";
-import {User} from "../../models/user.model";
 
 @Component({
   selector: 'app-register',
@@ -28,18 +27,18 @@ export class RegisterComponent implements OnInit {
   constructor(private authService: AuthService, private fb: FormBuilder) {
   }
 
-  ngOnInit(): void {
-  }
-
   get password() {
     return this.registerForm.get('password');
   }
 
-  onSubmit(): void{
+  ngOnInit(): void {
+  }
+
+  onSubmit(): void {
     console.log(this.registerForm.value);
     const registerFormValue = this.registerForm.value;
 
-    this.authService.register(registerFormValue.email,registerFormValue.password,registerFormValue.firstname,
+    this.authService.register(registerFormValue.email, registerFormValue.password, registerFormValue.firstname,
       registerFormValue.lastname,
       registerFormValue.pseudo,
       "registerFormValue.image",
