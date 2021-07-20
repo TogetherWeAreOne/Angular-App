@@ -7,7 +7,7 @@ import {environment} from "../../environments/environment";
 import {map} from "rxjs/operators";
 import {ProductCategory} from "../models/productCategory.model";
 
-@Injectable( { providedIn : 'root'})
+@Injectable({providedIn: 'root'})
 export class ProductCategoryService {
 
   public productCategory: Observable<ProductCategory>;
@@ -28,7 +28,7 @@ export class ProductCategoryService {
   }
 
   public getProductCategoryByName(name: string): Observable<ProductCategory> {
-    return this.http.get<ProductCategory>( `${environment.apiBaseUrl}/productCategory/${name}/getByName`);
+    return this.http.get<ProductCategory>(`${environment.apiBaseUrl}/productCategory/${name}/getByName`);
   }
 
 }

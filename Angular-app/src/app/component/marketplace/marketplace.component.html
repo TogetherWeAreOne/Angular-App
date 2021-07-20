@@ -7,7 +7,8 @@
       <form class="py-5">
         <div class="row align-items-center">
           <div class="btn-group col">
-            <button type="button" class="btn btn-danger dropdown-toggle form-control" data-bs-toggle="dropdown" aria-expanded="false">
+            <button aria-expanded="false" class="btn btn-danger dropdown-toggle form-control" data-bs-toggle="dropdown"
+                    type="button">
               Catégorie
             </button>
             <ul class="dropdown-menu">
@@ -17,10 +18,11 @@
             </ul>
           </div>
           <div class="col-6">
-            <input type="text" class="form-control" placeholder="Recherche">
+            <input class="form-control" placeholder="Recherche" type="text">
           </div>
           <div class="btn-group col">
-            <button type="button" class="btn btn-danger dropdown-toggle form-control" data-bs-toggle="dropdown" aria-expanded="false">
+            <button aria-expanded="false" class="btn btn-danger dropdown-toggle form-control" data-bs-toggle="dropdown"
+                    type="button">
               Département
             </button>
             <ul class="dropdown-menu">
@@ -33,7 +35,7 @@
         <div class="row my-4 text-center">
           <div class="col">
             <div class="form-check">
-              <input class="form-check-input" type="checkbox" value="" id="professionalCheckbox">
+              <input class="form-check-input" id="professionalCheckbox" type="checkbox" value="">
               <label class="form-check-label" for="professionalCheckbox">
                 Professionel
               </label>
@@ -41,7 +43,7 @@
           </div>
           <div class="col">
             <div class="form-check">
-              <input class="form-check-input" type="checkbox" value="" id="particularCheckbox">
+              <input class="form-check-input" id="particularCheckbox" type="checkbox" value="">
               <label class="form-check-label" for="particularCheckbox">
                 Particulier
               </label>
@@ -49,7 +51,7 @@
           </div>
           <div class="col">
             <div class="form-check">
-              <input class="form-check-input" type="checkbox" value="" id="orgCheckbox">
+              <input class="form-check-input" id="orgCheckbox" type="checkbox" value="">
               <label class="form-check-label" for="orgCheckbox">
                 Organisation
               </label>
@@ -58,7 +60,7 @@
         </div>
         <div class="row">
           <div class="col">
-            <button type="submit" class="btn btn-primary">Submit</button>
+            <button class="btn btn-primary" type="submit">Submit</button>
           </div>
         </div>
       </form>
@@ -67,16 +69,17 @@
   </div>
   <div class="row my-3">
     <div class="col-3 offset-9 text-center">
-      <button type="button" class="btn btn-dark dropdown-toggle form-control" data-bs-toggle="dropdown" aria-expanded="false">
+      <button aria-expanded="false" class="btn btn-dark dropdown-toggle form-control" data-bs-toggle="dropdown"
+              type="button">
         Trier par
       </button>
     </div>
   </div>
   <div class="row">
     <div class="container alert-dark align-middle" style="border-radius: 25px; padding: 20px">
-      <div *ngFor="let item of items" class="row alert-light py-4 m-4" style="border-radius: 25px; padding: 20px">
+      <div *ngFor="let item of products" class="row alert-light py-4 m-4" style="border-radius: 25px; padding: 20px">
         <div class="col-5 text-center">
-          <img src="{{item.imageLink}}" alt="Product Image" class="img-thumbnail" height="150" width="150">
+          <img alt="Product Image" class="img-thumbnail" height="150" src="/assets/bottle.jpg" width="150">
         </div>
 
         <div class="col">
@@ -88,20 +91,20 @@
             </div>
             <div class="col-1 mx-3">
               <h2>
-                {{item.price}}
+                {{item.price}}€
               </h2>
             </div>
           </div>
 
           <div class="row">
-            <p>
+            <p class="text-capitalize">
               {{item.category}}
             </p>
           </div>
 
           <div class="row">
             <p class="fst-italic">
-              {{item.cityAndPostalCode}}
+              {{item.creator}}
             </p>
           </div>
         </div>

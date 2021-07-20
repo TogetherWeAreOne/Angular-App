@@ -1,4 +1,5 @@
 import {Component, OnInit} from '@angular/core';
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-home',
@@ -18,7 +19,7 @@ export class HomeComponent implements OnInit {
       title: "Market",
       description: "Descriptif de l'onglet Market",
       color: "#FFB067",
-      link: "https://goToMarket.com"
+      link: "productMarketplace"
     },
     {
       title: "Organisation",
@@ -28,10 +29,14 @@ export class HomeComponent implements OnInit {
     }
   ];
 
-  constructor() {
+  constructor(private router: Router) {
   }
 
   ngOnInit(): void {
 
+  }
+
+  goTo(link: string) {
+    this.router.navigate([link]);
   }
 }

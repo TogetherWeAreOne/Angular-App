@@ -22,7 +22,9 @@ export class AuthComponent implements OnInit {
   }
 
   ngOnInit(): void {
-
+    if (this.authService.isConnected()) {
+      this.router.navigate(["/home"]);
+    }
   }
 
   onSubmit(): void {
@@ -30,28 +32,29 @@ export class AuthComponent implements OnInit {
     const authformValue = this.loginForm.value;
 
     this.authService.login(authformValue.email, authformValue.password)
-      .subscribe( () => {},
+      .subscribe(() => {
+        },
         error => {
-          if (error.status === 401){
+          if (error.status === 401) {
             this.connectionError = true;
           }
-        }, () =>{
+        }, () => {
           this.router.navigate(['/home']);
         }
       );
   }
 
-  logout(): void{
-    this.authService.logout().subscribe(() => {},
+  logout(): void {
+    this.authService.logout().subscribe(() => {
+      },
       error => {
-        if (error.status === 401){
+        if (error.status === 401) {
           this.connectionError = true;
         }
-      }, () =>{
+      }, () => {
         this.router.navigate(['/auth']);
       });
   }
-
 
 
 }

@@ -1,6 +1,7 @@
 <div class="container align-middle">
   <div class="row">
-    <div *ngFor="let e of elements" [style.backgroundColor]="e.color" class="col mx-5 my-5 text-center align-middle" style="height: 75vh; border-radius: 25px; padding: 20px">
+    <div *ngFor="let e of elements" [style.backgroundColor]="e.color" class="col mx-5 my-5 text-center align-middle"
+         style="height: 75vh; border-radius: 25px; padding: 20px">
       <div class="row align-items-center my-1" style="height: 33%">
         <h1 class="text-capitalize">{{e.title}}</h1>
       </div>
@@ -8,7 +9,8 @@
         <p class="alert alert-light" style="font-size: 15px">{{e.description}}</p>
       </div>
       <div class="row align-items-center my-1 mx-3" style="height: 33%">
-        <a type="button" class="btn btn-light" href="{{e.link}}">Aller à l'onglet <a class="text-lowercase link-dark text-decoration-none">{{e.title}}</a>.</a>
+        <a (click)="goTo(e.link)" class="btn btn-light" type="button">Aller à l'onglet <a
+          class="text-lowercase link-dark text-decoration-none">{{e.title}}</a>.</a>
       </div>
     </div>
   </div>
