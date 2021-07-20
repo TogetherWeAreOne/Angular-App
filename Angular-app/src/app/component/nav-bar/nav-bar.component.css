@@ -39,11 +39,7 @@
 }
 
 .dropdown-user {
-  display: none;
   position: relative;
-
-  height: 0px;
-
-  background-color: red;
+  display: block;
 }
 

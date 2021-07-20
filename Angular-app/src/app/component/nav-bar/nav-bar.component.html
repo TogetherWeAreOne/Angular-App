@@ -1,7 +1,7 @@
 <div class="main_div">
 
   <div class="logo col-md-3">
-    <img id="logo" src="assets/logo.png">
+    <a routerLink="home"><img id="logo" src="assets/logo.png"></a>
   </div>
 
 
@@ -14,18 +14,22 @@
 
     <div *ngIf="authService.isConnected()" class="navbar-button">
       <div>
-        <button style="z-index: 5">
+        <button style="z-index: 10">
           user + logo
         </button>
+      </div>
         <div class="dropdown-user">
-          <div style="background-color: azure; z-index: 2">
-            parametres
+          <div>
+            <a routerLink="myProduct"> Mes produits</a>
+
           </div>
           <div>
             parametres
           </div>
         </div>
-      </div>
+
+
+
 
     </div>
 
