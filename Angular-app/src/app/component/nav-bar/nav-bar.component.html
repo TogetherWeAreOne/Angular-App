@@ -1,12 +1,12 @@
 <div class="main_div">
 
   <div class="logo col-md-3">
-    <a routerLink="home"><img id="logo" src="assets/logo.png"></a>
+    <a routerLink=""><img id="logo" src="assets/logo.png"></a>
   </div>
 
 
   <div class="col-md-9 navbar-buttons">
-    <div *ngIf="!authService.isConnected()" class="navbar-button">
+    <div routerLink="" *ngIf="!authService.isConnected()" class="navbar-button">
       <button>
         Connexion
       </button>
@@ -23,8 +23,8 @@
             <a routerLink="myProduct"> Mes produits</a>
 
           </div>
-          <div>
-            parametres
+          <div (click)="logout()">
+            deconnexion
           </div>
         </div>
 

@@ -1,15 +1,17 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {FormBuilder, Validators} from "@angular/forms";
-import {AuthService} from "../../services/auth.service";
-import {ProductService} from "../../services/product.service";
-import {Product} from "../../models/product.model";
+import {AuthService} from "../../../services/auth.service";
+import {ProductService} from "../../../services/product.service";
+import {Product} from "../../../models/product.model";
 
 @Component({
-  selector: 'app-creat-product',
+  selector: 'app-create-product',
   templateUrl: './create-product.component.html',
   styleUrls: ['./create-product.component.css']
 })
 export class CreatProductComponent implements OnInit {
+
+  @Input() closeForm! : () => void;
 
   productForm = this.fb.group({
     name: ["", [Validators.required]],
@@ -41,6 +43,10 @@ export class CreatProductComponent implements OnInit {
     console.log(product);
     this.productService.createProduct(product).subscribe();
 
+  }
+
+  closeFormF(): void{
+    this.closeForm();
   }
 
 }

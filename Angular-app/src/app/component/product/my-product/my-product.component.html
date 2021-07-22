@@ -1,0 +1,84 @@
+<div class="main_block col-6">
+  <div class="row my-3">
+    <div class="col-3 offset-9 text-center">
+      <button aria-expanded="false" class="btn btn-dark dropdown-toggle form-control" data-bs-toggle="dropdown"
+              type="button">
+        Trier par
+      </button>
+    </div>
+  </div>
+  <div class="row my-3">
+  <div class="col-3 offset-9 text-center">
+    <button (click)="showCreateForm()" aria-expanded="false" class="btn btn-dark  form-control" data-bs-toggle="dropdown"
+            type="button">
+      Créer un produit
+    </button>
+  </div>
+</div>
+
+  <div class="row">
+    <div class="container alert-dark align-middle" style="border-radius: 25px; padding: 20px">
+      <div *ngFor="let myProduct of myproducts" class="row alert-light py-4 m-4 " style="border-radius: 25px; padding: 20px">
+        <div class="col-5 text-center">
+          <img src="assets/bottle.jpg" alt="Product Image" class="img-thumbnail" height="150" width="150">
+        </div>
+
+        <div class="col ">
+          <div class="row">
+            <div class="col-md-8">
+              <h3>
+                {{myProduct.name}}
+              </h3>
+            </div>
+            <div class="col-3 mx-3">
+              <h2>
+                {{myProduct.price}} €
+              </h2>
+            </div>
+          </div>
+
+          <div class="row">
+            <p>
+              {{myProduct.category}}
+            </p>
+          </div>
+
+          <div class="row">
+            <p class="fst-italic">
+              {{myProduct.description}}
+            </p>
+          </div>
+
+          <div class="row">
+            <p class="fst-italic">
+              Quantité : {{myProduct.quantity}}
+            </p>
+          </div>
+
+          <div class="row action-button">
+            <button class="btn btn-primary"  >
+              Infos
+            </button>
+          </div>
+
+          <div class="row action-button" mat-icon-button="" (click)="showUpdateForm(myProduct)" >
+            <button class="btn btn-warning ">
+              Modifier
+            </button>
+          </div>
+
+          <div class="row action-button">
+            <button class="btn btn-danger ">
+              Supprimer
+            </button>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<app-create-product *ngIf="displayCreateForm" [closeForm]="closeCreateForm"></app-create-product>
+<app-update-product *ngIf="displayUpdateForm" [closeForm]="closeUpdateForm" [product]="productFocus"></app-update-product>

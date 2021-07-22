@@ -10,11 +10,11 @@ import {ProductCategory} from "../models/productCategory.model";
 @Injectable({providedIn: 'root'})
 export class ProductCategoryService {
 
-  public productCategory: Observable<ProductCategory>;
-  private productCategorySubject: BehaviorSubject<ProductCategory>;
+  public productCategory: Observable<ProductCategory[]>;
+  private productCategorySubject: BehaviorSubject<ProductCategory[]>;
 
   constructor(private cookieService: CookieService, private http: HttpClient) {
-    this.productCategorySubject = new BehaviorSubject<ProductCategory>({name: "none"});
+    this.productCategorySubject = new BehaviorSubject<ProductCategory[]>([{name: "none"}]);
     this.productCategory = this.productCategorySubject.asObservable();
   }
 
@@ -26,6 +26,12 @@ export class ProductCategoryService {
         return event;
       }));
   }
+
+  public getAllProductCategory() : Observable<ProductCategory[]>{
+    return this.http.get<ProductCategory[]>(`${environment.apiBaseUrl}/productCategory/getAll`) ;
+  }
+
+
 
   public getProductCategoryByName(name: string): Observable<ProductCategory> {
     return this.http.get<ProductCategory>(`${environment.apiBaseUrl}/productCategory/${name}/getByName`);

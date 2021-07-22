@@ -10,12 +10,15 @@ import {NavBarComponent} from './component/nav-bar/nav-bar.component';
 import {RegisterComponent} from './component/register/register.component';
 import {GlobalHttpInterceptor} from "./interceptor/global-http-interceptor.service";
 import {CreateEventComponent} from './component/create-event/create-event.component';
-import {CreatProductComponent} from './component/create-product/create-product.component';
+import {CreatProductComponent} from './component/product/create-product/create-product.component';
 import {CreateAuctionSaleComponent} from './component/create-auction-sale/create-auction-sale.component';
 import {HomeComponent} from './component/home/home.component';
 import {CommonModule} from "@angular/common";
 import {MarketplaceComponent} from './component/marketplace/marketplace.component';
-import {MyProductComponent} from './component/my-product/my-product.component';
+import {MyProductComponent} from './component/product/my-product/my-product.component';
+import { UpdateProductComponent } from './component/product/update-product/update-product.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 
 
 const appRoutes: Routes = [
@@ -39,7 +42,8 @@ const appRoutes: Routes = [
     CreateAuctionSaleComponent,
     HomeComponent,
     MarketplaceComponent,
-    MyProductComponent
+    MyProductComponent,
+    UpdateProductComponent
   ],
   imports: [
     BrowserModule,
@@ -47,7 +51,8 @@ const appRoutes: Routes = [
     ReactiveFormsModule,
     RouterModule.forRoot(appRoutes),
     HttpClientModule,
-    CommonModule
+    CommonModule,
+    BrowserAnimationsModule,
   ],
   providers: [CookieService,
     {

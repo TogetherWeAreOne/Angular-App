@@ -1,6 +1,6 @@
 .main_block {
   background-color: #00e7ff;
-  position: absolute;
+  position: fixed;
   width: 40%;
   height: 72%;
   top: 14%;
@@ -21,7 +21,7 @@
 }
 
 #overlay {
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   width: 100vw;

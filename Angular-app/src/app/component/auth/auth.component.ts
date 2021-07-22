@@ -52,7 +52,7 @@ export class AuthComponent implements OnInit {
           this.connectionError = true;
         }
       }, () => {
-        this.router.navigate(['/auth']);
+        this.router.navigate(['/']);
       });
   }
 

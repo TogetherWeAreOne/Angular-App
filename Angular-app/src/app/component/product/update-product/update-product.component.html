@@ -1,0 +1,75 @@
+<div class="main_block">
+  <div id="title"><h2> Modification produit </h2></div>
+
+  <div>
+
+    <form [formGroup]="updateProductForm">
+
+      <div class="main-side-form">
+        <div class="form-goup">
+          <label class="label_input">
+            Nom :
+          </label>
+          <input class="form-control" formControlName="name" id="name" type="text" value="{{productToUpdate?.name}}">
+        </div>
+
+        <div class="form-goup">
+          <label class="label_input">
+            Description :
+          </label>
+          <input class="form-control" formControlName="description" id="description" type="text" value="{{productToUpdate?.description}}">
+        </div>
+
+        <div class="form-goup">
+          <label class="label_input">
+            Prix :
+          </label>
+          <input class="form-control" formControlName="price" id="price" type="number" value="{{productToUpdate?.price}}">
+        </div>
+
+        <div class="form-goup">
+          <label class="label_input">
+            Categorie produit :
+          </label>
+          <select class="form-control" formControlName="category" >
+            <option *ngFor="let category of productCategories;" [value]="category.name" [selected]="category.name === productToUpdate?.category?.name"> {{category.name}}</option>
+          </select>
+        </div>
+
+        <div class="form-goup">
+          <label class="label_input">
+            Quantity
+          </label>
+          <input class="form-control" formControlName="quantity" id="quantity" type="text" [defaultValue]=productToUpdate?.quantity>
+        </div>
+
+        <div class="form-goup">
+          <label class="label_input">
+            Négociable :
+          </label>
+          <select class="form-control" formControlName="negotiable" >
+            <option value="true" [selected]="productToUpdate?.negotiable === 'TRUE'"> Oui </option>
+            <option value="false" [selected]="productToUpdate?.negotiable === 'FALSE'"> Non </option>
+          </select>
+
+        </div>
+
+        <div class="form-goup">
+          <label class="label_input">
+            Image :
+          </label>
+          <input class="form-control" id="image" type="text">
+        </div>
+
+      </div>
+
+      <button (click)="onSubmit()" class="btn btn-danger"> Modifier le produit</button>
+
+    </form>
+
+  </div>
+
+</div>
+
+
+<div id="overlay" (click)="closeFormF()"></div>
