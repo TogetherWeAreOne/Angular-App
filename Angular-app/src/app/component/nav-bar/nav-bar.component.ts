@@ -25,4 +25,8 @@ export class NavBarComponent implements OnInit {
         this.router.navigate(['/']);
       });
   }
+
+  btnClick () : void {
+    this.router.navigateByUrl('/message');
+  };
 }

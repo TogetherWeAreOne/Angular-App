@@ -1,0 +1,13 @@
+app-discussion-list, app-discussion-event-message-info{
+  display: inline-block;
+  width: 30%;
+  height: 90%;
+  background-color: #a8dab5;
+}
+
+app-discussion-event-message {
+  display: inline-block;
+  width: 40%;
+  height: 90%;
+  background-color: #3ce366;
+}

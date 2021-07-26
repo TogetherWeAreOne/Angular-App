@@ -1,0 +1,94 @@
+<div class="main_block">
+  <div>
+    <div class="title left-title" (click)="showInfos()" ><h2> Information produit </h2></div>
+    <div class="title right-title" (click)="showProposals()"><h2> Proposition d'achat </h2></div>
+  </div>
+
+  <div class="infos-page" *ngIf="displayInfos == true">
+    <div class="left-side">
+      IMAGE
+
+      <button (click)="test()"> click </button>
+      <button (click)="test()"> click </button>
+    </div>
+
+
+    <div class="right-side">
+
+          <div class="infos-group">
+            <label class="label_input">
+              Nom :
+            </label>
+            <div> {{product?.name}} </div>
+          </div>
+
+          <div class="infos-group">
+            <label class="label_input">
+              Description :
+            </label>
+            <div id="product-description"> {{product?.description}} </div>
+          </div>
+
+          <div class="infos-group">
+            <label class="label_input">
+              Prix :
+            </label>
+            <div> {{product?.price}} € </div>
+          </div>
+
+          <div class="infos-group">
+            <label class="label_input">
+              Categorie produit :
+            </label>
+            <div> {{product?.category?.name}} </div>
+          </div>
+
+          <div class="infos-group">
+            <label class="label_input">
+              Quantity
+            </label>
+            <div> {{product?.quantity}} </div>
+          </div>
+
+          <div class="infos-group">
+            <label class="label_input">
+              Négociable :
+            </label>
+            <div> {{product?.negotiable === 'TRUE' ? 'Oui' : 'Non' }} </div>
+          </div>
+
+    </div>
+  </div>
+
+  <div class="proposal-page" *ngIf="displayProposal == true">
+
+    <div  class="proposal-box" *ngFor="let proposal of productProposals">
+
+      <div class="left-proposal">
+        <div> De : {{proposal.user?.pseudo}}</div>
+        <div> Proposition : {{proposal.price}} €</div>
+        <div> Message :{{proposal.message}}</div>
+      </div>
+
+      <div class="right-proposal">
+
+        <button class="btn btn-success action-button" (click)="confirmProposal(proposal)">
+          Valider
+        </button>
+
+        <button class="btn btn-danger action-button " (click)="refuseProposal(proposal)">
+          Refuser
+        </button>
+
+      </div>
+
+
+    </div>
+
+
+  </div>
+
+</div>
+
+
+<div id="overlay" (click)="closeInfos()"></div>

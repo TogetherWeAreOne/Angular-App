@@ -30,4 +30,5 @@ export class EventService {
   public getAllEvent(): Observable<Event[]> {
     return this.http.get<Event[]>(`${environment.apiBaseUrl}/event/getAllEvent`);
   }
+
 }

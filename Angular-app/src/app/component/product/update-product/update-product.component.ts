@@ -52,7 +52,6 @@ export class UpdateProductComponent implements OnInit {
 
   onSubmit(): void {
     let product = (this.updateProductForm.value as Product);
-
     this.productService.updateProduct(this.productToUpdate.id!, product).subscribe();
 
   }

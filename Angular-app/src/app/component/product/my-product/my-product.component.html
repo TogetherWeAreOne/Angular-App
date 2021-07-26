@@ -56,12 +56,12 @@
           </div>
 
           <div class="row action-button">
-            <button class="btn btn-primary"  >
+            <button class="btn btn-primary" (click)="showInfos(myProduct)" >
               Infos
             </button>
           </div>
 
-          <div class="row action-button" mat-icon-button="" (click)="showUpdateForm(myProduct)" >
+          <div class="row action-button" (click)="showUpdateForm(myProduct)" >
             <button class="btn btn-warning ">
               Modifier
             </button>
@@ -82,3 +82,4 @@
 
 <app-create-product *ngIf="displayCreateForm" [closeForm]="closeCreateForm"></app-create-product>
 <app-update-product *ngIf="displayUpdateForm" [closeForm]="closeUpdateForm" [product]="productFocus"></app-update-product>
+<app-info-product *ngIf="displayInfos" [closeInfos]="closeInfos" [product]="productFocus"></app-info-product>

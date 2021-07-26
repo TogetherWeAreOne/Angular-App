@@ -34,7 +34,7 @@
     </div>
 
     <div *ngIf="authService.isConnected()" class="navbar-button ">
-      <button>
+      <button (click)="btnClick()">
         message
       </button>
     </div>
