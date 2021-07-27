@@ -1,1 +1,20 @@
-<p>discussion-event-message-info works!</p>
+<div class="title">
+  <div>
+    Event Informations
+  </div>
+</div>
+
+<div *ngIf="eventToDisplay !== undefined">
+
+  <div> {{ eventToDisplay.title }}</div>
+  <div> {{ eventToDisplay.description }}</div>
+  <div> {{ eventToDisplay.eventType }}</div>
+  <div> {{ eventToDisplay.startDate | date : "short":undefined:"fr" }}</div>
+  <div> {{ eventToDisplay.endDate | date : "short":undefined:"fr" }}</div>
+  <div> {{ eventToDisplay.address  }}</div>
+  <div> {{ eventToDisplay.zip  }}</div>
+  <div> {{ eventToDisplay.country  }}</div>
+
+
+
+</div>

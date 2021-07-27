@@ -26,20 +26,28 @@ export class DiscussionHomeComponent implements OnInit {
   }
 
   loadParticipation( ): void {
-      const userId = this.authService.getConnectedUserId();
+    const userId = this.authService.getConnectedUserId();
     console.log(userId)
       this.eventParticipantService.getMyParticipation().subscribe(
         value => this.eventsParticipation = value,
         value => {},
-        () => console.log("ca marche")
+        () => this.loadDiscussion()
       );
   }
 
   loadDiscussion() : void {
+      for ( let i = 0; i < this.eventsParticipation.length; i ++){
 
+        this.discussionService.getDiscussionById(this.eventsParticipation[i].event!.id!).subscribe(
+          value => this.discussions.push(value),
+          () => {},
+          () => {this.discussions.sort((x, y) => +new Date(x.lastMessageDate!) - +new Date(y.lastMessageDate!));
+          this.discussions.reverse()}
+          )
+      }
   }
 
   test(): void{
-    console.log(this.eventsParticipation);
+    console.log(this.discussionFocused);
   }
 }

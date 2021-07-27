@@ -1,1 +1,21 @@
-efzefzef
+<div class="title">
+  <div>
+    Messages
+  </div>
+</div>
+
+
+<div class="no-message" *ngIf="messages.length === 0"> Il n'y a pas de message pour cet event </div>
+
+<div  class="message-card-block">
+
+  <div *ngFor="let message of messages" class="message-card">
+    <div > {{ message.content}}</div>
+    <div> envoyé le : {{ message.date | date:'short':undefined:'fr'}}</div>
+  </div>
+
+
+</div>
+
+<div class="input-message" *ngIf="creator"> <input type="text" > <button [disabled]="!creator">envoyer</button></div>
+<div class="input-message" *ngIf="!creator"> <input type="text" id="message-content" > <button (click)="sendMessage()" [disabled]="!creator">envoyer</button></div>

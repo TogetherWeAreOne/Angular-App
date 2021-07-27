@@ -1,0 +1,53 @@
+.title{
+  width: 100%;
+  height: 15%;
+  text-align: center;
+  background-color: rgba(77, 255, 130, 0.3);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+}
+
+.title div{
+  width: 50%;
+  height: 50%;
+  margin: auto;
+  font-size: 2em;
+}
+
+.message-card-block{
+  background-color: #f8c1c1;
+  display: block;
+  width: 100%;
+  height: 75%;
+  overflow-y: auto;
+}
+
+.message-card{
+  max-height: 15%;
+  overflow-y: auto;
+  width: 80%;
+  background-color: white;
+  padding: 5px;
+  margin: auto;
+  margin-top: 5px;
+  margin-bottom: 10px;
+  border-radius: 10px;
+}
+
+.input-message{
+  margin: auto;
+  height: 5%;
+  text-align: center;
+}
+
+.input-message input{
+  margin: auto;
+  width: 70%;
+}
+
+.no-message{
+  width: 100%;
+  text-align: center;
+}

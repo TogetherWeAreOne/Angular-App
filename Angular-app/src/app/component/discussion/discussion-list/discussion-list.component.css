@@ -1,0 +1,32 @@
+.title{
+  width: 100%;
+  height: 15%;
+  text-align: center;
+  background-color: rgba(21, 255, 91, 0.3);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.title div{
+  width: 50%;
+  height: 50%;
+  margin: auto;
+  font-size: 2em;
+}
+
+.discussion-card-block{
+  max-height: 85%;
+  overflow-y: auto;
+}
+
+.discussion-card{
+  width: 95%;
+  background-color: white;
+  border-radius: 10px;
+  border: 1px solid grey;
+  margin: auto;
+  margin-top: 5px;
+  margin-bottom: 10px;
+  padding: 5px;
+}

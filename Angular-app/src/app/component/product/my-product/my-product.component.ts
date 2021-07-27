@@ -11,7 +11,7 @@ import {Product} from "../../../models/product.model";
 export class MyProductComponent implements OnInit {
 
   displayCreateForm: boolean = false;
-  displayInfos: boolean = true;
+  displayInfos: boolean = false;
   displayUpdateForm: boolean = false;
   myproducts: Product[] = [];
   productFocus!: Product ;

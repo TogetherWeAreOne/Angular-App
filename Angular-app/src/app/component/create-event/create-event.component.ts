@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {FormBuilder, Validators} from "@angular/forms";
 import {EventService} from "../../services/event.service";
 import {Event} from "../../models/event.model";
@@ -11,6 +11,7 @@ import {Event} from "../../models/event.model";
 })
 export class CreateEventComponent implements OnInit {
 
+  @Input() closeForm! : () => void;
   events: Event[] = [];
   eventForm = this.fb.group({
     title: ["", [Validators.required]],
@@ -38,7 +39,7 @@ export class CreateEventComponent implements OnInit {
     this.eventService.createEvent(
       this.eventForm.value
     ).subscribe()
-
+    this.eventForm.reset();
   }
 
   loadEvent() {
@@ -47,6 +48,8 @@ export class CreateEventComponent implements OnInit {
     })
     console.log(this.events);
   }
+
+
 
 }/*
 eventFormValue.title,

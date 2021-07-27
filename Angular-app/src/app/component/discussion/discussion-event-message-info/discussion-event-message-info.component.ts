@@ -1,4 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
+import {Discussion} from "../../../models/discussion.model";
+import {Event} from "../../../models/event.model";
+import {EventService} from "../../../services/event.service";
+import {EventParticipantService} from "../../../services/eventParticipant.service";
+import {EventParticipant} from "../../../models/eventParticipant.model";
 
 @Component({
   selector: 'app-discussion-event-message-info',
@@ -7,9 +12,38 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DiscussionEventMessageInfoComponent implements OnInit {
 
-  constructor() { }
+  @Input() discussion! : Discussion;
+  eventToDisplay? : Event;
+  participants? : EventParticipant[];
+  participant? : number;
 
-  ngOnInit(): void {
+  constructor(private eventService: EventService, private eventParticipant : EventParticipantService) { }
+
+  ngOnInit() {
+  }
+
+  ngOnChanges() {
+    this.eventToDisplay = this.discussion.event;
+    this.getParticipant();
+  }
+
+  loadEvent() : void {
+    this.eventService.getEventById(this.eventToDisplay!.id!).subscribe(
+      value => this.eventToDisplay = value
+    )
+  }
+
+  getParticipant() : void {
+    this.eventParticipant.getParticipants(this.eventToDisplay?.id!).subscribe(
+      value => this.participants = value,
+      () => {},
+      () => {this.participant = this.participants?.length;
+    console.log(this.participant)}
+    )
+  }
+
+  test(): void{
+    console.log(this.discussion);
   }
 
 }

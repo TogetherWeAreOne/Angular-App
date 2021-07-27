@@ -31,4 +31,8 @@ export class EventService {
     return this.http.get<Event[]>(`${environment.apiBaseUrl}/event/getAllEvent`);
   }
 
+  public getEventById(eventId : string): Observable<Event> {
+    return this.http.get<Event>(`${environment.apiBaseUrl}/event/${eventId}/get`);
+  }
+
 }

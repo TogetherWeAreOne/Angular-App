@@ -1,4 +1,3 @@
-<button (click)="test()"> test </button>
-<app-discussion-list></app-discussion-list>
-<app-discussion-event-message></app-discussion-event-message>
-<app-discussion-event-message-info></app-discussion-event-message-info>
+<app-discussion-list [discussions]="discussions" (focusDiscussion)="discussionFocused = $event"></app-discussion-list>
+<app-discussion-event-message [discussion]="discussionFocused"></app-discussion-event-message>
+<app-discussion-event-message-info [discussion]="discussionFocused"></app-discussion-event-message-info>

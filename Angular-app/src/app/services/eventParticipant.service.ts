@@ -45,4 +45,8 @@ export class EventParticipantService {
     return this.http.get<EventParticipant[]>(`${environment.apiBaseUrl}/event/getMyEventParticipation`);
   }
 
+  public getParticipants(eventId : string): Observable<EventParticipant[]> {
+    return this.http.get<EventParticipant[]>(`${environment.apiBaseUrl}/event/${eventId}/getParticipant`);
+  }
+
 }

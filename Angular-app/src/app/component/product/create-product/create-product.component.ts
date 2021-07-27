@@ -42,7 +42,7 @@ export class CreatProductComponent implements OnInit {
     console.log("(((((((((((((((((((((((((((");
     console.log(product);
     this.productService.createProduct(product).subscribe();
-
+    this.productForm.reset();
   }
 
   closeFormF(): void{

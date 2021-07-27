@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Injectable, Input, OnInit, Output, EventEmitter} from '@angular/core';
+import {Discussion} from "../../../models/discussion.model";
 
 @Component({
   selector: 'app-discussion-list',
@@ -7,9 +8,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DiscussionListComponent implements OnInit {
 
+  @Input() discussions! : Discussion[];
+  @Output() focusDiscussion = new EventEmitter();
+
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  selectDiscussion(discussion : Discussion) {
+    this.focusDiscussion.emit(discussion);
   }
 
 }

@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import {EventService} from "../../../services/event.service";
-import {Product} from "../../../models/product.model";
 import {Event} from "../../../models/event.model";
 import {EventParticipantService} from "../../../services/eventParticipant.service";
 import { EventParticipant } from 'src/app/models/eventParticipant.model';
@@ -69,5 +68,14 @@ export class EventPageComponent implements OnInit {
       return 'Ecologique';
     }
     return 'Humanitaire';
+  }
+
+  showCreateForm = () : void =>{
+    this.displayInfos = true;
+
+  }
+
+  closeCreateForm = () : void => {
+    this.displayInfos = false;
   }
 }
