@@ -12,6 +12,12 @@
       </button>
     </div>
 
+    <div routerLink="register" *ngIf="!authService.isConnected()" class="navbar-button">
+      <button>
+        S'inscrire
+      </button>
+    </div>
+
     <div *ngIf="authService.isConnected()" class="navbar-button">
       <div>
         <button style="z-index: 10">

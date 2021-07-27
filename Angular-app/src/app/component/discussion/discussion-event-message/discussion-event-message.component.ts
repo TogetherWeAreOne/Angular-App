@@ -7,6 +7,7 @@ import {createLogErrorHandler} from "@angular/compiler-cli/ngcc/src/execution/ta
 import {EventService} from "../../../services/event.service";
 import {AuthService} from "../../../services/auth.service";
 import {DOCUMENT} from "@angular/common";
+import {FormBuilder, Validators} from "@angular/forms";
 
 @Component({
   selector: 'app-discussion-event-message',
@@ -19,11 +20,12 @@ export class DiscussionEventMessageComponent implements OnInit {
   messages : DiscussionMessage[] = [];
   event? : Event;
   creator? : boolean = false;
-  input? : string;
-  @ViewChild('message-content') myInput!: ElementRef;
+  messageForm = this.fb.group({
+    content: ["", [Validators.required]]
+  });
 
 
-  constructor(private discussionService : DiscussionService, private eventService : EventService, private authService: AuthService) { }
+  constructor(private fb: FormBuilder, private discussionService : DiscussionService, private eventService : EventService, private authService: AuthService) { }
 
   ngOnInit(): void {
   }
@@ -40,7 +42,6 @@ export class DiscussionEventMessageComponent implements OnInit {
       () => {},
       () => this.messages.sort((x, y) => +new Date(x.date!) - +new Date(y.date!))
     )
-    console.log(this.myInput.nativeElement.innerHTML);
   }
 
   getEvent() : void {
@@ -58,6 +59,11 @@ export class DiscussionEventMessageComponent implements OnInit {
 
   test() : void {
     console.log(this.discussion);
+  }
+
+  onSubmit(): void{
+    this.discussionService.sendMessage(this.messageForm.value, this.discussion.id!).subscribe();
+    this.messageForm.reset();
   }
 
 }

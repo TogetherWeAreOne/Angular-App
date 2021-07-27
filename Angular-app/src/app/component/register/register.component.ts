@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, Validators} from "@angular/forms";
 import {AuthService} from "../../services/auth.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-register',
@@ -24,7 +25,7 @@ export class RegisterComponent implements OnInit {
     phone: ["", [Validators.required]]
   })
 
-  constructor(private authService: AuthService, private fb: FormBuilder) {
+  constructor(private authService: AuthService, private fb: FormBuilder, private router : Router) {
   }
 
   get password() {
@@ -47,7 +48,10 @@ export class RegisterComponent implements OnInit {
       registerFormValue.address,
       registerFormValue.zip,
       registerFormValue.country,
-      registerFormValue.phone).subscribe();
-
+      registerFormValue.phone).subscribe(
+      () => {},
+      () => alert("une erreur est survenue ! "),
+      () => this.router.navigate(['/message']),
+    );
   }
 }

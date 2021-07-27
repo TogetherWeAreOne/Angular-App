@@ -11,7 +11,7 @@ import { EventParticipant } from 'src/app/models/eventParticipant.model';
 })
 export class EventPageComponent implements OnInit {
 
-  displayInfos: boolean = true;
+  displayInfos: boolean = false;
   eventFocus!: Event;
   events: Event[] = [];
   eventParticipation: EventParticipant[] = [];
@@ -77,5 +77,6 @@ export class EventPageComponent implements OnInit {
 
   closeCreateForm = () : void => {
     this.displayInfos = false;
+    this.loadEvent();
   }
 }

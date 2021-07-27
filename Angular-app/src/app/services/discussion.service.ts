@@ -41,7 +41,7 @@ export class DiscussionService {
   }
 
   sendMessage(content : DiscussionMessage, discussionId:string) : Observable<DiscussionMessage> {
-    return this.http.post<DiscussionMessage>(`${environment.apiBaseUrl}/discussion/${discussionId}/getEvent`, content)
+    return this.http.post<DiscussionMessage>(`${environment.apiBaseUrl}/discussion/${discussionId}/send`, content)
   }
 
 

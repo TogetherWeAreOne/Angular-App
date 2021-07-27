@@ -13,7 +13,7 @@ export class HomeComponent implements OnInit {
       title: "Event",
       description: "Descriptif de l'onglet Event",
       color: "#FB8585",
-      link: "https://goToEvents.com"
+      link: "events"
     },
     {
       title: "Market",

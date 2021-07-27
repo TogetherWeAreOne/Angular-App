@@ -49,6 +49,9 @@ export class CreateEventComponent implements OnInit {
     console.log(this.events);
   }
 
+  closeFormF(): void{
+    this.closeForm();
+  }
 
 
 }/*

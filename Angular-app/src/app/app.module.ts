@@ -31,8 +31,9 @@ registerLocaleData(localeFr, 'fr');
 
 const appRoutes: Routes = [
 
-  {path: "", component: AuthComponent},
+  {path: "auth", component: AuthComponent},
   {path: "test", component: CreateEventComponent},
+  {path: "register", component: RegisterComponent},
   {path: "home", component: HomeComponent},
   {path: "createproduct", component: CreatProductComponent},
   {path: "myProduct", component: MyProductComponent},

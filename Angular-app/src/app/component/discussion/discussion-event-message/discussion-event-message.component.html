@@ -17,5 +17,9 @@
 
 </div>
 
-<div class="input-message" *ngIf="creator"> <input type="text" > <button [disabled]="!creator">envoyer</button></div>
+<div class="input-message" *ngIf="creator">
+  <form [formGroup]="messageForm">
+  <input type="text" formControlName="content" > <button (click)="onSubmit()" [disabled]="!creator">envoyer</button>
+  </form>
+</div>
 <div class="input-message" *ngIf="!creator"> <input type="text" id="message-content" > <button (click)="sendMessage()" [disabled]="!creator">envoyer</button></div>
