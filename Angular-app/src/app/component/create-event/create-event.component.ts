@@ -15,13 +15,13 @@ export class CreateEventComponent implements OnInit {
   events: Event[] = [];
   eventForm = this.fb.group({
     title: ["", [Validators.required]],
-    description: ['', [Validators.required]],
+    description: ["", [Validators.required]],
     startDate: ["", [Validators.required]],
     endDate: ["", [Validators.required]],
     eventType: ["", [Validators.required]],
-    maxParticipant: ["", [Validators.required]],
-    minParticipant: ["", [Validators.required]],
-    image: ["", [Validators.required]],
+    maxParticipant: ["", ],
+    minParticipant: ["", ],
+    image: ["ffeff", [Validators.required]],
     address: ["", [Validators.required]],
     zip: ["", [Validators.required]],
     country: ["", [Validators.required]],

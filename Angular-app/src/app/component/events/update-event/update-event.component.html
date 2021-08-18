@@ -1,0 +1,61 @@
+<div class="main_block">
+  <div id="title"><h2> Modification évènement </h2></div>
+
+  <div>
+
+    <form [formGroup]="updateEventForm" (ngSubmit)="onSubmit()">
+
+      <div class="main-side-form">
+        <div class="form-goup">
+          <label class="label_input">
+            Title :
+          </label>
+          <input class="form-control" formControlName="title" id="name" type="text" value="{{eventToUpdate?.title}}">
+        </div>
+
+        <div class="form-goup">
+          <label class="label_input">
+            Description :
+          </label>
+          <input class="form-control" formControlName="description" id="description" type="text" value="{{eventToUpdate?.description}}">
+        </div>
+
+        <div class="form-goup">
+          <label class="label_input">
+            Type d'évenement :
+          </label>
+          <select class="form-control" formControlName="eventType" >
+            <option value="HUMANITARIAN" [selected]="eventToUpdate?.eventType === 'HUMANITARIAN'"> Humanitaire </option>
+            <option value="ECOLOGICAL" [selected]="eventToUpdate?.eventType === 'ECOLOGICAL'"> Ecologique </option>
+          </select>
+
+        </div>
+
+        <div class="form-goup">
+          <label class="label_input">
+            min participant
+          </label>
+          <input class="form-control" formControlName="minParticipant"  type="text" [defaultValue]=eventToUpdate?.minParticipant>
+        </div>
+
+        <div class="form-goup">
+          <label class="label_input">
+            max participant
+          </label>
+          <input class="form-control" formControlName="maxParticipant"  type="text" [defaultValue]=eventToUpdate?.maxParticipant>
+        </div>
+
+
+
+      </div>
+
+      <button type="submit" class="btn btn-danger"> Modifier le produit</button>
+
+    </form>
+
+  </div>
+
+</div>
+
+
+<div id="overlay" (click)="closeFormF()"></div>

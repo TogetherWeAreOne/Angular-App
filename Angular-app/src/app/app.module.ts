@@ -19,26 +19,45 @@ import {MyProductComponent} from './component/product/my-product/my-product.comp
 import { UpdateProductComponent } from './component/product/update-product/update-product.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { InfoProductComponent } from './component/product/info-product/info-product.component';
-import { EventPageComponent } from './component/events/event-page/event-page.component';
+import { EventListPageComponent } from './component/events/event-list-page/event-list-page.component';
 import localeFr from '@angular/common/locales/fr';
 import { DiscussionHomeComponent } from './component/discussion/discussion-home/discussion-home.component';
 import { DiscussionListComponent } from './component/discussion/discussion-list/discussion-list.component';
 import { DiscussionEventMessageComponent } from './component/discussion/discussion-event-message/discussion-event-message.component';
 import { DiscussionEventMessageInfoComponent } from './component/discussion/discussion-event-message-info/discussion-event-message-info.component';
 
+import { MatMenuModule } from '@angular/material/menu';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatIconModule } from '@angular/material/icon';
+import { MatSelectModule } from '@angular/material/select';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
+import { EventPageComponent } from './component/events/event-page/event-page.component';
+import { MyEventsComponent } from './component/events/my-events/my-events.component';
+import { InfoEventComponent } from './component/events/info-event/info-event.component';
+import { UpdateEventComponent } from './component/events/update-event/update-event.component';
+
+
+
+
+
+
 
 registerLocaleData(localeFr, 'fr');
 
 const appRoutes: Routes = [
 
+  {path: "", component: AuthComponent},
   {path: "auth", component: AuthComponent},
   {path: "test", component: CreateEventComponent},
   {path: "register", component: RegisterComponent},
   {path: "home", component: HomeComponent},
   {path: "createproduct", component: CreatProductComponent},
   {path: "myProduct", component: MyProductComponent},
+  {path: "myEvent", component: MyEventsComponent},
   {path: "productMarketplace", component: MarketplaceComponent},
-  {path: "events", component: EventPageComponent},
+  {path: "events", component: EventListPageComponent},
   {path: "message", component: DiscussionHomeComponent}
 
 ]
@@ -57,11 +76,15 @@ const appRoutes: Routes = [
     MyProductComponent,
     UpdateProductComponent,
     InfoProductComponent,
-    EventPageComponent,
+    EventListPageComponent,
     DiscussionHomeComponent,
     DiscussionListComponent,
     DiscussionEventMessageComponent,
-    DiscussionEventMessageInfoComponent
+    DiscussionEventMessageInfoComponent,
+    EventPageComponent,
+    MyEventsComponent,
+    InfoEventComponent,
+    UpdateEventComponent,
   ],
   imports: [
     BrowserModule,
@@ -70,14 +93,23 @@ const appRoutes: Routes = [
     RouterModule.forRoot(appRoutes),
     HttpClientModule,
     CommonModule,
+    MatMenuModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatIconModule,
+    MatSelectModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
     BrowserAnimationsModule,
   ],
-  providers: [CookieService,
+  providers: [
+    CookieService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: GlobalHttpInterceptor,
       multi: true
-    }],
+    }
+    ],
   bootstrap: [AppComponent]
 })
 export class AppModule {

@@ -6,38 +6,34 @@
 
 
   <div class="col-md-9 navbar-buttons">
-    <div routerLink="" *ngIf="!authService.isConnected()" class="navbar-button">
-      <button>
+    <div  *ngIf="!authService.isConnected() && !auth" class="navbar-button">
+      <button (click)="goToAuth()">
         Connexion
       </button>
     </div>
 
-    <div routerLink="register" *ngIf="!authService.isConnected()" class="navbar-button">
-      <button>
+    <div  *ngIf="!authService.isConnected() && !register" class="navbar-button">
+      <button (click)="goToRegister()">
         S'inscrire
       </button>
     </div>
 
     <div *ngIf="authService.isConnected()" class="navbar-button">
-      <div>
-        <button style="z-index: 10">
-          user + logo
-        </button>
-      </div>
-        <div class="dropdown-user">
-          <div>
-            <a routerLink="myProduct"> Mes produits</a>
 
-          </div>
-          <div (click)="logout()">
-            deconnexion
-          </div>
-        </div>
+      <button mat-button [matMenuTriggerFor]="menu">user + logo</button>
 
+      <mat-menu #menu="matMenu">
 
+        <a routerLink="myProduct"><button mat-menu-item> Mes produits</button></a>
+        <a routerLink="myEvent"><button mat-menu-item> Mes évènements</button></a>
+        <button mat-menu-item (click)="logout()"> Déconnexion</button>
 
+      </mat-menu>
 
     </div>
+
+
+
 
     <div *ngIf="authService.isConnected()" class="navbar-button ">
       <button (click)="btnClick()">

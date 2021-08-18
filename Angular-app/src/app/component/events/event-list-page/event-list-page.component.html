@@ -1,0 +1,157 @@
+<div class="container">
+<div class="row">
+  <div class="container alert-dark mt-5" style="border-radius: 25px; padding: 20px">
+    <div class="row align-items-center">
+      <p class="text-center my-3 text-uppercase">Evènements</p>
+    </div>
+    <div class="col-3 offset-9 text-center">
+      <button (click)="showCreateForm()" aria-expanded="false" class="btn btn-dark  form-control" data-bs-toggle="dropdown"
+              type="button">
+        Créer un évenement
+      </button>
+    </div>
+    <form class="py-5">
+      <div class="row align-items-center">
+        <div class="btn-group col">
+          <button aria-expanded="false" class="btn btn-danger dropdown-toggle form-control" data-bs-toggle="dropdown"
+                  type="button">
+            Catégorie
+          </button>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="#">Action</a></li>
+            <li><a class="dropdown-item" href="#">Another action</a></li>
+            <li><a class="dropdown-item" href="#">Something else here</a></li>
+          </ul>
+        </div>
+        <div class="col-6">
+          <input class="form-control" placeholder="Recherche" type="text">
+        </div>
+        <div class="btn-group col">
+          <button aria-expanded="false" class="btn btn-danger dropdown-toggle form-control" data-bs-toggle="dropdown"
+                  type="button">
+            Département
+          </button>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="#">Action</a></li>
+            <li><a class="dropdown-item" href="#">Another action</a></li>
+            <li><a class="dropdown-item" href="#">Something else here</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="row my-4 text-center">
+        <div class="col">
+          <div class="form-check">
+            <input class="form-check-input" id="professionalCheckbox" type="checkbox" value="">
+            <label class="form-check-label" for="professionalCheckbox">
+              Ecologique
+            </label>
+          </div>
+        </div>
+        <div class="col">
+          <div class="form-check">
+            <input class="form-check-input" id="particularCheckbox" type="checkbox" value="">
+            <label class="form-check-label" for="particularCheckbox">
+              Humanitaire
+            </label>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <button class="btn btn-primary" type="submit">Recherche</button>
+        </div>
+      </div>
+    </form>
+
+  </div>
+</div>
+<div class="row my-3">
+</div>
+
+<div class="row">
+  <div class="container alert-dark align-middle" style="border-radius: 25px; padding: 20px">
+    <div *ngFor="let event of events" class="row alert-light py-4 m-4" style="border-radius: 25px; padding: 20px">
+      <div class="col-5 text-center">
+        <iframe width="400" height="400" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" id="gmap_canvas" src="https://maps.google.com/maps?width=520&amp;height=400&amp;hl=en&amp;q=7%20Rue%20N%C3%A9laton%20Puteaux+(swap)&amp;t=&amp;z=12&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"></iframe> <a href="https://maps-generator.com/fr">Maps Generator FR</a> <script type='text/javascript' src='https://embedmaps.com/google-maps-authorization/script.js?id=d3e86bfdf2564c890c9ee4cb7dc468ae584b3051'></script>
+      </div>
+
+      <div class="col"  style="position:relative;">
+        <div class="row">
+          <div class="col">
+            <h3>
+              {{event.title}}
+            </h3>
+          </div>
+        </div>
+
+        <div class="row">
+          <p>
+            {{event.description}}
+          </p>
+        </div>
+
+        <div class="row">
+          <p>
+            Catégorie : {{getType(event.eventType!)}}
+          </p>
+        </div>
+
+        <div class="row">
+          <p>
+            Le : {{event.startDate | date: 'fullDate': undefined : 'fr' }}
+          </p>
+        </div>
+
+        <div class="row">
+          <p class="text-capitalize">
+            {{event.address}}
+          </p>
+        </div>
+
+        <div class="row">
+          <p class="text-capitalize">
+            {{event.zip}}, {{event.country}}
+          </p>
+        </div>
+
+        <div class="row" *ngIf=" event.maxParticipant !== undefined && event.minParticipant !== undefined">
+          <p class="text-capitalize">
+          Place restance : {{getLeftPlace(event.maxParticipant!, event.minParticipant!)}}
+          </p>
+        </div>
+<!--
+        <div class="row" *ngIf=" event.maxParticipant !== undefined && event.minParticipant !== undefined">
+          Place restance : {{getLeftPlace(event.maxParticipant!, event.minParticipant!)}}
+        </div>
+
+        <div class="row" *ngIf=" event.maxParticipant !== undefined && event.minParticipant !== undefined">
+          Il faut encore {{getLeftPlace(event.maxParticipant!, event.minParticipant!)}} participant
+        </div> -->
+        <div class="action-container">
+          <div class="row action-button" >
+            <button class="btn btn-info" (click)="leaveEvent(event)">
+              Détails
+            </button>
+          </div>
+
+          <div class="row action-button" *ngIf="amIParticipant(event)" >
+            <button class="btn btn-warning" (click)="leaveEvent(event)">
+              Vous participez déja !
+            </button>
+          </div>
+
+          <div class="row action-button" *ngIf="!amIParticipant(event)" >
+            <button class="btn btn-warning" (click)="joinEvent(event)">
+              Participer
+            </button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+<app-create-event *ngIf="displayInfos" [closeForm]="closeCreateForm"></app-create-event>
+

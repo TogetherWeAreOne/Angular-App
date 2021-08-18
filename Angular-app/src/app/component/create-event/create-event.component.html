@@ -7,92 +7,98 @@
 
       <div class="left-side-form">
         <div class="form-goup">
-          <label class="label_input">
-            Titre :
-          </label>
-          <input class="form-control" formControlName="title" id="title_" type="text">
+          <mat-form-field appearance="legacy">
+            <mat-label>Intitulé</mat-label>
+            <input formControlName="title" matInput placeholder="Intitulé" type="text" >
+            <mat-hint>hint </mat-hint>
+          </mat-form-field>
         </div>
 
         <div class="form-goup">
-          <label class="label_input">
-            Description :
-          </label>
-          <input class="form-control" formControlName="description" id="description" type="text">
+          <mat-form-field appearance="legacy">
+            <mat-label>Description</mat-label>
+            <input formControlName="description" matInput placeholder="Description" type="text" >
+            <mat-hint>hint </mat-hint>
+          </mat-form-field>
         </div>
 
         <div class="form-goup">
-          <label class="label_input">
-            Date de début :
-          </label>
-          <input class="form-control" formControlName="startDate" id="startDate" type="date">
+          <mat-form-field appearance="legacy">
+            <mat-label>Date de début</mat-label>
+            <input formControlName="startDate" matInput placeholder="Date de debut" type="date" >
+            <mat-hint> hint </mat-hint>
+          </mat-form-field>
         </div>
 
         <div class="form-goup">
-          <label class="label_input">
-            Date de fin :
-          </label>
-          <input class="form-control" formControlName="endDate" id="endDate" type="date">
+          <mat-form-field appearance="legacy">
+            <mat-label>Date de fin</mat-label>
+            <input formControlName="endDate" matInput placeholder="Date de fin" type="date" >
+            <mat-hint>hint </mat-hint>
+          </mat-form-field>
         </div>
 
         <div class="form-goup">
-          <label class="label_input">
-            Type d'évenement :
-          </label>
-          <select formControlName="eventType">
-            <option value="ECOLOGICAL">Ecologique</option>
-            <option value="HUMANITARIAN">Humanitaire</option>
-          </select>
+          <mat-form-field appearance="fill">
+            <mat-label>Type d'évenement</mat-label>
+            <mat-select formControlName="eventType">
+              <mat-option value="ECOLOGICAL">Ecologique</mat-option>
+              <mat-option value="HUMANITARIAN">Humanitaire</mat-option>
+            </mat-select>
+          </mat-form-field>
         </div>
 
-        <div class="form-goup">
-          <label class="label_input">
-            Nombre de participant (max) :
-          </label>
-          <input class="form-control" formControlName="maxParticipant" id="maxParticipant" type="number">
-        </div>
+
 
       </div>
 
       <div class="right-side-form">
 
         <div class="form-goup">
-          <label class="label_input">
-            Nombre de participant (min) :
-          </label>
-          <input class="form-control" formControlName="minParticipant" id="minParticipant" type="number">
+          <mat-form-field appearance="legacy">
+            <mat-label>Nombre de participant minimal</mat-label>
+            <input formControlName="minParticipant" matInput placeholder="min participant" type="number" >
+            <mat-hint>hint </mat-hint>
+          </mat-form-field>
         </div>
 
         <div class="form-goup">
-          <label class="label_input">
-            Image :
-          </label>
-          <input class="form-control" formControlName="image" id="image" type="text">
+          <mat-form-field appearance="legacy">
+            <mat-label>Nombre de participant maximal</mat-label>
+            <input formControlName="maxParticipant" matInput placeholder="max participant" type="number" >
+            <mat-hint>hint </mat-hint>
+          </mat-form-field>
         </div>
 
         <div class="form-goup">
-          <label class="label_input">
-            Lieu (adresse) :
-          </label>
-          <input class="form-control" formControlName="address" id="address" type="text">
+          <mat-form-field appearance="legacy">
+            <mat-label>Lieu</mat-label>
+            <input formControlName="address" matInput placeholder="Adresse" type="text" >
+            <mat-hint>hint </mat-hint>
+          </mat-form-field>
         </div>
 
         <div class="form-goup">
-          <label class="label_input">
-            Code Postal :
-          </label>
-          <input class="form-control" formControlName="zip" id="zip" type="text">
+          <mat-form-field appearance="legacy">
+            <mat-label>Code postal</mat-label>
+            <input formControlName="zip" matInput placeholder="Code postal" type="text" >
+            <mat-hint>hint </mat-hint>
+          </mat-form-field>
         </div>
 
         <div class="form-goup">
-          <label class="label_input">
-            Pays :
-          </label>
-          <input class="form-control" formControlName="country" id="country" type="text">
+          <mat-form-field appearance="legacy">
+            <mat-label>Pays</mat-label>
+            <input formControlName="country" matInput placeholder="Pays" type="text" >
+            <mat-hint>hint </mat-hint>
+          </mat-form-field>
         </div>
 
       </div>
 
-      <button (click)="onSubmit()" class="btn btn-danger">Créer l'event</button>
+      <div class="submit_button">
+        <button (click)="onSubmit()" class="btn btn-danger" [disabled]="!eventForm.valid">Créer l'event</button>
+      </div>
 
     </form>
 

@@ -15,7 +15,6 @@ import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
 })
 export class UpdateProductComponent implements OnInit {
 
-  @Input()
   @Input() closeForm! : () => void;
   @Input() product! : Product;
   productToUpdate! : Product ;
@@ -29,9 +28,6 @@ export class UpdateProductComponent implements OnInit {
               private productCategoryService: ProductCategoryService,) {
   }
 
-  get password() {
-    return this.updateProductForm.get('password');
-  }
 
   ngOnInit(): void {
     console.log("/////////////////////")

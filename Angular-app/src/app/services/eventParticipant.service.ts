@@ -19,16 +19,6 @@ export class EventParticipantService {
     this.eventParticipant = this.eventParticipantSubject.asObservable();
   }
 
-//  title: string, description: string, maxParticipant: number, minParticipant: number,image: string, address: string, zip: string, country: string, startDate: string, endDate: string, eventType: string
-  public createEvent(event: Event): Observable<EventParticipant> {
-    console.log("icicicicicicici");
-    return this.http.post<EventParticipant>(`${environment.apiBaseUrl}/event/create`, event)
-      .pipe(map(event => {
-        console.log("......." + event);
-        return event;
-      }));
-  }
-
   public getUserEventParticipation(): Observable<EventParticipant[]> {
     return this.http.get<EventParticipant[]>(`${environment.apiBaseUrl}/event/getMyEventParticipation`);
   }

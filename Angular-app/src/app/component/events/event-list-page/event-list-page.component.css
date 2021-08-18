@@ -1,0 +1,18 @@
+.action-button{
+  text-align: right;
+  margin-bottom: 10px;
+}
+
+.action-button button{
+  width: 30%;
+  margin-left: auto;
+}
+
+.action-container{
+  position: absolute;
+  bottom: 0px;
+  right: 0px;
+  width: 100%;
+}
+
+

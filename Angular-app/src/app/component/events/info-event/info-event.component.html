@@ -1,0 +1,98 @@
+<div class="main_block">
+  <div>
+    <div class="title left-title" (click)="showInfos()" ><h2> Information évènement </h2></div>
+    <div class="title right-title" (click)="showParticipant()"><h2> Participants </h2></div>
+  </div>
+
+  <div class="infos-page" *ngIf="displayInfos == true">
+    <div class="left-side">
+      IMAGE
+    </div>
+
+
+    <div class="right-side">
+
+      <div class="infos-group">
+        <label class="label_input">
+          Nom :
+        </label>
+        <div> {{event?.title}} </div>
+      </div>
+
+      <div class="infos-group">
+        <label class="label_input">
+          Description :
+        </label>
+        <div id="product-description"> {{event?.description}} </div>
+      </div>
+
+      <div class="infos-group">
+        <label class="label_input">
+          Date de début :
+        </label>
+        <div> {{event?.startDate}}  </div>
+      </div>
+
+      <div class="infos-group">
+        <label class="label_input">
+          Date de fin :
+        </label>
+        <div> {{event?.endDate}}  </div>
+      </div>
+
+      <div class="infos-group">
+        <label class="label_input">
+          Categorie produit :
+        </label>
+        <div> {{event?.eventType}} </div>
+      </div>
+
+      <div class="infos-group">
+        <label class="label_input">
+          Participant (min) :
+        </label>
+        <div> {{event?.minParticipant}} </div>
+      </div>
+
+      <div class="infos-group">
+        <label class="label_input">
+          Participant (max) :
+        </label>
+        <div>  {{event?.maxParticipant}} </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="proposal-page" *ngIf="displayProposal == true">
+
+    <div  class="proposal-box" *ngFor="let participant of eventParticipant">
+
+      <div class="left-proposal">
+        <div> Participant : {{participant.user?.pseudo}}</div>
+      </div>
+
+      <div class="right-proposal">
+
+        <button class="btn btn-success action-button" (click)="test()">
+          Valider
+        </button>
+
+        <button class="btn btn-danger action-button ">
+          Refuser
+        </button>
+
+      </div>
+
+      <div> il y a {{eventParticipant.length}} participants</div>
+
+
+    </div>
+
+
+  </div>
+
+</div>
+
+
+<div id="overlay" (click)="closeInfos()"></div>

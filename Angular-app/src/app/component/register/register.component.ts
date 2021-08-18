@@ -32,6 +32,10 @@ export class RegisterComponent implements OnInit {
     return this.registerForm.get('password');
   }
 
+  get confPassword() {
+    return this.registerForm.get('confPassword');
+  }
+
   ngOnInit(): void {
   }
 

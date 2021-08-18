@@ -1,23 +1,23 @@
 .main_block {
   background-color: #00e7ff;
   position: fixed;
-  width: 45%;
-  padding: 10px;
-  height: 75%;
-  top: 12.5%;
-  left: 25%;
+  width: 40%;
+  height: 72%;
+  top: 14%;
+  left: 30%;
   z-index: 1;
   border: 1px solid black;
   border-radius: 10px;
+  padding: 20px;
 }
 
 
 .main_block form button {
   display: block;
   margin: auto;
-  font-size: 1.5em;
+  font-size: 1em;
   margin-top: 30px;
-
+  margin-bottom: 10px;
 }
 
 #overlay {
@@ -36,33 +36,25 @@
   margin-bottom: 15px;
 }
 
-.left-side-form {
-  float: left;
+.main-side-form {
+  margin: auto;
+  display: block;
   width: 49%;
-  height: 90%;
-
-  padding-left: 60px;
+  height: 100%;
+  margin-bottom: 30px;
 }
 
 .right-side-form {
   float: right;
   width: 50%;
-  height: 90%;
-
-  padding-left: 30px;
+  height: 100%;
+  margin-bottom: 30px;
 }
 
 form .form-goup label {
-  font-size: 1.5em;
+  font-size: 1em;
 }
 
 form .form-goup {
-  margin-bottom: 20px;
-}
-
-.submit_button{
-  display: inline-block;
-  height: 10%;
-  width: 100%;
-  text-align: center;
+  margin-bottom: 5px;
 }

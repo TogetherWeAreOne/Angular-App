@@ -3,57 +3,67 @@
   <div class="central-block">
     <h2> INSCRIPTION </h2>
 
+    <!-- check autofill pour changer le background coulor !! -->
 
-    <form [formGroup]="registerForm">
+    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
 
       <div class="left-side-form">
 
         <div class="form-goup">
-          <label class="label_input">
-            Email :
-          </label>
-          <input class="form-control" formControlName="email" id="email" type="text">
+          <mat-form-field appearance="legacy">
+            <mat-label>Email</mat-label>
+            <input formControlName="email" matInput placeholder="Email" type="text" >
+            <mat-hint>hint </mat-hint>
+          </mat-form-field>
         </div>
 
         <div class="form-goup">
-          <label class="label_input">
-            Mot de passe :
-          </label>
-          <input class="form-control" formControlName="password" id="password" type="text">
-
-          <div *ngIf="password?.invalid">
-            <p class="text-wrap m-0 text-danger">Le mot de passe doit contenir:<br>- Entre 8 et 30 caractères<br>- Une
-              majuscule<br>- Une minuscule<br>- Un caractère spécial</p>
+          <mat-form-field appearance="legacy">
+            <mat-label>Mot de passe</mat-label>
+            <input formControlName="password" matInput placeholder="Votre mot de passe" type="password" >
+          </mat-form-field>
+          <div *ngIf="password?.invalid && (password?.dirty || password?.touched)"><p class="text-wrap m-0 text-danger">Le mot de passe doit contenir:<br>- Entre 8 et 30 caractères<br>- Une
+            majuscule<br>- Une minuscule<br>- Un caractère spécial</p></div>
           </div>
 
+        <div class="form-goup">
+
+          <mat-form-field appearance="legacy">
+            <mat-label>Confirmation mot de passse</mat-label>
+            <input formControlName="confPassword" matInput placeholder="Confirmez votre mot de passe" type="password" >
+            <mat-hint *ngIf="password !== confPassword && (confPassword?.dirty || confPassword?.touched) "> La confirmation de mot de passe ne correspond pas au mot de passe </mat-hint>
+          </mat-form-field>
+
         </div>
 
         <div class="form-goup">
-          <label class="label_input">
-            Confirmation mot de passse :
-          </label>
-          <input class="form-control" formControlName="confPassword" id="confPassword" type="text">
+
+          <mat-form-field appearance="legacy">
+            <mat-label>Nom</mat-label>
+            <input formControlName="lastname" matInput placeholder="Nom" type="text" >
+            <mat-hint>hint </mat-hint>
+          </mat-form-field>
+
         </div>
 
         <div class="form-goup">
-          <label class="label_input">
-            Nom :
-          </label>
-          <input class="form-control" formControlName="lastname" id="lastname" type="text">
+
+          <mat-form-field appearance="legacy">
+            <mat-label>Prénom</mat-label>
+            <input formControlName="firstname" matInput placeholder="Prénom" type="text" >
+            <mat-hint>hint </mat-hint>
+          </mat-form-field>
+
         </div>
 
         <div class="form-goup">
-          <label class="label_input">
-            Prénom :
-          </label>
-          <input class="form-control" formControlName="firstname" id="firstname" type="text">
-        </div>
 
-        <div class="form-goup">
-          <label class="label_input">
-            Pseudo :
-          </label>
-          <input class="form-control" formControlName="pseudo" id="pseudo" type="text">
+          <mat-form-field appearance="legacy">
+            <mat-label>Pseudo</mat-label>
+            <input formControlName="pseudo" matInput placeholder="Pseudo" type="text" >
+            <mat-hint> hint </mat-hint>
+          </mat-form-field>
+
         </div>
 
       </div>
@@ -61,55 +71,76 @@
       <div class="right-side-form">
 
         <div class="form-goup">
-          <label class="label_input">
-            Role :
-          </label>
-          <select formControlName="role">
-            <option value="USER">Utilisateur</option>
-            <option value="PRO">Professionnel</option>
-            <option value="ORGANISATION">Organisation</option>
-          </select>
+
+          <mat-form-field appearance="fill">
+            <mat-label>Role</mat-label>
+            <mat-select formControlName="role">
+              <mat-option value="USER"> Utilisateur </mat-option>
+              <mat-option value="PRO"> Professionnel </mat-option>
+              <mat-option value="ORGANISATION"> Organisation </mat-option>
+            </mat-select>
+          </mat-form-field>
+
         </div>
 
         <div class="form-goup">
-          <label class="label_input">
-            Date de naissance :
-          </label>
-          <input class="form-control" formControlName="birthdate" id="birthdate" type="date">
+
+          <mat-form-field appearance="fill">
+            <mat-label>Date de naissance</mat-label>
+            <input matInput formControlName="birthdate" [matDatepicker]="picker">
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+          </mat-form-field>
+
         </div>
 
         <div class="form-goup">
-          <label class="label_input">
-            Adresse :
-          </label>
-          <input class="form-control" formControlName="address" id="address" type="text">
+
+          <mat-form-field appearance="legacy">
+            <mat-label>Adresse</mat-label>
+            <input formControlName="address" matInput placeholder="Adresse" type="text" >
+            <mat-hint> hint </mat-hint>
+          </mat-form-field>
+
         </div>
 
 
         <div class="form-goup">
-          <label class="label_input">
-            Code postal :
-          </label>
-          <input class="form-control" formControlName="zip" id="zip" type="text">
+
+          <mat-form-field appearance="legacy">
+            <mat-label>Code postal</mat-label>
+            <input formControlName="zip" matInput placeholder="zip" type="text" >
+            <mat-hint> hint </mat-hint>
+          </mat-form-field>
+
         </div>
 
         <div class="form-goup">
-          <label class="label_input">
-            Pays :
-          </label>
-          <input class="form-control" formControlName="country" id="country" type="text">
+
+          <mat-form-field appearance="legacy">
+            <mat-label>Pays</mat-label>
+            <input formControlName="country" matInput value="France" type="text" >
+            <mat-hint> hint </mat-hint>
+          </mat-form-field>
+
         </div>
 
         <div class="form-goup">
-          <label class="label_input">
-            Téléphone :
-          </label>
-          <input class="form-control" formControlName="phone" id="phone" type="text">
+
+          <mat-form-field appearance="legacy">
+            <mat-label>Téléphone</mat-label>
+            <input formControlName="phone" matInput value="France" type="text" >
+            <mat-hint> hint </mat-hint>
+          </mat-form-field>
+
         </div>
+
 
       </div>
 
-      <button (click)="onSubmit()" [disabled]="!registerForm.valid" class="btn btn-danger">S'inscrire</button>
+      <div class="submit_button">
+        <button type="submit" [disabled]="!registerForm.valid" class="btn btn-danger">S'inscrire</button>
+      </div>
 
     </form>
   </div>
