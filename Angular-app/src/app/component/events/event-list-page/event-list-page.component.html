@@ -4,64 +4,48 @@
     <div class="row align-items-center">
       <p class="text-center my-3 text-uppercase">Evènements</p>
     </div>
-    <div class="col-3 offset-9 text-center">
-      <button (click)="showCreateForm()" aria-expanded="false" class="btn btn-dark  form-control" data-bs-toggle="dropdown"
-              type="button">
-        Créer un évenement
-      </button>
+
+    <div class="col-12 text-center" style="background-color: #0a58ca">
+      <form [formGroup]="searchEventForm" (submit)="searchEvent()">
+
+        <div class="form-goup">
+          <mat-form-field appearance="legacy">
+            <mat-label>Nom de l'évènement</mat-label>
+            <input formControlName="title" matInput type="text" >
+          </mat-form-field>
+        </div>
+
+        <div class="form-goup">
+          <mat-form-field appearance="legacy">
+            <mat-label>Date de début</mat-label>
+            <input formControlName="startDate" matInput type="date" >
+          </mat-form-field>
+        </div>
+
+        <div class="form-goup">
+          <mat-form-field appearance="legacy">
+            <mat-label>Département</mat-label>
+            <input formControlName="zip" matInput type="number" >
+          </mat-form-field>
+        </div>
+
+        <div class="form-goup">
+          <mat-form-field appearance="fill">
+            <mat-label>Type d'évènement</mat-label>
+            <mat-select formControlName="eventType">
+              <mat-option value=""></mat-option>
+              <mat-option value="HUMANITARIAN">Humanitaire</mat-option>
+              <mat-option value="ECOLOGICAL">Ecologique</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+
+        <button aria-expanded="false" class="btn btn-dark col-6 " data-bs-toggle="dropdown"
+                type="button" type="submit">
+          Rechercher
+        </button>
+      </form>
     </div>
-    <form class="py-5">
-      <div class="row align-items-center">
-        <div class="btn-group col">
-          <button aria-expanded="false" class="btn btn-danger dropdown-toggle form-control" data-bs-toggle="dropdown"
-                  type="button">
-            Catégorie
-          </button>
-          <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="#">Action</a></li>
-            <li><a class="dropdown-item" href="#">Another action</a></li>
-            <li><a class="dropdown-item" href="#">Something else here</a></li>
-          </ul>
-        </div>
-        <div class="col-6">
-          <input class="form-control" placeholder="Recherche" type="text">
-        </div>
-        <div class="btn-group col">
-          <button aria-expanded="false" class="btn btn-danger dropdown-toggle form-control" data-bs-toggle="dropdown"
-                  type="button">
-            Département
-          </button>
-          <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="#">Action</a></li>
-            <li><a class="dropdown-item" href="#">Another action</a></li>
-            <li><a class="dropdown-item" href="#">Something else here</a></li>
-          </ul>
-        </div>
-      </div>
-      <div class="row my-4 text-center">
-        <div class="col">
-          <div class="form-check">
-            <input class="form-check-input" id="professionalCheckbox" type="checkbox" value="">
-            <label class="form-check-label" for="professionalCheckbox">
-              Ecologique
-            </label>
-          </div>
-        </div>
-        <div class="col">
-          <div class="form-check">
-            <input class="form-check-input" id="particularCheckbox" type="checkbox" value="">
-            <label class="form-check-label" for="particularCheckbox">
-              Humanitaire
-            </label>
-          </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col">
-          <button class="btn btn-primary" type="submit">Recherche</button>
-        </div>
-      </div>
-    </form>
 
   </div>
 </div>
@@ -110,7 +94,7 @@
 
         <div class="row">
           <p class="text-capitalize">
-            {{event.zip}}, {{event.country}}
+            {{event.zip}}, {{event.city}}
           </p>
         </div>
 
@@ -134,13 +118,13 @@
             </button>
           </div>
 
-          <div class="row action-button" *ngIf="amIParticipant(event)" >
-            <button class="btn btn-warning" (click)="leaveEvent(event)">
-              Vous participez déja !
+          <div class="row action-button" *ngIf="amIParticipant(event) && !amICreator(event)" >
+            <button class="btn btn-danger" (click)="leaveEvent(event)">
+              Ne plus participer
             </button>
           </div>
 
-          <div class="row action-button" *ngIf="!amIParticipant(event)" >
+          <div class="row action-button" *ngIf="!amIParticipant(event) && !amICreator(event)" >
             <button class="btn btn-warning" (click)="joinEvent(event)">
               Participer
             </button>

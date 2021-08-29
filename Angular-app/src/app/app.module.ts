@@ -5,6 +5,7 @@ import {AuthComponent} from './component/auth/auth.component';
 import {RouterModule, Routes} from "@angular/router";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
+import axios from "axios";
 import {CookieService} from "ngx-cookie-service";
 import {NavBarComponent} from './component/nav-bar/nav-bar.component';
 import {RegisterComponent} from './component/register/register.component';
@@ -33,6 +34,9 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatSelectModule } from '@angular/material/select';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
+
+
 import { EventPageComponent } from './component/events/event-page/event-page.component';
 import { MyEventsComponent } from './component/events/my-events/my-events.component';
 import { InfoEventComponent } from './component/events/info-event/info-event.component';
@@ -95,6 +99,7 @@ const appRoutes: Routes = [
     CommonModule,
     MatMenuModule,
     MatFormFieldModule,
+    MatAutocompleteModule,
     MatInputModule,
     MatIconModule,
     MatSelectModule,

@@ -36,6 +36,11 @@ export class AuthService {
     return this.cookieService.get('user');
   }
 
+  public getUserInfo(): Observable<User> {
+    const userId = this.getConnectedUserId();
+    return this.http.get<User>(`${environment.apiBaseUrl}/user/${userId}/getUser`)
+  }
+
   public isConnected(): boolean {
     const id = this.getConnectedUserId();
     return id !== null && id !== undefined && id !== ""
@@ -47,20 +52,9 @@ export class AuthService {
     return this.http.delete(`${environment.apiBaseUrl}/auth/logout`);
   }
 
-  public register(email: string, password: string, firstname: string, lastname: string, pseudo: string, image: string, role: string, birthdate: string, address: string, zip: string, country: string, phone: string): Observable<User> {
+  public register(user: User): Observable<User> {
     return this.http.post<User>(`${environment.apiBaseUrl}/auth/signin`, {
-      email,
-      password,
-      firstname,
-      lastname,
-      pseudo,
-      image,
-      role,
-      birthdate,
-      address,
-      zip,
-      country,
-      phone
+      user
     })
       .pipe(map(user => {
         this.cookieService.set('user', user.id as string, 3, "", environment.domain, false, 'Strict');

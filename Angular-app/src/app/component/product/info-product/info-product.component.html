@@ -1,7 +1,7 @@
 <div class="main_block">
   <div>
     <div class="title left-title" (click)="showInfos()" ><h2> Information produit </h2></div>
-    <div class="title right-title" (click)="showProposals()"><h2> Proposition d'achat </h2></div>
+    <div class="title right-title" *ngIf="this.authService.getConnectedUserId() === product?.creator?.id" (click)="showProposals()"><h2> Proposition d'achat </h2></div>
   </div>
 
   <div class="infos-page" *ngIf="displayInfos == true">
@@ -85,7 +85,34 @@
 
   </div>
 
+  <div *ngIf="this.authService.getConnectedUserId() !== product?.creator?.id">
+    <button (click)="buyProduct(product)"> ACHETER </button>
+    <button *ngIf="product.negotiable === 'TRUE' " (click)="displayProposalForm()" > Proposer </button>
+  </div>
+
 </div>
 
 
 <div id="overlay" (click)="closeInfos()"></div>
+<div id="proposal-interface">
+  <div>Proposition d'achat</div>
+  <form [formGroup]="proposalForm" (submit)="makeProposal(product)">
+
+    <div class="form-goup">
+      <mat-form-field appearance="legacy">
+        <mat-label>Prix</mat-label>
+        <input formControlName="price" matInput type="number" >
+      </mat-form-field>
+    </div>
+
+    <div class="form-goup">
+      <mat-form-field appearance="legacy">
+        <mat-label>Message</mat-label>
+        <input formControlName="message" matInput type="text" >
+      </mat-form-field>
+    </div>
+
+    <button type="submit"> valider </button>
+  </form>
+  <button (click)="closeProposalForm()"> annuler </button>
+</div>

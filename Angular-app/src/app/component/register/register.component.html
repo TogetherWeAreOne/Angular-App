@@ -96,10 +96,20 @@
 
         <div class="form-goup">
 
+
           <mat-form-field appearance="legacy">
-            <mat-label>Adresse</mat-label>
-            <input formControlName="address" matInput placeholder="Adresse" type="text" >
-            <mat-hint> hint </mat-hint>
+            <mat-label>Number</mat-label>
+            <input type="text"
+                   placeholder="Adresse"
+                   matInput
+                   (input)="filter($event)"
+                   formControlName="address"
+                   [matAutocomplete]="auto">
+            <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+              <mat-option *ngFor="let option of options " [value]="option" (click)="setAddress(option)">
+                {{option?.properties?.label}}
+              </mat-option>
+            </mat-autocomplete>
           </mat-form-field>
 
         </div>
@@ -119,7 +129,7 @@
 
           <mat-form-field appearance="legacy">
             <mat-label>Pays</mat-label>
-            <input formControlName="country" matInput value="France" type="text" >
+            <input formControlName="city" matInput value="France" type="text" >
             <mat-hint> hint </mat-hint>
           </mat-form-field>
 

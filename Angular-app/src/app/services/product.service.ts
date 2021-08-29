@@ -5,6 +5,7 @@ import {HttpClient} from "@angular/common/http";
 import {environment} from "../../environments/environment";
 import {map} from "rxjs/operators";
 import {Product} from "../models/product.model";
+import {SearchProduct} from "../models/searchProduct.model";
 
 @Injectable({providedIn: 'root'})
 export class ProductService {
@@ -36,6 +37,14 @@ export class ProductService {
     return this.http.get<Product[]>(`${environment.apiBaseUrl}/product/getAllMyProduct`);
   }
 
+  public getAllProduct(): Observable<Product[]> {
+    return this.http.get<Product[]>(`${environment.apiBaseUrl}/product/getAll`);
+  }
+
+  public deleteProduct(productId : string): Observable<Product> {
+    return this.http.delete<Product>(`${environment.apiBaseUrl}/product/${productId}/delete`);
+  }
+
   public updateProduct(productId: string, product: Product): Observable<Product>{
     console.log(product);
     console.log("/////////////");
@@ -51,4 +60,11 @@ export class ProductService {
     }));
   }
 
+  public buyProduct(productId : string): Observable<Product> {
+    return this.http.get<Product>(`${environment.apiBaseUrl}/product/${productId}/buy`);
+  }
+
+  public searchProduct(search: SearchProduct): Observable<Product[]> {
+    return this.http.post<Product[]>(`${environment.apiBaseUrl}/product/getBySearch`, search);
+  }
 }

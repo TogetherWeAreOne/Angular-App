@@ -39,7 +39,7 @@ export class UpdateEventComponent implements OnInit {
       image: ["ffeff", [Validators.required]],
       address: [this.event.address, [Validators.required]],
       zip: [this.event.zip, [Validators.required]],
-      country: [this.event.country, [Validators.required]],
+      city: [this.event.city, [Validators.required]],
     });
 
   }

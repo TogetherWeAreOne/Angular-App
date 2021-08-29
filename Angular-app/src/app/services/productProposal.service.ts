@@ -32,6 +32,10 @@ export class ProductProposalService {
     return this.http.get<ProductProposal[]>(`${environment.apiBaseUrl}/product/proposal/${productId}/getAllProposal`) ;
   }
 
+  public createProductProposal(productId: string, proposal: ProductProposal): Observable<ProductProposal>{
+    return this.http.post<ProductProposal>(`${environment.apiBaseUrl}/product/proposal/${productId}/create`, proposal) ;
+  }
+
   public refuseProductProposal(proposal: ProductProposal) : Observable<ProductProposal>{
     return this.http.put<ProductProposal>(`${environment.apiBaseUrl}/product/proposal/${proposal.product?.id}/${proposal.user?.id}/refused`, proposal) ;
   }

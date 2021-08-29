@@ -10,14 +10,16 @@ export class Event {
   image?: string;
   address?: string;
   zip?: string;
-  country?: string;
+  city?: string;
   startDate?: string;
   endDate?: string;
   eventType?: string;
   creator?: User;
+  longitude?: number;
+  latitude?: number;
 
 
-  constructor(id: string, title: string, description: string, maxParticipant: number, minParticipant: number, image: string, address: string, zip: string, country: string, startDate: string, endDate: string, eventType: string, creator: User) {
+  constructor(id: string, title: string, description: string, maxParticipant: number, minParticipant: number, image: string, address: string, zip: string, city: string, startDate: string, endDate: string, eventType: string, creator: User, longitude: number, latitude: number) {
     this.id = id;
     this.title = title;
     this.description = description;
@@ -26,10 +28,12 @@ export class Event {
     this.image = image;
     this.address = address;
     this.zip = zip;
-    this.country = country;
+    this.city = city;
     this.startDate = startDate;
     this.endDate = endDate;
     this.eventType = eventType;
     this.creator = creator;
+    this.longitude = longitude;
+    this.latitude = latitude;
   }
 }

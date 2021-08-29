@@ -1,10 +1,45 @@
 <div class="main_block col-6">
   <div class="row my-3">
-    <div class="col-3 offset-9 text-center">
-      <button aria-expanded="false" class="btn btn-dark dropdown-toggle form-control" data-bs-toggle="dropdown"
-              type="button">
-        Trier par
-      </button>
+    <div class="col-12 text-center" style="background-color: #0a58ca">
+      <form [formGroup]="searchEventForm" (submit)="searchEvent()">
+
+        <div class="form-goup">
+          <mat-form-field appearance="legacy">
+            <mat-label>Nom de l'évènement</mat-label>
+            <input formControlName="title" matInput type="text" >
+          </mat-form-field>
+        </div>
+
+        <div class="form-goup">
+          <mat-form-field appearance="legacy">
+            <mat-label>Date de début</mat-label>
+            <input formControlName="startDate" matInput type="date" >
+          </mat-form-field>
+        </div>
+
+        <div class="form-goup">
+          <mat-form-field appearance="legacy">
+            <mat-label>Département</mat-label>
+            <input formControlName="zip" matInput type="number" >
+          </mat-form-field>
+        </div>
+
+        <div class="form-goup">
+          <mat-form-field appearance="fill">
+            <mat-label>Type d'évènement</mat-label>
+            <mat-select formControlName="eventType">
+              <mat-option value=""></mat-option>
+              <mat-option value="HUMANITARIAN">Humanitaire</mat-option>
+              <mat-option value="ECOLOGICAL">Ecologique</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+
+        <button aria-expanded="false" class="btn btn-dark col-6 " data-bs-toggle="dropdown"
+                type="button" type="submit">
+          Rechercher
+        </button>
+      </form>
     </div>
   </div>
   <div class="row my-3">
@@ -27,49 +62,55 @@
           <div class="row">
             <div class="col-md-8">
               <h3>
-                {{myEvent.title}}
+                {{myEvent.event!.title}}
               </h3>
             </div>
             <div class="col-8 mx-8">
               <p>
-                {{myEvent.description}}
+                {{myEvent.event!.description}}
               </p>
             </div>
           </div>
 
           <div class="row">
             <p>
-              Catégorie: {{myEvent.eventType}}
+              Catégorie: {{ myEvent.event!.eventType }}
             </p>
           </div>
 
           <div class="row">
             <p class="fst-italic">
-              {{myEvent.address}}
+              {{ myEvent.event!.address }}
             </p>
           </div>
 
           <div class="row">
             <p class="fst-italic">
-              Quantité : {{myEvent.country}}
+              Quantité : {{ myEvent.event!.city }}
             </p>
           </div>
 
           <div class="row action-button">
-            <button class="btn btn-primary" (click)="showInfos(myEvent)" >
+            <button class="btn btn-primary" (click)="showInfos( myEvent.event! )" >
               Infos
             </button>
           </div>
 
-          <div class="row action-button" (click)="showUpdateForm(myEvent)" >
+          <div *ngIf="myEvent.role! === 'CREATOR'" class="row action-button" (click)="showUpdateForm( myEvent.event! )" >
             <button class="btn btn-warning ">
               Modifier
             </button>
           </div>
 
-          <div class="row action-button">
-            <button class="btn btn-danger ">
+          <div class="row action-button" *ngIf="myEvent.role! === 'CREATOR' ">
+            <button class="btn btn-danger " (click)="deleteEvent(myEvent.event!)">
               Supprimer
+            </button>
+          </div>
+
+          <div class="row action-button" *ngIf="myEvent.role! !== 'CREATOR' ">
+            <button class="btn btn-danger " (click)="leaveEvent(myEvent.event!)">
+              Ne plus participer
             </button>
           </div>
 
@@ -80,7 +121,6 @@
   </div>
 </div>
 
-<div id="test">j'ai tester</div>
 <app-create-product *ngIf="displayCreateForm" [closeForm]="closeCreateForm"></app-create-product>
 <app-update-event *ngIf="displayUpdateForm" [closeForm]="closeUpdateForm" [event]="eventFocus"></app-update-event>
 <app-info-event *ngIf="displayInfos" [closeInfos]="closeInfos" [event]="eventFocus"></app-info-event>

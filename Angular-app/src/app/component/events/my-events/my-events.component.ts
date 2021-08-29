@@ -1,8 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import {Event} from "../../../models/event.model";
-import {ProductService} from "../../../services/product.service";
 import {EventService} from "../../../services/event.service";
-import {aliasTransformFactory} from "@angular/compiler-cli/src/ngtsc/transform";
+import {EventParticipantService} from "../../../services/eventParticipant.service";
+import {EventParticipant} from "../../../models/eventParticipant.model";
+import {FormBuilder} from "@angular/forms";
+import * as moment from 'moment';
+
 
 @Component({
   selector: 'app-my-events',
@@ -14,21 +17,72 @@ export class MyEventsComponent implements OnInit {
   displayCreateForm: boolean = false;
   displayInfos: boolean = false;
   displayUpdateForm: boolean = false;
-  myEvents: Event[] = [];
+  myEvents: EventParticipant[] = [];
+  myEventsCopy: EventParticipant[] = [];
   eventFocus!: Event ;
 
-  constructor(private eventService: EventService) {
+  searchEventForm = this.fb.group({
+    title: ["", []],
+    startDate: ["", []],
+    zip: ["", []],
+    eventType: ["", []],
+  })
+
+  constructor(private eventService: EventService,
+              private eventParticipantService: EventParticipantService,
+              private fb: FormBuilder) {
   }
 
   ngOnInit(): void {
     this.loadMyEvent();
   }
 
-  loadMyEvent() {
-    this.eventService.getMyEvents().subscribe(events => {
-      this.myEvents = events
-    })
+  searchEvent(){
+    this.myEvents = this.myEventsCopy;
+    this.searchEventForm.value.title = this.searchEventForm.value.title === "" ? '.*' : this.searchEventForm.value.title + '*';
+    this.searchEventForm.value.eventType = this.searchEventForm.value.eventType === "" ? '.*' : this.searchEventForm.value.eventType + '*';
+    this.searchEventForm.value.zip = this.searchEventForm.value.zip === "" ? '.*' : this.searchEventForm.value.zip + '[0-9]{3}';
+    this.searchEventForm.value.startDate = this.searchEventForm.value.startDate === "" ? new Date(moment().clone().format('YYYY-MM-DD')) : this.searchEventForm.value.startDate;
+    console.log(this.searchEventForm.value);
+    this.myEvents = this.myEvents.reduce( (eventFiltered: EventParticipant[] , eventParticipation) =>{
+      if ( eventParticipation.event?.title.match(this.searchEventForm.value.title)){
+        if ( eventParticipation.event?.zip!.match(this.searchEventForm.value.zip)){
+          if ( eventParticipation.event?.eventType!.match(this.searchEventForm.value.eventType)){
+            if ( new Date(eventParticipation.event?.startDate!).getTime() >= new Date(this.searchEventForm.value.startDate).getTime()){
+              eventFiltered.push(eventParticipation);
+            }
+          }
+        }
+      }
+      return eventFiltered;
+    }, []);
     console.log(this.myEvents);
+  }
+
+  leaveEvent(event: Event) {
+    this.eventParticipantService.leaveEvent(event).subscribe(/*value =>
+    {for (let i = 0; i < this.eventParticipation.length; i++){
+        if(this.eventParticipation[i].event?.id === value.event?.id){
+          this.eventParticipation.splice(i, 1);
+          return;
+        }
+    }}*/
+    );
+    this.loadMyEvent();
+  }
+
+  loadMyEvent() {
+    this.eventParticipantService.getMyParticipation().subscribe(eventParticipation => {
+      this.myEvents = eventParticipation
+    }, ()=>{}, () => {
+      for (let i = 0; i < this.myEvents.length; i++) {
+        if (this.myEvents[i].event === null) {
+          this.myEvents.splice(i, 1);
+        }
+      }
+      this.myEventsCopy = this.myEvents;
+      console.log(this.myEventsCopy);
+    })
   }
 
   update() {
@@ -60,6 +114,18 @@ export class MyEventsComponent implements OnInit {
 
   closeInfos = () : void => {
     this.displayInfos = false;
+  }
+
+  deleteEvent(event: Event){
+    confirm(" Voulez-vous vraiment supprimer cet évenement ? ");
+    this.eventService.deleteEvent(event.id!).subscribe(() => {}, () => {},
+      () => {
+      for(let i = 0; i < this.myEvents.length; i++ ){
+        if (this.myEvents[i].event === event){
+          this.myEvents.splice(i,1);
+        }
+      }
+    })
   }
 
 }

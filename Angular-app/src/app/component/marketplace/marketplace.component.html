@@ -4,66 +4,57 @@
       <div class="row align-items-center">
         <p class="text-center my-3 text-uppercase">marketplace</p>
       </div>
-      <form class="py-5">
-        <div class="row align-items-center">
-          <div class="btn-group col">
-            <button aria-expanded="false" class="btn btn-danger dropdown-toggle form-control" data-bs-toggle="dropdown"
-                    type="button">
-              Catégorie
-            </button>
-            <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="#">Action</a></li>
-              <li><a class="dropdown-item" href="#">Another action</a></li>
-              <li><a class="dropdown-item" href="#">Something else here</a></li>
-            </ul>
+      <div class="col-12 text-center" style="background-color: #0a58ca">
+        <form [formGroup]="searchProductForm" (submit)="searchProduct()">
+
+          <div class="form-goup">
+            <mat-form-field appearance="legacy">
+              <mat-label>Nom produit</mat-label>
+              <input formControlName="name" matInput type="text" >
+            </mat-form-field>
           </div>
-          <div class="col-6">
-            <input class="form-control" placeholder="Recherche" type="text">
+
+          <div class="form-goup">
+            <mat-form-field appearance="legacy">
+              <mat-label>Prix minimum</mat-label>
+              <input formControlName="minPrice" matInput type="number" >
+            </mat-form-field>
           </div>
-          <div class="btn-group col">
-            <button aria-expanded="false" class="btn btn-danger dropdown-toggle form-control" data-bs-toggle="dropdown"
-                    type="button">
-              Département
-            </button>
-            <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="#">Action</a></li>
-              <li><a class="dropdown-item" href="#">Another action</a></li>
-              <li><a class="dropdown-item" href="#">Something else here</a></li>
-            </ul>
+
+          <div class="form-goup">
+            <mat-form-field appearance="legacy">
+              <mat-label>Prix maximum</mat-label>
+              <input formControlName="maxPrice" matInput type="number" >
+            </mat-form-field>
           </div>
-        </div>
-        <div class="row my-4 text-center">
-          <div class="col">
-            <div class="form-check">
-              <input class="form-check-input" id="professionalCheckbox" type="checkbox" value="">
-              <label class="form-check-label" for="professionalCheckbox">
-                Professionel
-              </label>
-            </div>
+
+          <div class="form-goup">
+            <mat-form-field appearance="fill">
+              <mat-label>Catégorie Produit</mat-label>
+              <mat-select formControlName="category" multiple>
+                <mat-option value=""></mat-option>
+                <mat-option *ngFor="let category of productCategories;" [value]="category.name"> {{category.name}}</mat-option>
+              </mat-select>
+            </mat-form-field>
           </div>
-          <div class="col">
-            <div class="form-check">
-              <input class="form-check-input" id="particularCheckbox" type="checkbox" value="">
-              <label class="form-check-label" for="particularCheckbox">
-                Particulier
-              </label>
-            </div>
+
+          <div class="form-goup">
+            <mat-form-field appearance="fill">
+              <mat-label>Négotiable</mat-label>
+              <mat-select formControlName="negotiable">
+                <mat-option value=""></mat-option>
+                <mat-option value="TRUE">Oui</mat-option>
+                <mat-option value="FALSE">Non</mat-option>
+              </mat-select>
+            </mat-form-field>
           </div>
-          <div class="col">
-            <div class="form-check">
-              <input class="form-check-input" id="orgCheckbox" type="checkbox" value="">
-              <label class="form-check-label" for="orgCheckbox">
-                Organisation
-              </label>
-            </div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col">
-            <button class="btn btn-primary" type="submit">Recherche</button>
-          </div>
-        </div>
-      </form>
+
+          <button aria-expanded="false" class="btn btn-dark col-6 " data-bs-toggle="dropdown"
+                  type="button" type="submit">
+            Rechercher
+          </button>
+        </form>
+      </div>
 
     </div>
   </div>
@@ -89,11 +80,17 @@
                 {{item.name}}
               </h3>
             </div>
-            <div class="col-1 mx-3">
+            <div class="col-2 mx-3">
               <h2>
                 {{item.price}}€
               </h2>
             </div>
+          </div>
+
+          <div class="row">
+            <p class="text-capitalize">
+              {{item.description}}
+            </p>
           </div>
 
           <div class="row">
@@ -104,11 +101,19 @@
 
           <div class="row">
             <p class="fst-italic">
-              {{item.creator}}
+              Vendu par : {{item.creator?.pseudo}}
             </p>
+          </div>
+
+          <div class="row action-button">
+            <button class="btn btn-primary" (click)="showInfos(item)" >
+              Infos
+            </button>
           </div>
         </div>
       </div>
     </div>
   </div>
 </div>
+
+<app-info-product *ngIf="displayInfos" [closeInfos]="closeInfos" [product]="productFocus"></app-info-product>

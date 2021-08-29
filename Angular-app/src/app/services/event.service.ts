@@ -6,6 +6,8 @@ import {environment} from "../../environments/environment";
 import {map} from "rxjs/operators";
 import {Event} from "../models/event.model";
 import {Product} from "../models/product.model";
+import {SearchProduct} from "../models/searchProduct.model";
+import {SearchEvent} from "../models/searchEvent.model";
 
 @Injectable({providedIn: 'root'})
 export class EventService {
@@ -45,6 +47,14 @@ export class EventService {
     console.log("/////////////");
     console.log(eventId);
     return this.http.put<Event>(`${environment.apiBaseUrl}/event/${eventId}/update`, event);
+  }
+
+  public searchEvent(search: SearchEvent): Observable<Event[]> {
+    return this.http.post<Event[]>(`${environment.apiBaseUrl}/event/getBySearch`, search);
+  }
+
+  public deleteEvent(eventId: string): Observable<Event> {
+    return this.http.delete<Event>(`${environment.apiBaseUrl}/event/${eventId}/delete`);
   }
 
 }

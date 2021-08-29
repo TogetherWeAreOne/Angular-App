@@ -10,12 +10,14 @@ export class User {
   birthdate?: string;
   address?: string;
   zip?: string;
-  country?: string;
+  city?: string;
   phone?: string;
   certified?: boolean;
+  longitude?: number;
+  latitude?: number;
 
 
-  constructor(email: string, password: string, firstname: string, lastname: string, pseudo: string, image: string, role: string, birthdate: string, address: string, zip: string, country: string, phone: string, certified: boolean) {
+  constructor( email: string, password: string, firstname: string, lastname: string, pseudo: string, image: string, role: string, birthdate: string, address: string, zip: string, city: string, phone: string, certified: boolean, longitude: number, latitude: number) {
     this.email = email;
     this.password = password;
     this.firstname = firstname;
@@ -26,8 +28,10 @@ export class User {
     this.birthdate = birthdate;
     this.address = address;
     this.zip = zip;
-    this.country = country;
+    this.city = city;
     this.phone = phone;
     this.certified = certified;
+    this.longitude = longitude;
+    this.latitude = latitude;
   }
 }

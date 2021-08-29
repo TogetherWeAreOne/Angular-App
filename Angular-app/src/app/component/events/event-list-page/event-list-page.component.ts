@@ -3,6 +3,10 @@ import {EventService} from "../../../services/event.service";
 import {Event} from "../../../models/event.model";
 import {EventParticipantService} from "../../../services/eventParticipant.service";
 import { EventParticipant } from 'src/app/models/eventParticipant.model';
+import {AuthService} from "../../../services/auth.service";
+import {SearchProduct} from "../../../models/searchProduct.model";
+import {SearchEvent} from "../../../models/searchEvent.model";
+import {FormBuilder} from "@angular/forms";
 
 @Component({
   selector: 'app-event-page',
@@ -16,13 +20,29 @@ export class EventListPageComponent implements OnInit {
   events: Event[] = [];
   eventParticipation: EventParticipant[] = [];
 
-  constructor(private eventService: EventService,
-              private eventParticipantService: EventParticipantService) {
+  searchEventForm = this.fb.group({
+    title: ["", []],
+    startDate: ["", []],
+    zip: ["", []],
+    eventType: [[], []],
+    negotiable: ["", []]
+  })
 
+  constructor(private eventService: EventService,
+              private eventParticipantService: EventParticipantService,
+              private authService: AuthService,
+              private fb: FormBuilder) {
   }
 
   ngOnInit(): void {
     this.loadEvent();
+  }
+
+  searchEvent(){
+    console.log(this.searchEventForm.value);
+    this.eventService.searchEvent(this.searchEventForm.value as SearchEvent).subscribe(
+      eventSearched => this.events = eventSearched
+    );
   }
 
   loadEvent() {
@@ -38,7 +58,6 @@ export class EventListPageComponent implements OnInit {
   }
 
   leaveEvent(event: Event) {
-    console.log(this.eventParticipation);
     this.eventParticipantService.leaveEvent(event).subscribe(/*value =>
     {for (let i = 0; i < this.eventParticipation.length; i++){
         if(this.eventParticipation[i].event?.id === value.event?.id){
@@ -58,6 +77,15 @@ export class EventListPageComponent implements OnInit {
     }
     return false;
   }
+
+  amICreator(event : Event) : boolean {
+      if ( event.creator?.id === this.authService.getConnectedUserId()){
+        return true;
+      }
+
+    return false;
+  }
+
 
   getLeftPlace(a: number, b: number): number {
     return a-b;

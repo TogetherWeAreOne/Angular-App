@@ -25,6 +25,8 @@ export class CreateEventComponent implements OnInit {
     address: ["", [Validators.required]],
     zip: ["", [Validators.required]],
     country: ["", [Validators.required]],
+    longitude : ["", []],
+    latitude: ["", []]
   })
 
   constructor(private eventService: EventService, private fb: FormBuilder) {
