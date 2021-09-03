@@ -53,9 +53,9 @@ export class AuthService {
   }
 
   public register(user: User): Observable<User> {
-    return this.http.post<User>(`${environment.apiBaseUrl}/auth/signin`, {
+    return this.http.post<User>(`${environment.apiBaseUrl}/auth/signin`,
       user
-    })
+    )
       .pipe(map(user => {
         this.cookieService.set('user', user.id as string, 3, "", environment.domain, false, 'Strict');
         console.log("......." + user);

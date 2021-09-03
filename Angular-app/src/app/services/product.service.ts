@@ -1,7 +1,7 @@
 import {Injectable} from "@angular/core";
 import {BehaviorSubject, Observable} from "rxjs";
 import {CookieService} from "ngx-cookie-service";
-import {HttpClient} from "@angular/common/http";
+import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {environment} from "../../environments/environment";
 import {map} from "rxjs/operators";
 import {Product} from "../models/product.model";
@@ -24,10 +24,16 @@ export class ProductService {
     this.product = this.productSubject.asObservable();
   }
 
-  public createProduct(product: Product): Observable<Product> {
-    console.log("......................");
-    console.log(product);
-    return this.http.post<Product>(`${environment.apiBaseUrl}/product/create`, product)
+  public createProduct(product: Product, files: File[]): Observable<Product> {
+    const formData = new FormData();
+    formData.append("product", JSON.stringify(product));
+    if (files) {
+      for (let file of files) {
+        formData.append("imagesProduct", file);
+      }
+    }
+
+    return this.http.post<Product>(`${environment.apiBaseUrl}/product/create`, formData)
       .pipe(map(product => {
         return product;
       }));

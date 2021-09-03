@@ -1,0 +1,23 @@
+.main_block{
+
+  margin: auto;
+  margin-top: 50px;
+}
+
+.action-button{
+  text-align: right;
+  margin-bottom: 10px;
+}
+
+.action-button button{
+  width: 30%;
+  margin-left: auto;
+}
+
+.available-product{
+  background-color: rgba(156, 255, 128, 0.5);
+}
+
+.sold-product{
+  background-color: rgba(255, 82, 82, 0.5);
+}

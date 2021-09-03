@@ -84,7 +84,7 @@ export class RegisterComponent implements OnInit {
     console.log(this.registerForm.value);
     const registerFormValue = this.registerForm.value;
 
-    this.authService.register(this.registerForm.value ).subscribe(
+    this.authService.register(this.registerForm.value).subscribe(
       () => {},
       () => alert("une erreur est survenue ! "),
       () => this.router.navigate(['/message']),

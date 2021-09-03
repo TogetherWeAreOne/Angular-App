@@ -6,7 +6,8 @@
 
   <div class="infos-page" *ngIf="displayInfos == true">
     <div class="left-side">
-      IMAGE
+      {{productImages[0]?.url}}
+      <img [src]="'http://localhost:3000/TogetherWeAreOne/' + productImages[0]?.url">
     </div>
 
 

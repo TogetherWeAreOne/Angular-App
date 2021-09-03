@@ -18,14 +18,6 @@ export class ProductCategoryService {
     this.productCategory = this.productCategorySubject.asObservable();
   }
 
-  public createProduct(product: Product): Observable<Product> {
-    console.log("icicicicicicici");
-    return this.http.post<Product>(`${environment.apiBaseUrl}/product/create`, product)
-      .pipe(map(event => {
-        console.log("......." + event);
-        return event;
-      }));
-  }
 
   public getAllProductCategory() : Observable<ProductCategory[]>{
     return this.http.get<ProductCategory[]>(`${environment.apiBaseUrl}/productCategory/getAll`) ;

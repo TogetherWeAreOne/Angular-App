@@ -1,0 +1,119 @@
+<div class="container">
+  <div class="row">
+    <div class="container alert-dark mt-5" style="border-radius: 25px; padding: 20px">
+      <div class="row align-items-center">
+        <p class="text-center my-3 text-uppercase">marketplace</p>
+      </div>
+      <div class="col-12 text-center" style="background-color: #0a58ca">
+        <form [formGroup]="searchProductForm" >
+
+          <div class="form-goup">
+            <mat-form-field appearance="legacy">
+              <mat-label>Nom produit</mat-label>
+              <input formControlName="name" matInput type="text" >
+            </mat-form-field>
+          </div>
+
+          <div class="form-goup">
+            <mat-form-field appearance="legacy">
+              <mat-label>Prix minimum</mat-label>
+              <input formControlName="minPrice" matInput type="number" >
+            </mat-form-field>
+          </div>
+
+          <div class="form-goup">
+            <mat-form-field appearance="legacy">
+              <mat-label>Prix maximum</mat-label>
+              <input formControlName="maxPrice" matInput type="number" >
+            </mat-form-field>
+          </div>
+
+          <div class="form-goup">
+            <mat-form-field appearance="fill">
+              <mat-label>Catégorie Produit</mat-label>
+              <mat-select formControlName="category" multiple>
+                <mat-option value=""></mat-option>
+                <mat-option *ngFor="let category of auctionCategories;" [value]="category.name"> {{category.name}}</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+
+          <div class="form-goup">
+            <mat-form-field appearance="fill">
+              <mat-label>Négotiable</mat-label>
+              <mat-select formControlName="negotiable">
+                <mat-option value=""></mat-option>
+                <mat-option value="TRUE">Oui</mat-option>
+                <mat-option value="FALSE">Non</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+
+          <button aria-expanded="false" class="btn btn-dark col-6 " data-bs-toggle="dropdown"
+                  type="button" type="submit">
+            Rechercher
+          </button>
+        </form>
+      </div>
+
+    </div>
+  </div>
+  <div class="row my-3">
+    <div class="col-3 offset-9 text-center">
+      <button aria-expanded="false" class="btn btn-dark dropdown-toggle form-control" data-bs-toggle="dropdown"
+              type="button">
+        Trier par
+      </button>
+    </div>
+  </div>
+  <div class="row">
+    <div class="container alert-dark align-middle" style="border-radius: 25px; padding: 20px">
+      <div *ngFor="let item of auctions" class="row alert-light py-4 m-4" style="border-radius: 25px; padding: 20px">
+        <div class="col-5 text-center">
+          <img alt="Product Image" class="img-thumbnail" height="150" src="/assets/bottle.jpg" width="150">
+        </div>
+
+        <div class="col">
+          <div class="row">
+            <div class="col">
+              <h3>
+                {{item.name}}
+              </h3>
+            </div>
+            <div class="col-2 mx-3">
+              <h2>
+                {{item.actualPrice}}€
+              </h2>
+            </div>
+          </div>
+
+          <div class="row">
+            <p class="text-capitalize">
+              {{item.description}}
+            </p>
+          </div>
+
+          <div class="row">
+            <p class="text-capitalize">
+              {{item.category?.name}}
+            </p>
+          </div>
+
+          <div class="row">
+            <p class="fst-italic">
+              Vendu par : {{item.creator?.pseudo}}
+            </p>
+          </div>
+
+          <div class="row action-button">
+            <button class="btn btn-primary" (click)="showInfos(item)" >
+              Infos
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<app-auction-info *ngIf="displayInfos"  [closeInfos]="closeInfos" [auction]="auctionFocus"></app-auction-info>

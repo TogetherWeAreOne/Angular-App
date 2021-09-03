@@ -41,6 +41,12 @@ import { EventPageComponent } from './component/events/event-page/event-page.com
 import { MyEventsComponent } from './component/events/my-events/my-events.component';
 import { InfoEventComponent } from './component/events/info-event/info-event.component';
 import { UpdateEventComponent } from './component/events/update-event/update-event.component';
+import { AuctionListPageComponent } from './component/auction-sales/auction-list-page/auction-list-page.component';
+import { AuctionPageComponent } from './component/auction-sales/auction-page/auction-page.component';
+import { AuctionInfoComponent } from './component/auction-sales/auction-info/auction-info.component';
+import { UpdateAuctionComponent } from './component/auction-sales/update-auction/update-auction.component';
+import { MyAuctionComponent } from './component/auction-sales/my-auction/my-auction.component';
+import { CreateAuctionComponent } from './component/auction-sales/create-auction/create-auction.component';
 
 
 
@@ -62,6 +68,8 @@ const appRoutes: Routes = [
   {path: "myEvent", component: MyEventsComponent},
   {path: "productMarketplace", component: MarketplaceComponent},
   {path: "events", component: EventListPageComponent},
+  {path: "auctionSales", component: AuctionListPageComponent},
+  {path: "myAuctionSales", component: MyAuctionComponent},
   {path: "message", component: DiscussionHomeComponent}
 
 ]
@@ -89,6 +97,12 @@ const appRoutes: Routes = [
     MyEventsComponent,
     InfoEventComponent,
     UpdateEventComponent,
+    AuctionListPageComponent,
+    AuctionPageComponent,
+    AuctionInfoComponent,
+    UpdateAuctionComponent,
+    MyAuctionComponent,
+    CreateAuctionComponent,
   ],
   imports: [
     BrowserModule,

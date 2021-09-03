@@ -5,6 +5,9 @@ import {ProductProposalService} from "../../../services/productProposal.service"
 import {AuthService} from "../../../services/auth.service";
 import {FormBuilder, Validators} from "@angular/forms";
 import {ProductService} from "../../../services/product.service";
+import {ProductImage} from "../../../models/productImage.model";
+import {ProductImageService} from "../../../services/productImage.service";
+import {DomSanitizer} from '@angular/platform-browser';
 
 @Component({
   selector: 'app-info-product',
@@ -19,6 +22,7 @@ export class InfoProductComponent implements OnInit {
   displayInfos : boolean = true;
   displayProposal : boolean = false;
   productProposals : ProductProposal[] = [];
+  productImages : ProductImage[] = [];
 
   proposalForm = this.fb.group({
     price: ["", [Validators.required]],
@@ -28,9 +32,21 @@ export class InfoProductComponent implements OnInit {
   constructor(private productProposalService: ProductProposalService,
               public authService : AuthService,
               private fb: FormBuilder,
-              private productService: ProductService) { }
+              private productService: ProductService,
+              private productImageService: ProductImageService,
+              private sanitizer:DomSanitizer) { }
+
+  sanitize(url:string){
+    return this.sanitizer.bypassSecurityTrustUrl(url);
+  }
 
   ngOnInit(): void {
+    this.productImageService.getAllImageByProduct(this.product).subscribe(
+      images => this.productImages = images,
+      (err) => {
+        console.log(err)},
+      () => { console.log(this.productImages )}
+    )
   }
 
   loadProposal() {

@@ -12,6 +12,7 @@ import {Product} from "../../../models/product.model";
 export class CreatProductComponent implements OnInit {
 
   @Input() closeForm! : () => void;
+  images!: File[];
 
   productForm = this.fb.group({
     name: ["", [Validators.required]],
@@ -20,6 +21,7 @@ export class CreatProductComponent implements OnInit {
     category: ["", [Validators.required]],
     quantity: ["", [Validators.required]],
     negotiable: ["", [Validators.required]],
+    imagesProduct: [[], [Validators.required]]
   })
 
   constructor(private authService: AuthService,
@@ -35,14 +37,24 @@ export class CreatProductComponent implements OnInit {
   }
 
   onSubmit(): void {
+
     console.log(this.productForm.value);
     let product = (this.productForm.value as Product);
     product.selled = false;
     product.sended = false;
-    console.log("(((((((((((((((((((((((((((");
+    console.log("*/*/*/*/**/*/*/*/*/*/*/*/*");
     console.log(product);
-    this.productService.createProduct(product).subscribe();
+    this.productService.createProduct(product, this.images).subscribe();
     this.productForm.reset();
+  }
+
+  selectImages(event: any) {
+
+    if(event.target.files.length > 0){
+      this.images = event.target.files;
+    }
+
+    console.log(this.images);
   }
 
   closeFormF(): void{

@@ -3,7 +3,7 @@
 
   <div>
 
-    <form [formGroup]="productForm">
+    <form [formGroup]="auctionSaleForm">
 
       <div class="main-side-form">
         <div class="form-goup">
@@ -22,41 +22,23 @@
 
         <div class="form-goup">
           <label class="label_input">
-            Prix :
+            Prix de départ :
           </label>
-          <input class="form-control" formControlName="price" id="price" type="number">
+          <input class="form-control" formControlName="startPrice" id="price" type="number">
         </div>
 
         <div class="form-goup">
           <label class="label_input">
-            Categorie produit :
+            Catégorie de l'enchère :
           </label>
           <input class="form-control" formControlName="category" id="categoryProduct" type="text">
         </div>
 
         <div class="form-goup">
           <label class="label_input">
-            Quantity
+            Date de fin :
           </label>
-          <input class="form-control" formControlName="quantity" id="quantity" type="text">
-        </div>
-
-        <div class="form-goup">
-          <label class="label_input">
-            Négociable :
-          </label>
-          <select formControlName="negotiable">
-            <option value="true">Oui</option>
-            <option value="false">Non</option>
-          </select>
-
-        </div>
-
-        <div class="form-goup">
-          <label class="label_input">
-            Image :
-          </label>
-          <input class="form-control" id="image" type="text">
+          <input class="form-control" formControlName="endDate" type="date">
         </div>
 
         <div class="form-goup">

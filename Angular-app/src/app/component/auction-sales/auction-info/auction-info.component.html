@@ -1,0 +1,93 @@
+<div class="main_block">
+  <div>
+    <div class="title left-title" (click)="showInfos()" [ngClass]="{'full-title' : this.authService.getConnectedUserId() !== auction?.creator?.id }" ><h2> Information produit </h2></div>
+    <div class="title right-title" *ngIf="this.authService.getConnectedUserId() === auction?.creator?.id" (click)="showProposals()"><h2> Proposition d'achat </h2></div>
+  </div>
+
+  <div class="infos-page" *ngIf="displayInfos == true">
+    <div class="left-side">
+      {{auctionImages[0]?.url}}
+      <img  [src]="'http://localhost:3000/TogetherWeAreOne/' + auctionImages[0]?.url">
+    </div>
+
+
+    <div class="right-side">
+
+      <div class="infos-group">
+        <label class="label_input">
+          Nom :
+        </label>
+        <div> {{auction?.name}} </div>
+      </div>
+
+      <div class="infos-group">
+        <label class="label_input">
+          Description :
+        </label>
+        <div id="product-description"> {{auction?.description}} </div>
+      </div>
+
+      <div class="infos-group">
+        <label class="label_input">
+          Prix actuel :
+        </label>
+        <div> {{auction?.actualPrice}} € </div>
+      </div>
+
+      <div class="infos-group">
+        <label class="label_input">
+          Categorie produit :
+        </label>
+        <div> {{auction?.category?.name}} </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="proposal-page" *ngIf="displayProposal == true">
+
+    <div  class="proposal-box" *ngFor="let proposal of auctionProposals">
+
+      <div class="left-proposal">
+        <div> De : {{proposal.user?.pseudo}}</div>
+        <div> Proposition : {{proposal.price}} €</div>
+      </div>
+
+      <div class="right-proposal">
+
+        <button class="btn btn-success action-button" >
+          Valider
+        </button>
+
+      </div>
+
+
+    </div>
+
+
+  </div>
+
+  <div *ngIf="this.authService.getConnectedUserId() !== auction?.creator?.id">
+    <button *ngIf="auction.state === 'ONGOING' " (click)="displayProposalForm()" > Faire une enchère </button>
+  </div>
+
+</div>
+
+
+<div id="overlay" (click)="closeInfos()"></div>
+<div id="proposal-interface">
+  <div>Faire une enchère</div>
+  <form [formGroup]="proposalForm" (submit)="makeProposal(auction)">
+
+    <div class="form-goup">
+      <mat-form-field appearance="legacy">
+        <mat-label>Prix</mat-label>
+        <input formControlName="price" matInput type="number" >
+      </mat-form-field>
+    </div>
+
+    <button type="submit"> valider </button>
+  </form>
+  <button (click)="closeProposalForm()"> annuler </button>
+</div>
+
