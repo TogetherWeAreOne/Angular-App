@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Inject, Input, OnInit} from '@angular/core';
 import {Product} from "../../../models/product.model";
 import {ProductProposal} from "../../../models/productProposal.model";
 import {ProductImage} from "../../../models/productImage.model";
@@ -13,6 +13,9 @@ import {AuctionSaleService} from "../../../services/auctionSale.service";
 import {AuctionSaleProposalService} from "../../../services/auctionSaleProposal.service";
 import {AuctionSaleProposal} from "../../../models/auctionSaleProposal.model";
 import {AuctionImageService} from "../../../services/auctionSaleImage.service";
+import {PageEvent} from '@angular/material/paginator';
+import { OwlOptions } from 'ngx-owl-carousel-o';
+import {AuctionSaleImage} from "../../../models/auctionSaleImage.model";
 
 @Component({
   selector: 'app-auction-info',
@@ -27,7 +30,33 @@ export class AuctionInfoComponent implements OnInit {
   displayInfos : boolean = true;
   displayProposal : boolean = false;
   auctionProposals : AuctionSaleProposal[] = [];
-  auctionImages : ProductImage[] = [];
+  auctionImages : AuctionSaleImage[] = [];
+  activeImage : number = 1;
+
+  customOptions: OwlOptions = {
+    loop: false,
+    mouseDrag: true,
+    touchDrag: true,
+    pullDrag: true,
+    dots: true,
+    navSpeed: 700,
+    navText: ['', ''],
+    responsive: {
+      0: {
+        items: 1
+      },
+      400: {
+        items: 2
+      },
+      740: {
+        items: 3
+      },
+      940: {
+        items: 4
+      }
+    },
+    nav: true
+  }
 
   proposalForm = this.fb.group({
     price: ["", [Validators.required]]
@@ -38,15 +67,17 @@ export class AuctionInfoComponent implements OnInit {
               private fb: FormBuilder,
               private auctionSaleService: AuctionSaleService,
               private auctionImageService: AuctionImageService,
-              private sanitizer:DomSanitizer) {}
+              private sanitizer:DomSanitizer,
+  ) {}
 
   ngOnInit(): void {
     this.auctionImageService.getAllImageByAuction(this.auction).subscribe(
       images => this.auctionImages = images,
       (err) => {
         console.log(err)},
-      () => { console.log(this.auctionImages )}
-    )
+      () => { }
+    );
+
   }
 
   loadProposal() {
@@ -85,12 +116,29 @@ export class AuctionInfoComponent implements OnInit {
         this.closeProposalForm();}
     );
   }
-
-  /*
-  buyProduct(product: Product){
-    this.auctionSaleProposalService.buyProduct(product.id!).subscribe();
+  changeActiveImage(n : number) {
+    this.showImages(n);
   }
-  */
+
+  showImages(n : number) {
+    this.activeImage = this.activeImage + n;
+    console.log(this.activeImage);
+    let slides = < HTMLCollectionOf<HTMLElement> > document.getElementsByClassName('image-container');
+    for (let j = 0; j < slides.length; j++){
+      slides[j] = slides[j] as HTMLElement;
+    }
+    console.log(slides);
+    if (this.activeImage > slides.length) {this.activeImage = 1}
+    if (this.activeImage < 1) {this.activeImage = slides.length}
+    for (let i = 0; i < slides.length; i++) {
+      slides[i].style.display = "none";
+    }
+    console.log('////////////');
+    console.log(this.activeImage-1);
+    console.log(slides[this.activeImage-1] as HTMLElement);
+    console.log(slides.item(this.activeImage-1) as HTMLElement);
+    slides.item(this.activeImage-1)!.style.display = "block";
+  }
 
 }
 

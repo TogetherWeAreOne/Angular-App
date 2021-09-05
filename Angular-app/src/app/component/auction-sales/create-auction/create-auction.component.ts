@@ -5,6 +5,8 @@ import {ProductService} from "../../../services/product.service";
 import {Product} from "../../../models/product.model";
 import {AuctionSaleService} from "../../../services/auctionSale.service";
 import {AuctionSale} from "../../../models/auctionSale.model";
+import {AuctionSaleCategoryService} from "../../../services/auctionSaleCategory.service";
+import {AuctionSaleCategory} from "../../../models/auctionSaleCategory.model";
 
 @Component({
   selector: 'app-create-auction',
@@ -15,31 +17,31 @@ export class CreateAuctionComponent implements OnInit {
 
   @Input() closeForm! : () => void;
   images!: File[];
+  auctionSaleCategories! : AuctionSaleCategory[];
 
   auctionSaleForm = this.fb.group({
     name: ["", [Validators.required]],
-    description: ['', [Validators.required]],
+    description: ["", [Validators.required]],
     startPrice: ["", [Validators.required]],
     endDate: ["", [Validators.required]],
     category: ["", [Validators.required]],
-    imagesAuctionSale: [[], [Validators.required]]
+    imagesAuctionSale: [[], []]
   })
 
   constructor(private authService: AuthService,
               private fb: FormBuilder,
-              private auctionSaleService: AuctionSaleService) {
+              private auctionSaleService: AuctionSaleService,
+              private auctionSaleCategoryService: AuctionSaleCategoryService) {
   }
 
   ngOnInit(): void {
+    this.auctionSaleCategoryService.getAllAuctionSaleCategory().subscribe(categories => this.auctionSaleCategories = categories);
   }
 
   onSubmit(): void {
-    console.log(this.auctionSaleForm.value);
     let auctionSale = (this.auctionSaleForm.value as AuctionSale);
     auctionSale.selled = false;
     auctionSale.sended = false;
-    console.log("*/*/*/*/**/*/*/*/*/*/*/*/*");
-    console.log(auctionSale);
     this.auctionSaleService.createAuctionSale(auctionSale, this.images).subscribe();
     this.auctionSaleForm.reset();
   }

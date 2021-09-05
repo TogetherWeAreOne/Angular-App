@@ -5,7 +5,7 @@
 
         <div class="form-goup">
           <mat-form-field appearance="legacy">
-            <mat-label>Nom produit</mat-label>
+            <mat-label>Nom de l'enchère</mat-label>
             <input formControlName="name" matInput type="text" >
           </mat-form-field>
         </div>
@@ -26,7 +26,7 @@
 
         <div class="form-goup">
           <mat-form-field appearance="fill">
-            <mat-label>Catégorie Produit</mat-label>
+            <mat-label>Catégorie Enchère</mat-label>
             <mat-select formControlName="category" multiple>
               <mat-option value=""></mat-option>
               <mat-option *ngFor="let category of auctionSaleCategories;" [value]="category.name"> {{category.name}}</mat-option>
@@ -127,5 +127,5 @@
 </div>
 
 <app-create-auction *ngIf="displayCreateForm" [closeForm]="closeCreateForm"></app-create-auction>
-<!-- <app-update-product *ngIf="displayUpdateForm" [closeForm]="closeUpdateForm" [product]="productFocus"></app-update-product> -->
+<app-update-auction *ngIf="displayUpdateForm" [closeForm]="closeUpdateForm" [auction]="auctionFocus"></app-update-auction>
 <app-auction-info *ngIf="displayInfos" [updateProduct]="updateProduct" [closeInfos]="closeInfos" [auction]="auctionFocus"></app-auction-info>

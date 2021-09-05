@@ -44,11 +44,6 @@ export class RegisterComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    /*this.filteredAdresses = this.registerForm.value.address.valueChanges.pipe(
-      startWith(''),
-      map(value => this._filter(value))
-    );*/
-
 
   }
 

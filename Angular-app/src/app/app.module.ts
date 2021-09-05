@@ -35,7 +35,9 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { MatPaginatorModule } from '@angular/material/paginator';
 
+import { CarouselModule } from 'ngx-owl-carousel-o';
 
 import { EventPageComponent } from './component/events/event-page/event-page.component';
 import { MyEventsComponent } from './component/events/my-events/my-events.component';
@@ -47,6 +49,7 @@ import { AuctionInfoComponent } from './component/auction-sales/auction-info/auc
 import { UpdateAuctionComponent } from './component/auction-sales/update-auction/update-auction.component';
 import { MyAuctionComponent } from './component/auction-sales/my-auction/my-auction.component';
 import { CreateAuctionComponent } from './component/auction-sales/create-auction/create-auction.component';
+import { MessageComponent } from './component/message/message.component';
 
 
 
@@ -103,6 +106,7 @@ const appRoutes: Routes = [
     UpdateAuctionComponent,
     MyAuctionComponent,
     CreateAuctionComponent,
+    MessageComponent,
   ],
   imports: [
     BrowserModule,
@@ -114,12 +118,14 @@ const appRoutes: Routes = [
     MatMenuModule,
     MatFormFieldModule,
     MatAutocompleteModule,
+    MatPaginatorModule,
     MatInputModule,
     MatIconModule,
     MatSelectModule,
     MatDatepickerModule,
     MatNativeDateModule,
     BrowserAnimationsModule,
+    CarouselModule
   ],
   providers: [
     CookieService,

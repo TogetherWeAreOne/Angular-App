@@ -1,6 +1,6 @@
 <div class="main_block col-6">
   <div class="row my-3">
-    <div class="col-12 text-center" style="background-color: #0a58ca">
+    <div class="col-12 text-center" style="background-color: #6DB1BF;  border-radius: 25px; padding: 20px;">
       <form [formGroup]="searchProductForm" (submit)="searchProduct()">
 
         <div class="form-goup">
@@ -62,8 +62,8 @@
 </div>
 
   <div class="row">
-    <div class="container alert-dark align-middle" style="border-radius: 25px; padding: 20px;">
-      <div *ngFor="let myProduct of myproducts" class="row alert-light py-4 m-4 " style="border-radius: 25px; padding: 20px" [ngClass]="{'available-product' : myProduct.state === 'AVAILABLE',
+    <div class="container align-middle" style="background-color: #6DB1BF; border-radius: 25px; padding: 20px;">
+      <div *ngFor="let myProduct of myproducts" class="row  py-4 m-4 " style="border-radius: 25px; padding: 20px" [ngClass]="{'available-product' : myProduct.state === 'AVAILABLE',
         'sold-product' : myProduct.state === 'SOLD'}">
         <div class="col-5 text-center">
           <img src="assets/bottle.jpg" alt="Product Image" class="img-thumbnail" height="150" width="150">
@@ -89,7 +89,7 @@
             </p>
           </div>
 
-          <div class="row">
+          <div class="row" style="word-break: break-all;">
             <p class="fst-italic">
               {{myProduct.description}}
             </p>
@@ -102,7 +102,7 @@
           </div>
 
           <div class="row action-button">
-            <button class="btn btn-primary" (click)="showInfos(myProduct)" >
+            <button class="btn btn-info" (click)="showInfos(myProduct)" >
               Infos
             </button>
           </div>

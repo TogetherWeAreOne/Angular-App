@@ -14,6 +14,7 @@ export class UpdateEventComponent implements OnInit {
   @Input() closeForm! : () => void;
   @Input() event! : Event;
   eventToUpdate! : Event ;
+  selectedType!: string;
 
   updateEventForm! : FormGroup;
 
@@ -26,7 +27,8 @@ export class UpdateEventComponent implements OnInit {
     console.log("/////////////////////")
     console.log(this.event);
 
-    this.eventService.getEventById(this.event.id!).subscribe( result => {(this.eventToUpdate = result)});
+    this.eventService.getEventById(this.event.id!).subscribe( result => {this.eventToUpdate = result;
+    this.selectedType = result.eventType!});
 
     this.updateEventForm = this.fb.group({
       title: [this.event.title, [Validators.required]],
@@ -36,7 +38,7 @@ export class UpdateEventComponent implements OnInit {
       eventType: [this.event.eventType, [Validators.required]],
       maxParticipant: [this.event.maxParticipant, ],
       minParticipant: [this.event.minParticipant, ],
-      image: ["ffeff", [Validators.required]],
+      image: ["ffeff", []],
       address: [this.event.address, [Validators.required]],
       zip: [this.event.zip, [Validators.required]],
       city: [this.event.city, [Validators.required]],

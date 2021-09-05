@@ -26,6 +26,7 @@
 
         <a routerLink="myProduct"><button mat-menu-item> Mes produits</button></a>
         <a routerLink="myEvent"><button mat-menu-item> Mes évènements</button></a>
+        <a routerLink="myAuctionSales"><button mat-menu-item> Mes ventes aux enchères</button></a>
         <button mat-menu-item (click)="logout()"> Déconnexion</button>
 
       </mat-menu>
@@ -37,7 +38,7 @@
 
     <div *ngIf="authService.isConnected()" class="navbar-button ">
       <button (click)="btnClick()">
-        message
+        Annonces
       </button>
     </div>
 

@@ -1,17 +1,23 @@
-import {Discussion} from "./discussion.model";
 import {User} from "./user.model";
+import {DiscussionUser} from "./discussionUser.model";
 
-export class DiscussionMessage {
-  id?: string;
-  content? : string;
-  user? : User;
-  discussion? : Discussion;
+export class Message {
+  id?: string
+  content?: string;
+  readed?: boolean;
+  sendedDate? : Date;
+  sender?: User;
+  receiver?: User;
+  discussion? : DiscussionUser;
 
 
-  constructor(id: string, content: string, user: User, discussion: Discussion) {
+  constructor(id: string, content: string, readed: boolean, sendedDate: Date, sender: User, receiver: User, discussion: DiscussionUser) {
     this.id = id;
     this.content = content;
-    this.user = user;
+    this.readed = readed;
+    this.sendedDate = sendedDate;
+    this.sender = sender;
+    this.receiver = receiver;
     this.discussion = discussion;
   }
 }

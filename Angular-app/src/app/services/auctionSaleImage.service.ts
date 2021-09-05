@@ -18,7 +18,7 @@ export class AuctionImageService {
 
   public getAllImageByAuction(auction : AuctionSale) : Observable<AuctionSaleImage[]>{
     console.log(auction.id);
-    return this.http.get<ProductImage[]>(`${environment.apiBaseUrl}/product/${auction.id}/getImages`) ;
+    return this.http.get<ProductImage[]>(`${environment.apiBaseUrl}/auctionSale/${auction.id}/getImages`) ;
   }
 
 }

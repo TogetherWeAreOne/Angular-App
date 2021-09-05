@@ -2,7 +2,6 @@ app-discussion-list{
   display: block;
   width: 30%;
   height: 90%;
-  background-color: rgba(250, 250, 250, 0.2);
   float: left;
 }
 
@@ -11,7 +10,6 @@ app-discussion-event-message-info{
   width: 30%;
   height: 90%;
   float: right;
-  background-color: rgba(130, 130, 130, 0.2);
 }
 
 app-discussion-event-message {
@@ -19,5 +17,4 @@ app-discussion-event-message {
   width: 40%;
   height: 90%;
   float: left;
-  background-color: rgba(0,0,0,0.2);
 }

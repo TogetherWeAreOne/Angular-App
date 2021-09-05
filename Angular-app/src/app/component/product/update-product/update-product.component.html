@@ -6,52 +6,55 @@
     <form [formGroup]="updateProductForm">
 
       <div class="main-side-form">
+
         <div class="form-goup">
-          <label class="label_input">
-            Nom :
-          </label>
-          <input class="form-control" formControlName="name" id="name" type="text" value="{{productToUpdate?.name}}">
+
+          <mat-form-field appearance="legacy">
+            <mat-label>Titre : </mat-label>
+            <input formControlName="name" matInput placeholder="titre" type="text" value="{{productToUpdate?.name}}">
+            <mat-hint> hint </mat-hint>
+          </mat-form-field>
+
         </div>
 
         <div class="form-goup">
-          <label class="label_input">
-            Description :
-          </label>
-          <input class="form-control" formControlName="description" id="description" type="text" value="{{productToUpdate?.description}}">
+
+          <mat-form-field appearance="legacy">
+            <mat-label>Description :</mat-label>
+            <input formControlName="description" matInput placeholder="description" type="text" value="{{productToUpdate?.description}}">
+            <mat-hint> hint </mat-hint>
+          </mat-form-field>
+
         </div>
 
         <div class="form-goup">
-          <label class="label_input">
-            Prix :
-          </label>
-          <input class="form-control" formControlName="price" id="price" type="number" value="{{productToUpdate?.price}}">
+
+          <mat-form-field appearance="legacy">
+            <mat-label>Prix :</mat-label>
+            <input formControlName="price" matInput placeholder="" type="number" value="{{productToUpdate?.price}}">
+            <mat-hint> hint </mat-hint>
+          </mat-form-field>
+
         </div>
 
         <div class="form-goup">
-          <label class="label_input">
-            Categorie produit :
-          </label>
-          <select class="form-control" formControlName="category" >
-            <option *ngFor="let category of productCategories;" [value]="category.name" [selected]="category.name === productToUpdate?.category?.name"> {{category.name}}</option>
-          </select>
+          <mat-form-field appearance="fill">
+            <mat-label>Catégorie produit</mat-label>
+            <mat-select formControlName="category" [(value)]="selectedcCategory">
+              <mat-option value=""></mat-option>
+              <mat-option *ngFor="let category of productCategories;" [value]="category.name"> {{category.name}}</mat-option>
+            </mat-select>
+          </mat-form-field>
         </div>
 
         <div class="form-goup">
-          <label class="label_input">
-            Quantity
-          </label>
-          <input class="form-control" formControlName="quantity" id="quantity" type="text" [defaultValue]=productToUpdate?.quantity>
-        </div>
-
-        <div class="form-goup">
-          <label class="label_input">
-            Négociable :
-          </label>
-          <select class="form-control" formControlName="negotiable" >
-            <option value="true" [selected]="productToUpdate?.negotiable === 'TRUE'"> Oui </option>
-            <option value="false" [selected]="productToUpdate?.negotiable === 'FALSE'"> Non </option>
-          </select>
-
+          <mat-form-field appearance="fill">
+            <mat-label>Négociable :</mat-label>
+            <mat-select formControlName="negotiable" [(value)]="selectedNegotiable">
+              <mat-option value="TRUE" >Oui</mat-option>
+              <mat-option value="FALSE" >Non</mat-option>
+            </mat-select>
+          </mat-form-field>
         </div>
 
       </div>

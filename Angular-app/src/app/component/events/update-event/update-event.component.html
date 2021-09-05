@@ -7,45 +7,46 @@
 
       <div class="main-side-form">
         <div class="form-goup">
-          <label class="label_input">
-            Title :
-          </label>
-          <input class="form-control" formControlName="title" id="name" type="text" value="{{eventToUpdate?.title}}">
+          <mat-form-field appearance="legacy">
+            <mat-label>Intitulé</mat-label>
+            <input formControlName="title" matInput placeholder="Intitulé" type="text" value="{{eventToUpdate?.title}}" >
+            <mat-hint>hint </mat-hint>
+          </mat-form-field>
         </div>
 
         <div class="form-goup">
-          <label class="label_input">
-            Description :
-          </label>
-          <input class="form-control" formControlName="description" id="description" type="text" value="{{eventToUpdate?.description}}">
+          <mat-form-field appearance="legacy">
+            <mat-label>Description :</mat-label>
+            <input formControlName="description" matInput placeholder="Description" type="text" value="{{eventToUpdate?.description}}">
+            <mat-hint>hint </mat-hint>
+          </mat-form-field>
         </div>
 
         <div class="form-goup">
-          <label class="label_input">
-            Type d'évenement :
-          </label>
-          <select class="form-control" formControlName="eventType" >
-            <option value="HUMANITARIAN" [selected]="eventToUpdate?.eventType === 'HUMANITARIAN'"> Humanitaire </option>
-            <option value="ECOLOGICAL" [selected]="eventToUpdate?.eventType === 'ECOLOGICAL'"> Ecologique </option>
-          </select>
-
+          <mat-form-field appearance="fill">
+            <mat-label>Type d'évenement :</mat-label>
+            <mat-select formControlName="eventType" [(value)]="selectedType">
+              <mat-option value="HUMANITARIAN"> Humanitaire</mat-option>
+              <mat-option value="ECOLOGICAL"> Ecologique</mat-option>
+            </mat-select>
+          </mat-form-field>
         </div>
 
         <div class="form-goup">
-          <label class="label_input">
-            min participant
-          </label>
-          <input class="form-control" formControlName="minParticipant"  type="text" [defaultValue]=eventToUpdate?.minParticipant>
+          <mat-form-field appearance="legacy">
+            <mat-label>Nombre de participant minimal</mat-label>
+            <input formControlName="minParticipant" matInput placeholder="min participant" type="number" [defaultValue]=eventToUpdate?.minParticipant >
+            <mat-hint>hint </mat-hint>
+          </mat-form-field>
         </div>
 
         <div class="form-goup">
-          <label class="label_input">
-            max participant
-          </label>
-          <input class="form-control" formControlName="maxParticipant"  type="text" [defaultValue]=eventToUpdate?.maxParticipant>
+          <mat-form-field appearance="legacy">
+            <mat-label>Nombre de participant maximal</mat-label>
+            <input formControlName="maxParticipant" matInput placeholder="min participant" type="number" [defaultValue]=eventToUpdate?.maxParticipant >
+            <mat-hint>hint </mat-hint>
+          </mat-form-field>
         </div>
-
-
 
       </div>
 

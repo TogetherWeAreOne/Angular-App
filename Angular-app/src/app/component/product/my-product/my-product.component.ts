@@ -45,10 +45,10 @@ export class MyProductComponent implements OnInit {
 
   searchProduct(){
     this.myproducts = this.myProductCopy;
-    this.searchProductForm.value.name = this.searchProductForm.value.name === "" ? '.*' : this.searchProductForm.value.name + '*';
+    this.searchProductForm.value.name = this.searchProductForm.value.name === "" ? '.*' : (this.searchProductForm.value.name === '.*' ? '.*' :this.searchProductForm.value.name + '*');
     this.searchProductForm.value.minPrice = this.searchProductForm.value.minPrice === "" ? 0 : this.searchProductForm.value.minPrice ;
     this.searchProductForm.value.maxPrice = this.searchProductForm.value.maxPrice === "" ? 99999999999999999 : this.searchProductForm.value.maxPrice ;
-    this.searchProductForm.value.negotiable = this.searchProductForm.value.negotiable === "" ? '.*' : this.searchProductForm.value.negotiable;
+    this.searchProductForm.value.negotiable = this.searchProductForm.value.negotiable === "" ? '.*' : (this.searchProductForm.value.negotiable === '.*' ? '.*' :this.searchProductForm.value.negotiable);
     if( this.searchProductForm.value.category.length === 0){
       this.searchProductForm.value.category.push("");
     }

@@ -6,8 +6,17 @@
 
   <div class="infos-page" *ngIf="displayInfos == true">
     <div class="left-side">
-      {{productImages[0]?.url}}
-      <img [src]="'http://localhost:3000/TogetherWeAreOne/' + productImages[0]?.url">
+
+      <mat-paginator [length]="length"
+                     [pageSize]="pageSize"
+                     (page)="pageEvent = $event"
+                     aria-label="Select page">
+      </mat-paginator>
+
+      <div *ngIf="pageEvent">
+        <img class="image" [src]="'http://localhost:3000/TogetherWeAreOne/' + productImages[pageEvent.pageIndex]?.url">
+      </div>
+
     </div>
 
 

@@ -1,44 +1,63 @@
 <div class="main_block">
-  <div id="title"><h2> Création de produit </h2></div>
+  <div id="title"><h2> Création de vente aux enchères </h2></div>
 
   <div>
 
     <form [formGroup]="auctionSaleForm">
 
       <div class="main-side-form">
+
         <div class="form-goup">
-          <label class="label_input">
-            Nom :
-          </label>
-          <input class="form-control" formControlName="name" id="name" type="text">
+
+          <mat-form-field appearance="legacy">
+            <mat-label>Titre : </mat-label>
+            <input formControlName="name" matInput placeholder="titre" type="text" >
+            <mat-hint> hint </mat-hint>
+          </mat-form-field>
+
+        </div>
+
+
+        <div class="form-goup">
+
+          <mat-form-field appearance="legacy">
+            <mat-label>Description :</mat-label>
+            <input formControlName="description" matInput placeholder="description" type="text" >
+            <mat-hint> hint </mat-hint>
+          </mat-form-field>
+
+        </div>
+
+
+        <div class="form-goup">
+
+          <mat-form-field appearance="legacy">
+            <mat-label>Prix de départ :</mat-label>
+            <input formControlName="startPrice" matInput placeholder="" type="number" >
+            <mat-hint> hint </mat-hint>
+          </mat-form-field>
+
         </div>
 
         <div class="form-goup">
-          <label class="label_input">
-            Description :
-          </label>
-          <input class="form-control" formControlName="description" id="description" type="text">
+          <mat-form-field appearance="fill">
+            <mat-label>Catégorie Enchère</mat-label>
+            <mat-select formControlName="category" >
+              <mat-option value=""></mat-option>
+              <mat-option *ngFor="let category of auctionSaleCategories;" [value]="category.name"> {{category.name}}</mat-option>
+            </mat-select>
+          </mat-form-field>
         </div>
 
         <div class="form-goup">
-          <label class="label_input">
-            Prix de départ :
-          </label>
-          <input class="form-control" formControlName="startPrice" id="price" type="number">
-        </div>
 
-        <div class="form-goup">
-          <label class="label_input">
-            Catégorie de l'enchère :
-          </label>
-          <input class="form-control" formControlName="category" id="categoryProduct" type="text">
-        </div>
+          <mat-form-field appearance="fill">
+            <mat-label>Date de fin :</mat-label>
+            <input matInput formControlName="endDate" [matDatepicker]="picker">
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+          </mat-form-field>
 
-        <div class="form-goup">
-          <label class="label_input">
-            Date de fin :
-          </label>
-          <input class="form-control" formControlName="endDate" type="date">
         </div>
 
         <div class="form-goup">
@@ -50,7 +69,7 @@
 
       </div>
 
-      <button (click)="onSubmit()" class="btn btn-danger"> Créer le produit</button>
+      <button (click)="onSubmit()" class="btn btn-danger" [disabled]="!auctionSaleForm.valid"> Créer la vente </button>
 
     </form>
 

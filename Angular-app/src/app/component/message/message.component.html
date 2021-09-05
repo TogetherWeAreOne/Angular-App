@@ -1,0 +1,76 @@
+<div id="message">
+
+  <div id="header" >
+    <div class="container">
+      <div class="row">
+        <button (click)="backToDiscussionList()" class="col-2 offset-1" *ngIf="displayDiscussionMessage === true"> <mat-icon>keyboard_backspace</mat-icon> </button>
+        <div class="col-4" ><p style="display: block">Message</p></div>
+        <button class="col-2" (click)="openMessage()" *ngIf="displayMessage === true && displayDiscussionMessage === false"> <mat-icon> add_comment</mat-icon> </button>
+        <button class="col-2" (click)="closeMessage()" *ngIf="displayMessage === true"> <mat-icon>keyboard_arrow_down</mat-icon> </button>
+        <button class="col-2" (click)="openMessage()" *ngIf="displayMessage === false"> <mat-icon>keyboard_arrow_up</mat-icon> </button>
+      </div>
+    </div>
+  </div>
+
+  <div id="content">
+
+    <div id="discussion">
+
+      <div *ngFor="let discussion of myDiscussion" (click)="showMessage(discussion)" >
+
+        <div class="discussion-info">
+          <p> {{discussion.interlocutor?.pseudo}}</p>
+          <p> {{discussion.lastMessageDate}}</p>
+        </div>
+
+      </div>
+
+    </div>
+
+    <div id="message-block">
+
+      <div id="message-zone">
+
+        <div *ngFor="let messages of discussionMessages" [class]="{'my-message' : messages.sender?.id === this.authService.getConnectedUserId(),
+        'interlocutor-message' : messages.sender?.id !== this.authService.getConnectedUserId()}">
+          <p> {{messages.receiver?.id +'5'}}</p>
+          <p> {{this.authService.getConnectedUserId()}}</p>
+          <p> {{messages.content}}</p>
+          <p> {{messages.sendedDate}}</p>
+        </div>
+
+      </div>
+
+      <div id="message-sender">
+        <div>
+          <form [formGroup]="messageForm">
+            <input type="text" formControlName="content"  style="width: 70%" id="message-input" > <button (click)="onSubmit()">envoyer</button>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <div id="user-selector">
+
+      <mat-form-field appearance="legacy">
+        <mat-label>Chercher un utilisateur</mat-label>
+        <input type="text"
+               placeholder="Adresse"
+               matInput
+               (input)="filter($event)"
+               formControlName="address"
+               [matAutocomplete]="auto">
+        <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+          <mat-option *ngFor="let user of userAutocomplete " [value]="user?.pseudo" (click)="launchDiscussion(user)">
+            {{user?.pseudo}}
+          </mat-option>
+        </mat-autocomplete>
+      </mat-form-field>
+
+    </div>
+
+  </div>
+
+</div>
+
+

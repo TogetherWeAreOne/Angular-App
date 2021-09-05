@@ -5,6 +5,7 @@ import {ProductProposalService} from "../../../services/productProposal.service"
 import {EventParticipantService} from "../../../services/eventParticipant.service";
 import {EventService} from "../../../services/event.service";
 import {EventParticipant} from "../../../models/eventParticipant.model";
+import { Loader } from '@googlemaps/js-api-loader';
 
 @Component({
   selector: 'app-info-event',
@@ -23,8 +24,30 @@ export class InfoEventComponent implements OnInit {
 
   ngOnInit(): void {
     this.loadParticipant();
-  }
+    let loader = new Loader({
+      apiKey: 'AIzaSyB-B4PlR1Wt6s-LUqY8S8x81pobAKuznmE'
+    })
 
+    let mapOptions = {
+      zoom : 15,
+      center: {
+        lat: this.event.latitude!,
+        lng: this.event.longitude!
+      }
+    }
+
+    loader.load().then( () => {
+       var map = new google.maps.Map(document.getElementById('map')!, mapOptions);
+       var marker = new google.maps.Marker({
+         position : {
+           lat: this.event.latitude!,
+           lng: this.event.longitude!
+         },
+         map : map
+         }
+       )
+    })
+  }
 
   loadParticipant() {
     this.eventParicipantService.getParticipants(this.event.id!).subscribe(
@@ -33,23 +56,13 @@ export class InfoEventComponent implements OnInit {
   }
 
   showInfos(){
-    console.log(this.event);
-    console.log("////////////////");
-    //this.loadParticipant();
-    console.log("adri");
     this.displayInfos = true;
     this.displayProposal = false;
   }
 
   showParticipant(){
-
-    console.log(this.event)
     this.displayInfos = false;
     this.displayProposal = true;
-    console.log(this.eventParticipant);
-    console.log(this.event.id);
-    console.log("//////");
-    console.log(this.eventParticipant.length);
   }
 
   test(){

@@ -124,3 +124,25 @@
 .full-title{
   width: 100%;
 }
+
+.image{
+  width: 100%;
+  height: 95%;
+}
+
+.carousel-owl{
+  width: 100%;
+  height: 95%;
+}
+
+.pending-auction{
+  background-color: orange;
+}
+
+.refused-auction{
+  background-color: red;
+}
+
+.accepted-auction{
+  background-color: green;
+}

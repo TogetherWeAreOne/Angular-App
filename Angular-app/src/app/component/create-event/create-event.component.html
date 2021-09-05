@@ -48,8 +48,6 @@
           </mat-form-field>
         </div>
 
-
-
       </div>
 
       <div class="right-side-form">
@@ -70,26 +68,33 @@
           </mat-form-field>
         </div>
 
-        <div class="form-goup">
-          <mat-form-field appearance="legacy">
-            <mat-label>Lieu</mat-label>
-            <input formControlName="address" matInput placeholder="Adresse" type="text" >
-            <mat-hint>hint </mat-hint>
-          </mat-form-field>
-        </div>
+        <mat-form-field appearance="legacy">
+          <mat-label>Number</mat-label>
+          <input type="text"
+                 placeholder="Adresse"
+                 matInput
+                 (input)="filter($event)"
+                 formControlName="address"
+                 [matAutocomplete]="auto">
+          <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+            <mat-option *ngFor="let option of options " [value]="option" (click)="setAddress(option)">
+              {{option?.properties?.label}}
+            </mat-option>
+          </mat-autocomplete>
+        </mat-form-field>
 
         <div class="form-goup">
           <mat-form-field appearance="legacy">
             <mat-label>Code postal</mat-label>
-            <input formControlName="zip" matInput placeholder="Code postal" type="text" >
+            <input formControlName="zip" matInput placeholder="Code postal" type="text" readonly >
             <mat-hint>hint </mat-hint>
           </mat-form-field>
         </div>
 
         <div class="form-goup">
           <mat-form-field appearance="legacy">
-            <mat-label>Pays</mat-label>
-            <input formControlName="country" matInput placeholder="Pays" type="text" >
+            <mat-label>Ville</mat-label>
+            <input formControlName="city" matInput placeholder="Ville" type="text" readonly>
             <mat-hint>hint </mat-hint>
           </mat-form-field>
         </div>

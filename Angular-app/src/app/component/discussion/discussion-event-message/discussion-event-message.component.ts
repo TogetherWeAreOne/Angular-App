@@ -23,6 +23,7 @@ export class DiscussionEventMessageComponent implements OnInit {
   messageForm = this.fb.group({
     content: ["", [Validators.required]]
   });
+  @ViewChild('scrollMe') private myScrollContainer!: ElementRef;
 
 
   constructor(private fb: FormBuilder, private discussionService : DiscussionService, private eventService : EventService, private authService: AuthService) { }
@@ -31,16 +32,20 @@ export class DiscussionEventMessageComponent implements OnInit {
   }
 
   ngOnChanges() {
-    this.loadMessage();
-    console.log(this.messages);
-    this.getEvent();
+    if (this.discussion !== undefined) {
+      this.loadMessage();
+      console.log(this.messages);
+      this.getEvent();
+      this.scrollToBottom();
+    }
   }
 
   loadMessage(): void {
     this.discussionService.getMessageByDiscussion(this.discussion.id!).subscribe(
       value => this.messages = value,
       () => {},
-      () => this.messages.sort((x, y) => +new Date(x.date!) - +new Date(y.date!))
+      () => {this.messages.sort((x, y) => +new Date(x.date!) - +new Date(y.date!));
+                      this.scrollToBottom()}
     )
   }
 
@@ -62,8 +67,19 @@ export class DiscussionEventMessageComponent implements OnInit {
   }
 
   onSubmit(): void{
-    this.discussionService.sendMessage(this.messageForm.value, this.discussion.id!).subscribe();
+    this.discussionService.sendMessage(this.messageForm.value, this.discussion.id!).subscribe(
+      message => this.messages.push(message),
+      ()=>{},
+      ()=>{this.scrollToBottom()}
+    );
     this.messageForm.reset();
+    this.scrollToBottom()
+  }
+
+  scrollToBottom(): void {
+    try {
+      this.myScrollContainer.nativeElement.scrollTop = this.myScrollContainer.nativeElement.scrollHeight;
+    } catch(err) { }
   }
 
 }

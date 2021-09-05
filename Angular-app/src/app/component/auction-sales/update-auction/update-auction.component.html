@@ -1,1 +1,51 @@
-<p>update-auction works!</p>
+<div class="main_block">
+  <div id="title"><h2> Modification produit </h2></div>
+
+  <div>
+
+    <form [formGroup]="updateAuctionForm">
+
+      <div class="main-side-form">
+
+        <div class="form-goup">
+
+          <mat-form-field appearance="legacy">
+            <mat-label>Titre : </mat-label>
+            <input formControlName="name" matInput placeholder="titre" type="text" value="{{auctionToUpdate?.name}}">
+            <mat-hint> hint </mat-hint>
+          </mat-form-field>
+
+        </div>
+
+        <div class="form-goup">
+
+          <mat-form-field appearance="legacy">
+            <mat-label>Description :</mat-label>
+            <input formControlName="description" matInput placeholder="description" type="text" value="{{auctionToUpdate?.description}}">
+            <mat-hint> hint </mat-hint>
+          </mat-form-field>
+
+        </div>
+
+        <div class="form-goup">
+          <mat-form-field appearance="fill">
+            <mat-label>Catégorie produit</mat-label>
+            <mat-select formControlName="category" [(value)]="selectedCategory">
+              <mat-option value=""></mat-option>
+              <mat-option *ngFor="let category of auctionSaleCategories;" [value]="category.name"> {{category.name}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+
+      </div>
+
+      <button (click)="onSubmit()" class="btn btn-danger"> Modifier le produit</button>
+
+    </form>
+
+  </div>
+
+</div>
+
+
+<div id="overlay" (click)="closeFormF()"></div>

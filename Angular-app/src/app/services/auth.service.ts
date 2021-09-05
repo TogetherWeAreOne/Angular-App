@@ -32,6 +32,10 @@ export class AuthService {
       }));
   }
 
+  public searchUsers(pseudo : string) : Observable<User[]> {
+    return this.http.get<User[]>(`${environment.apiBaseUrl}/user/searchUser/${pseudo}`);
+  }
+
   public getConnectedUserId(): string {
     return this.cookieService.get('user');
   }

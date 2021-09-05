@@ -8,6 +8,7 @@ import {ProductService} from "../../../services/product.service";
 import {ProductImage} from "../../../models/productImage.model";
 import {ProductImageService} from "../../../services/productImage.service";
 import {DomSanitizer} from '@angular/platform-browser';
+import {PageEvent} from "@angular/material/paginator";
 
 @Component({
   selector: 'app-info-product',
@@ -23,6 +24,10 @@ export class InfoProductComponent implements OnInit {
   displayProposal : boolean = false;
   productProposals : ProductProposal[] = [];
   productImages : ProductImage[] = [];
+  pageEvent!: PageEvent;
+  length = 100;
+  startPaginaor : boolean = true;
+  pageSize = 1;
 
   proposalForm = this.fb.group({
     price: ["", [Validators.required]],
@@ -45,7 +50,7 @@ export class InfoProductComponent implements OnInit {
       images => this.productImages = images,
       (err) => {
         console.log(err)},
-      () => { console.log(this.productImages )}
+      () => { this.length = this.productImages.length }
     )
   }
 

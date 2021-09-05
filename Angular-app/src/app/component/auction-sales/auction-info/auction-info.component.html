@@ -1,13 +1,25 @@
 <div class="main_block">
   <div>
-    <div class="title left-title" (click)="showInfos()" [ngClass]="{'full-title' : this.authService.getConnectedUserId() !== auction?.creator?.id }" ><h2> Information produit </h2></div>
+    <div class="title left-title" (click)="showInfos()" [ngClass]="{'full-title' : this.authService.getConnectedUserId() !== auction?.creator?.id }" ><h2> Information enchère </h2></div>
     <div class="title right-title" *ngIf="this.authService.getConnectedUserId() === auction?.creator?.id" (click)="showProposals()"><h2> Proposition d'achat </h2></div>
   </div>
 
   <div class="infos-page" *ngIf="displayInfos == true">
     <div class="left-side">
-      {{auctionImages[0]?.url}}
-      <img  [src]="'http://localhost:3000/TogetherWeAreOne/' + auctionImages[0]?.url">
+
+      <owl-carousel-o [options]="customOptions"  >
+
+        <ng-container *ngFor="let image of auctionImages">
+          <ng-template carouselSlide  [id]="image.id!">
+            <div style="display: inline">
+            <img width="500" height="500"  [src]="'http://localhost:3000/TogetherWeAreOne/' + image.url" >
+            </div>
+          </ng-template>
+        </ng-container>
+
+      </owl-carousel-o>
+
+
     </div>
 
 
@@ -29,6 +41,13 @@
 
       <div class="infos-group">
         <label class="label_input">
+          Prix de départ :
+        </label>
+        <div> {{auction?.startPrice}} € </div>
+      </div>
+
+      <div class="infos-group">
+        <label class="label_input">
           Prix actuel :
         </label>
         <div> {{auction?.actualPrice}} € </div>
@@ -36,7 +55,7 @@
 
       <div class="infos-group">
         <label class="label_input">
-          Categorie produit :
+          Categorie enchère :
         </label>
         <div> {{auction?.category?.name}} </div>
       </div>
@@ -46,29 +65,25 @@
 
   <div class="proposal-page" *ngIf="displayProposal == true">
 
-    <div  class="proposal-box" *ngFor="let proposal of auctionProposals">
+    <div  class="proposal-box" *ngFor="let proposal of auctionProposals" [ngClass]="{'pending-auction' : proposal.state === 'PENDING',
+        'refused-auction' : proposal.state === 'REFUSED', 'accepted-auction' : proposal.state === 'ACCEPTED' }">
 
       <div class="left-proposal">
         <div> De : {{proposal.user?.pseudo}}</div>
         <div> Proposition : {{proposal.price}} €</div>
+        <div> Etat : {{proposal.state === 'PENDING'? 'En cours' : (proposal.state === 'REFUSED' ? 'Refusée' : 'Acceptée') }} </div>
       </div>
 
       <div class="right-proposal">
-
-        <button class="btn btn-success action-button" >
-          Valider
-        </button>
-
       </div>
 
 
     </div>
 
-
   </div>
 
   <div *ngIf="this.authService.getConnectedUserId() !== auction?.creator?.id">
-    <button *ngIf="auction.state === 'ONGOING' " (click)="displayProposalForm()" > Faire une enchère </button>
+    <button *ngIf="auction.state === 'ONGOING' && this.authService.getConnectedUserId() !== auction?.creator?.id" (click)="displayProposalForm()" > Faire une enchère </button>
   </div>
 
 </div>

@@ -23,8 +23,10 @@ export class DiscussionEventMessageInfoComponent implements OnInit {
   }
 
   ngOnChanges() {
-    this.eventToDisplay = this.discussion.event;
-    this.getParticipant();
+    if (this.discussion !== undefined) {
+      this.eventToDisplay = this.discussion.event;
+      this.getParticipant();
+    }
   }
 
   loadEvent() : void {

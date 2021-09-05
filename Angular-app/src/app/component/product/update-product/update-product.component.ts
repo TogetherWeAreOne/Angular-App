@@ -19,6 +19,8 @@ export class UpdateProductComponent implements OnInit {
   @Input() product! : Product;
   productToUpdate! : Product ;
   productCategories! : ProductCategory[];
+  selectedNegotiable!: string;
+  selectedcCategory!: string;
 
   updateProductForm! : FormGroup;
 
@@ -30,11 +32,14 @@ export class UpdateProductComponent implements OnInit {
 
 
   ngOnInit(): void {
-    console.log("/////////////////////")
-    console.log(this.product);
     this.productCategoryService.getAllProductCategory().subscribe(categories => this.productCategories = categories);
-    this.productService.getProductById(this.product.id!).subscribe( result => {(this.productToUpdate = result)});
-
+    this.productService.getProductById(this.product.id!).subscribe( result => {
+      this.productToUpdate = result;
+      this.selectedNegotiable = result.negotiable!;
+      this.selectedcCategory = result.category!.name;
+      console.log(this.selectedNegotiable);
+      console.log(this.selectedcCategory);
+    });
     this.updateProductForm = this.fb.group({
       name: [this.product.name, [Validators.required]],
       description: [this.product.description, [Validators.required]],

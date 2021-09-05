@@ -7,56 +7,63 @@
 
       <div class="main-side-form">
         <div class="form-goup">
-          <label class="label_input">
-            Nom :
-          </label>
-          <input class="form-control" formControlName="name" id="name" type="text">
-        </div>
 
-        <div class="form-goup">
-          <label class="label_input">
-            Description :
-          </label>
-          <input class="form-control" formControlName="description" id="description" type="text">
-        </div>
-
-        <div class="form-goup">
-          <label class="label_input">
-            Prix :
-          </label>
-          <input class="form-control" formControlName="price" id="price" type="number">
-        </div>
-
-        <div class="form-goup">
-          <label class="label_input">
-            Categorie produit :
-          </label>
-          <input class="form-control" formControlName="category" id="categoryProduct" type="text">
-        </div>
-
-        <div class="form-goup">
-          <label class="label_input">
-            Quantity
-          </label>
-          <input class="form-control" formControlName="quantity" id="quantity" type="text">
-        </div>
-
-        <div class="form-goup">
-          <label class="label_input">
-            Négociable :
-          </label>
-          <select formControlName="negotiable">
-            <option value="true">Oui</option>
-            <option value="false">Non</option>
-          </select>
+          <mat-form-field appearance="legacy">
+            <mat-label>Titre : </mat-label>
+            <input formControlName="name" matInput placeholder="titre" type="text" >
+            <mat-hint> hint </mat-hint>
+          </mat-form-field>
 
         </div>
 
         <div class="form-goup">
-          <label class="label_input">
-            Image :
-          </label>
-          <input class="form-control" id="image" type="text">
+
+          <mat-form-field appearance="legacy">
+            <mat-label>Description :</mat-label>
+            <input formControlName="description" matInput placeholder="description" type="text" >
+            <mat-hint> hint </mat-hint>
+          </mat-form-field>
+
+        </div>
+
+        <div class="form-goup">
+
+          <mat-form-field appearance="legacy">
+            <mat-label>Prix :</mat-label>
+            <input formControlName="price" matInput placeholder="" type="number" >
+            <mat-hint> hint </mat-hint>
+          </mat-form-field>
+
+        </div>
+
+        <div class="form-goup">
+          <mat-form-field appearance="fill">
+            <mat-label>Catégorie produit</mat-label>
+            <mat-select formControlName="category" >
+              <mat-option value=""></mat-option>
+              <mat-option *ngFor="let category of productCategories;" [value]="category.name"> {{category.name}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+
+        <div class="form-goup">
+
+          <mat-form-field appearance="legacy">
+            <mat-label>Quantity :</mat-label>
+            <input formControlName="quantity" matInput placeholder="" type="number" >
+            <mat-hint> hint </mat-hint>
+          </mat-form-field>
+
+        </div>
+
+        <div class="form-goup">
+          <mat-form-field appearance="fill">
+            <mat-label>Négociable :</mat-label>
+            <mat-select formControlName="negotiable">
+              <mat-option value="true">Oui</mat-option>
+              <mat-option value="false">Non</mat-option>
+            </mat-select>
+          </mat-form-field>
         </div>
 
         <div class="form-goup">
@@ -68,7 +75,7 @@
 
       </div>
 
-      <button (click)="onSubmit()" class="btn btn-danger"> Créer le produit</button>
+      <button (click)="onSubmit()" class="btn btn-danger" [disabled]="!productForm.valid"> Créer le produit</button>
 
     </form>
 

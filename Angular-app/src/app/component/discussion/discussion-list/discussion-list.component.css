@@ -2,10 +2,12 @@
   width: 100%;
   height: 15%;
   text-align: center;
-  background-color: rgba(21, 255, 91, 0.3);
+  background-color:  #6DB1BF;
   display: flex;
   justify-content: center;
   align-items: center;
+  border-right: solid 1px;
+  border-bottom: solid 1px;
 }
 
 .title div{
@@ -16,8 +18,9 @@
 }
 
 .discussion-card-block{
-  max-height: 85%;
+  height: 85%;
   overflow-y: auto;
+  border-right: solid 1px;
 }
 
 .discussion-card{

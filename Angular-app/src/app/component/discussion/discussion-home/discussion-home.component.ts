@@ -31,7 +31,13 @@ export class DiscussionHomeComponent implements OnInit {
       this.eventParticipantService.getMyParticipation().subscribe(
         value => this.eventsParticipation = value,
         value => {},
-        () => this.loadDiscussion()
+        () => {
+          for (let i = 0; i < this.eventsParticipation.length; i++) {
+            if (this.eventsParticipation[i].event === null) {
+              this.eventsParticipation.splice(i, 1);
+              i--;
+            }
+          };this.loadDiscussion()}
       );
   }
 

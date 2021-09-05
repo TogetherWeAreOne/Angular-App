@@ -1,5 +1,4 @@
 .main_block{
-
   margin: auto;
   margin-top: 50px;
 }
@@ -15,7 +14,7 @@
 }
 
 .available-product{
-  background-color: rgba(156, 255, 128, 0.5);
+  background-color: rgba(115, 161, 83, 0.91);
 }
 
 .sold-product{

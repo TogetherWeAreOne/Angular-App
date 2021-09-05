@@ -18,7 +18,7 @@ export class AuctionSaleCategoryService {
   }
 
   public getAllAuctionSaleCategory() : Observable<AuctionSaleCategory[]>{
-    return this.http.get<AuctionSaleCategory[]>(`${environment.apiBaseUrl}/productCategory/getAll`) ;
+    return this.http.get<AuctionSaleCategory[]>(`${environment.apiBaseUrl}/auctionSaleCategory/getAll`) ;
   }
 
 }

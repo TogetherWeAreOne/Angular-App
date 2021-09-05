@@ -39,9 +39,9 @@ export class MyEventsComponent implements OnInit {
 
   searchEvent(){
     this.myEvents = this.myEventsCopy;
-    this.searchEventForm.value.title = this.searchEventForm.value.title === "" ? '.*' : this.searchEventForm.value.title + '*';
-    this.searchEventForm.value.eventType = this.searchEventForm.value.eventType === "" ? '.*' : this.searchEventForm.value.eventType + '*';
-    this.searchEventForm.value.zip = this.searchEventForm.value.zip === "" ? '.*' : this.searchEventForm.value.zip + '[0-9]{3}';
+    this.searchEventForm.value.title = this.searchEventForm.value.title === "" ? '.*' : (this.searchEventForm.value.title === '.*' ? '.*' : this.searchEventForm.value.title + '*');
+    this.searchEventForm.value.eventType = this.searchEventForm.value.eventType === "" ? '.*' : (this.searchEventForm.value.eventType === '.*' ? '.*' : this.searchEventForm.value.eventType + '*');
+    this.searchEventForm.value.zip = this.searchEventForm.value.zip === "" ? '.*' : (this.searchEventForm.value.zip === '.*' ? '.*' : this.searchEventForm.value.zip + '[0-9]{3}');
     this.searchEventForm.value.startDate = this.searchEventForm.value.startDate === "" ? new Date(moment().clone().format('YYYY-MM-DD')) : this.searchEventForm.value.startDate;
     console.log(this.searchEventForm.value);
     this.myEvents = this.myEvents.reduce( (eventFiltered: EventParticipant[] , eventParticipation) =>{
@@ -75,9 +75,11 @@ export class MyEventsComponent implements OnInit {
     this.eventParticipantService.getMyParticipation().subscribe(eventParticipation => {
       this.myEvents = eventParticipation
     }, ()=>{}, () => {
+      console.log("je suis rentré");
       for (let i = 0; i < this.myEvents.length; i++) {
         if (this.myEvents[i].event === null) {
           this.myEvents.splice(i, 1);
+          i--;
         }
       }
       this.myEventsCopy = this.myEvents;
@@ -117,7 +119,7 @@ export class MyEventsComponent implements OnInit {
   }
 
   deleteEvent(event: Event){
-    confirm(" Voulez-vous vraiment supprimer cet évenement ? ");
+    if (confirm(" Voulez-vous vraiment supprimer cet évenement ? ")){
     this.eventService.deleteEvent(event.id!).subscribe(() => {}, () => {},
       () => {
       for(let i = 0; i < this.myEvents.length; i++ ){
@@ -125,7 +127,7 @@ export class MyEventsComponent implements OnInit {
           this.myEvents.splice(i,1);
         }
       }
-    })
+    })}
   }
 
 }
