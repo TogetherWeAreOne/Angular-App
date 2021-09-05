@@ -18,7 +18,6 @@ export class AuthService {
   }
 
   public login(email: string, password: string): Observable<User> {
-    console.log("icicicicicicici");
 
     return this.http.post<User>(`${environment.apiBaseUrl}/auth/login`, {
       email,

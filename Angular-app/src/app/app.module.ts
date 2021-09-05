@@ -5,7 +5,6 @@ import {AuthComponent} from './component/auth/auth.component';
 import {RouterModule, Routes} from "@angular/router";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
-import axios from "axios";
 import {CookieService} from "ngx-cookie-service";
 import {NavBarComponent} from './component/nav-bar/nav-bar.component';
 import {RegisterComponent} from './component/register/register.component';
@@ -50,11 +49,6 @@ import { UpdateAuctionComponent } from './component/auction-sales/update-auction
 import { MyAuctionComponent } from './component/auction-sales/my-auction/my-auction.component';
 import { CreateAuctionComponent } from './component/auction-sales/create-auction/create-auction.component';
 import { MessageComponent } from './component/message/message.component';
-
-
-
-
-
 
 
 registerLocaleData(localeFr, 'fr');
